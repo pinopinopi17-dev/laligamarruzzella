@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga Marruzzella 2026</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { font-style: italic; opacity: 0.9; }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        /* Secciones Generales */
+        section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            text-align: center; /* Títulos centrados */
+            margin-bottom: 20px;
+            color: #1a2a6c;
+        }
+
+        /* Noticias (Izquierda) */
+        .news-section { flex: 1; min-width: 300px; }
+        .news-image { width: 100%; height: auto; border-radius: 5px; }
+
+        /* Clasificación (Derecha) */
+        .standings-section { flex: 1.5; min-width: 450px; }
+        
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th, td { padding: 12px 8px; text-align: center; border-bottom: 1px solid #eee; }
+        th { background-color: #f8f9fa; }
+
+        /* Estilo columna Equipo con Logo y Link */
+        .col-pos {
+        width: 40px; /* Ajusta este valor según te guste */
+        text-align: center;
+        font-weight: bold;
+        }
+        .col-team { width: 70%; text-align: left; }
+        
+        .team-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .team-logo-small {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .team-link {
+            text-decoration: none;
+            color: #1a2a6c;
+            font-weight: bold;
+        }
+
+        .team-link:hover {
+            color: #ff4b2b;
+            text-decoration: underline;
+        }
+
+        .col-pts { background-color: #f0f3ff; font-weight: bold; }
+
+        /* Calendario (Abajo) */
+        .calendar-section { width: 100%; margin-top: 20px; }
+        .match {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .match-team { display: flex; align-items: center; gap: 10px; flex: 1; }
+        .team-home { justify-content: flex-end; }
+        .team-away { justify-content: flex-start; }
+        .team-logo { width: 35px; height: 35px; }
+        .result {
+            font-weight: bold;
+            background: #333;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Liga Marruzzella 2026</h1>
+    <p>¡El espectáculo está a punto de comenzar! Queda muy poco para el pitido inicial.</p>
+</header>
+
+<div class="container">
+    
+    <section class="news-section">
+        <h2>Últimas Noticias</h2>
+        <img src="noticias/antonioj1.jpg" alt="Noticia" class="news-image">
+        <h3>Humildes F.C. tendrá su revancha en el debut</h3>
+        <p>El vigente campeón de la liga marruzzella podrá redimirse de su estrepitosa derrota en el PlayIn tras cruzarse con C.A. Maguila en el debut liguero.</p>
+        <img src="noticias/almeydaj1.jpg" alt="Noticia" class="news-image">
+        <h3>Almeyda, "sin presión"</h3>
+        <p>Matías Almeyda, tranquilo en el debut liguero, pese al terrible final de liga de su equipo la temporada pasada:<br>"El equipo está completamente renovado y está preparado para mostrar su mejor nivel"</p>
+    </section>
+
+    <section class="standings-section">
+        <h2>Clasificación</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-pos">Posición</th>
+                    <th class="col-team">Equipo</th>
+                    <th class="col-pts">Pts</th>
+                    <th>PJ</th>
+                    <th>PG</th>
+                    <th>PE</th>
+                    <th>PP</th>
+                    <th>TF</th>
+                    <th>TC</th>
+                    <th>DT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="hispalis/hispalis.png" alt="Escudo" class="team-logo-small">
+                            <a href="hispalense.html" class="team-link">C.A. Hispalense</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="maguila/maguila.png" alt="Escudo" class="team-logo-small">
+                            <a href="maguila.html" class="team-link">C.A. Maguila</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="cesped/cesped.png" alt="Escudo" class="team-logo-small">
+                            <a href="cesped.html" class="team-link">Los Césped F.C.</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="flakitos/flakitos.png" alt="Escudo" class="team-logo-small">
+                            <a href="flakitos.html" class="team-link">Flakitos F.C.</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="humildes/humildes.png" alt="Escudo" class="team-logo-small">
+                            <a href="humildes.html" class="team-link">Humildes F.C.</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="mascaras/mascaras.png" alt="Escudo" class="team-logo-small">
+                            <a href="mascaras.html" class="team-link">Máscaras F.C.</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="pelusas/pelusas.png" alt="Escudo" class="team-logo-small">
+                            <a href="pelusas.html" class="team-link">Pelusas C.F.</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="perrof/perrof.png" alt="Escudo" class="team-logo-small">
+                            <a href="perrof.html" class="team-link">Perroflautas F.C.</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="pololoco/pololoco.png" alt="Escudo" class="team-logo-small">
+                            <a href="pololoco.html" class="team-link">Pololoco F.C.</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="sportium/sportium.png" alt="Escudo" class="team-logo-small">
+                            <a href="sportium.html" class="team-link">Sportium de Gijón</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="kinos/kinos.png" alt="Escudo" class="team-logo-small">
+                            <a href="kinos.html" class="team-link">U.D. Los Kinos</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="union/union.png" alt="Escudo" class="team-logo-small">
+                            <a href="union.html" class="team-link">Unión Española</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="violeteros/violeteros.png" alt="Escudo" class="team-logo-small">
+                            <a href="violeteros.html" class="team-link">Violeteros F.C.</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>  
+                <tr>
+                    <td>1</td>
+                    <td class="col-team">
+                        <div class="team-info">
+                            <img src="xerez/xerez.png" alt="Escudo" class="team-logo-small">
+                            <a href="xerez.html" class="team-link">Xerez Eleven</a>
+                        </div>
+                    </td>
+                    <td class="col-pts">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</div>
+<section class="calendar-section custom-margins">
+    <div class="calendar-nav">
+        <button class="nav-btn" onclick="changeJornada(-1)">&#10094;</button>
+        <h2 id="jornada-title">Jornada 1</h2>
+        <button class="nav-btn" onclick="changeJornada(1)">&#10095;</button>
+    </div>
+    
+    <div id="matches-container" class="matches-list">
+        </div>
+</section>
+
+<style>
+    /* Márgenes y Contenedor */
+    .custom-margins {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Navegación (Flechas y Título) */
+    .calendar-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .nav-btn {
+        background-color: #1a2a6c;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    #jornada-title {
+        font-size: 1.5rem;
+        color: #1a2a6c;
+        margin: 0;
+        min-width: 140px;
+        text-align: center;
+    }
+
+    /* Lista de Partidos */
+    .matches-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .match-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 600px;
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* Estructura: Nombre Local | Logo | VS | Logo | Nombre Visitante */
+    .t-name {
+        flex: 1;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    .t-local { text-align: right; margin-right: 15px; }
+    .t-away { text-align: left; margin-left: 15px; }
+
+/* Esto asegura que la caja del escudo siempre mida lo mismo */
+.t-shield {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0; /* ¡MUY IMPORTANTE! Evita que el escudo se encoja */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.t-shield img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Esto asegura que el marcador tenga un ancho fijo para que no empuje a los lados */
+.vs-badge {
+    background: #333;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 5px 0; /* Quitamos padding lateral */
+    border-radius: 4px;
+    margin: 0 15px;
+    width: 50px; /* Ancho fijo para el resultado (ej: 10 - 10 cabría bien) */
+    text-align: center;
+    flex-shrink: 0;
+}
+</style>
+
+<script>
+    // Datos completos de la 1ª Vuelta según el PDF
+const ligaData = [
+    { j: 1, p: [["Los Césped F.C.", "U.D. Kinos", "vs"], ["Violeteros F.C.", "Sportium de Gijón", "vs"], ["Pelusas C.F.", "Unión Española", "vs"], ["Pololoco F.C.", "Máscaras F.C.", "vs"], ["Xerez Eleven", "C.A. Hispalis", "vs"], ["Humildes F.C.", "C.A. Maguila", "vs"], ["Perroflautas F.C.", "Flakitos F.C.", "vs"]] },
+    { j: 2, p: [["Sportium de Gijón", "Los Césped F.C.", "vs"], ["Unión Española", "U.D. Kinos", "vs"], ["Máscaras F.C.", "Violeteros F.C.", "vs"], ["C.A. Hispalis", "Pelusas C.F.", "vs"], ["C.A. Maguila", "Pololoco F.C.", "vs"], ["Flakitos F.C.", "Xerez Eleven", "vs"], ["Perroflautas F.C.", "Humildes F.C.", "vs"]] },
+    { j: 3, p: [["Los Césped F.C.", "Unión Española", "vs"], ["Sportium de Gijón", "Máscaras F.C.", "vs"], ["U.D. Kinos", "C.A. Hispalis", "vs"], ["Violeteros F.C.", "C.A. Maguila", "vs"], ["Pelusas C.F.", "Flakitos F.C.", "vs"], ["Pololoco F.C.", "Perroflautas F.C.", "vs"], ["Xerez Eleven", "Humildes F.C.", "vs"]] },
+    { j: 4, p: [["Máscaras F.C.", "Los Césped F.C.", "vs"], ["C.A. Hispalis", "Unión Española", "vs"], ["C.A. Maguila", "Sportium de Gijón", "vs"], ["Flakitos F.C.", "U.D. Kinos", "vs"], ["Perroflautas F.C.", "Violeteros F.C.", "vs"], ["Humildes F.C.", "Pelusas C.F.", "vs"], ["Xerez Eleven", "Pololoco F.C.", "vs"]] },
+    { j: 5, p: [["Los Césped F.C.", "C.A. Hispalis", "vs"], ["Máscaras F.C.", "C.A. Maguila", "vs"], ["Unión Española", "Flakitos F.C.", "vs"], ["Sportium de Gijón", "Perroflautas F.C.", "vs"], ["U.D. Kinos", "Humildes F.C.", "vs"], ["Violeteros F.C.", "Xerez Eleven", "vs"], ["Pelusas C.F.", "Pololoco F.C.", "vs"]] },
+    { j: 6, p: [["C.A. Maguila", "Los Césped F.C.", "vs"], ["Flakitos F.C.", "C.A. Hispalis", "vs"], ["Perroflautas F.C.", "Máscaras F.C.", "vs"], ["Humildes F.C.", "Unión Española", "vs"], ["Xerez Eleven", "Sportium de Gijón", "vs"], ["Pololoco F.C.", "U.D. Kinos", "vs"], ["Pelusas C.F.", "Violeteros F.C.", "vs"]] },
+    { j: 7, p: [["Los Césped F.C.", "Flakitos F.C.", "vs"], ["C.A. Maguila", "Perroflautas F.C.", "vs"], ["C.A. Hispalis", "Humildes F.C.", "vs"], ["Máscaras F.C.", "Xerez Eleven", "vs"], ["Unión Española", "Pololoco F.C.", "vs"], ["Sportium de Gijón", "Pelusas C.F.", "vs"], ["U.D. Kinos", "Violeteros F.C.", "vs"]] },
+    { j: 8, p: [["Perroflautas F.C.", "Los Césped F.C.", "vs"], ["Humildes F.C.", "Flakitos F.C.", "vs"], ["Xerez Eleven", "C.A. Maguila", "vs"], ["Pololoco F.C.", "C.A. Hispalis", "vs"], ["Pelusas C.F.", "Máscaras F.C.", "vs"], ["Violeteros F.C.", "Unión Española", "vs"], ["U.D. Kinos", "Sportium de Gijón", "vs"]] },
+    { j: 9, p: [["Los Césped F.C.", "Humildes F.C.", "vs"], ["Perroflautas F.C.", "Xerez Eleven", "vs"], ["Flakitos F.C.", "Pololoco F.C.", "vs"], ["C.A. Maguila", "Pelusas C.F.", "vs"], ["C.A. Hispalis", "Violeteros F.C.", "vs"], ["Máscaras F.C.", "U.D. Kinos", "vs"], ["Unión Española", "Sportium de Gijón", "vs"]] },
+    { j: 10, p: [["Xerez Eleven", "Los Césped F.C.", "vs"], ["Pololoco F.C.", "Humildes F.C.", "vs"], ["Pelusas C.F.", "Perroflautas F.C.", "vs"], ["Violeteros F.C.", "Flakitos F.C.", "vs"], ["U.D. Kinos", "C.A. Maguila", "vs"], ["Sportium de Gijón", "C.A. Hispalis", "vs"], ["Unión Española", "Máscaras F.C.", "vs"]] },
+    { j: 11, p: [["Los Césped F.C.", "Pololoco F.C.", "vs"], ["Xerez Eleven", "Pelusas C.F.", "vs"], ["Humildes F.C.", "Violeteros F.C.", "vs"], ["Perroflautas F.C.", "U.D. Kinos", "vs"], ["Flakitos F.C.", "Sportium de Gijón", "vs"], ["C.A. Maguila", "Unión Española", "vs"], ["C.A. Hispalis", "Máscaras F.C.", "vs"]] },
+    { j: 12, p: [["Pelusas C.F.", "Los Césped F.C.", "vs"], ["Violeteros F.C.", "Pololoco F.C.", "vs"], ["U.D. Kinos", "Xerez Eleven", "vs"], ["Sportium de Gijón", "Humildes F.C.", "vs"], ["Unión Española", "Perroflautas F.C.", "vs"], ["Máscaras F.C.", "Flakitos F.C.", "vs"], ["C.A. Hispalis", "C.A. Maguila", "vs"]] },
+    { j: 13, p: [["Los Césped F.C.", "Violeteros F.C.", "vs"], ["Pelusas C.F.", "U.D. Kinos", "vs"], ["Pololoco F.C.", "Sportium de Gijón", "vs"], ["Xerez Eleven", "Unión Española", "vs"], ["Humildes F.C.", "Máscaras F.C.", "vs"], ["Perroflautas F.C.", "C.A. Hispalis", "vs"], ["Flakitos F.C.", "C.A. Maguila", "vs"]] }
+];
+    const logoMapper = {
+    "Los Césped F.C.": "cesped",
+    "U.D. Kinos": "kinos",
+    "Violeteros F.C.": "violeteros",
+    "Sportium de Gijón": "sportium",
+    "Pelusas C.F.": "pelusas",
+    "Unión Española": "union",
+    "Pololoco F.C.": "pololoco",
+    "Máscaras F.C.": "mascaras",
+    "Xerez Eleven": "xerez",
+    "C.A. Hispalis": "hispalis",
+    "Humildes F.C.": "humildes",
+    "C.A. Maguila": "maguila",
+    "Perroflautas F.C.": "perrof",
+    "Flakitos F.C.": "flakitos"
+};
+
+    let currentJornadaIdx = 0;
+
+function renderJornada() {
+    const data = ligaData[currentJornadaIdx];
+    document.getElementById('jornada-title').innerText = `Jornada ${data.j}`;
+    const container = document.getElementById('matches-container');
+    container.innerHTML = '';
+
+    data.p.forEach(partido => {
+        const logoLocal = logoMapper[partido[0]];
+        const logoVisitante = logoMapper[partido[1]];
+        const resultado = partido[2]; // <--- Aquí capturamos el 2-1 o el "vs"
+        
+        const row = document.createElement('div');
+        row.className = 'match-row';
+        
+        row.innerHTML = `
+            <div class="t-name t-local">${partido[0]}</div>
+            <div class="t-shield">
+                <img src="${logoLocal}/${logoLocal}.png" alt="">
+            </div>
+            
+            <div class="vs-badge">${resultado}</div>
+            
+            <div class="t-shield">
+                <img src="${logoVisitante}/${logoVisitante}.png" alt="">
+            </div>
+            <div class="t-name t-away">${partido[1]}</div>
+        `;
+        container.appendChild(row);
+    });
+}
+
+    function changeJornada(dir) {
+        currentJornadaIdx += dir;
+        if (currentJornadaIdx < 0) currentJornadaIdx = 0;
+        if (currentJornadaIdx >= ligaData.length) currentJornadaIdx = ligaData.length - 1;
+        renderJornada();
+    }
+
+    renderJornada();
+</script>
+</body>
+</html>

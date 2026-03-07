@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.A. Hispalense - Perfil Oficial</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+
+        /* Cabecera Azul y Blanco */
+        header {
+            background: linear-gradient(135deg, #295adf 50%, #295adf 50%);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 5px solid #295adf;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            color: #295adf;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff;
+            background: rgba(255,255,255,0.8);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 25% 50% 25%;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h3 { color: #295adf; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+
+        /* Columna Izquierda */
+        .shield-img { width: 100%; border-radius: 50%; border: 4px solid #3563e0; }
+        .data-list { list-style: none; padding: 0; }
+        .data-list li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+        .data-list b { color: #555; }
+
+        /* Columna Central */
+        .news-grid { display: flex; gap: 15px; margin-bottom: 30px; }
+        .news-item { flex: 1; text-align: center; }
+        .news-item img { width: 100%; border-radius: 8px; height: 150px; object-fit: cover; }
+        
+        .captains-grid { display: flex; justify-content: space-around; text-align: center; }
+        .captain { flex: 1; }
+        .captain img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #295adf; }
+
+        .insta-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #e1306c;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* Columna Derecha */
+        .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
+        .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .staff-img { width: 60px; height: 60px; border-radius: 50%; background: #ddd; }
+
+        .squad-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .squad-table td { padding: 8px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        .pos { color: #888; font-style: italic; text-align: right; }
+
+        @media (max-width: 900px) {
+            .main-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Pelusas C.F.</h1>
+</header>
+
+<div class="main-grid">
+    
+    <aside>
+        <div class="card">
+            <img src="pelusas/pelusas.png" alt="Escudo Pelusas C.F." class="shield-img">
+            <h3>Datos Históricos</h3>
+            <ul class="data-list">
+                <li><b>Fundación:</b> 2024</li>
+                <li><b>Posición 2025:</b> 2º Clasificado</li>
+                <li><b>Jugadores Históricos:</b> Rony, Yeferson Soteldo</li>
+            </ul>
+        </div>
+    </aside>
+
+    <main>
+        <section class="card">
+            <h3>Actualidad del Club</h3>
+            <div class="news-grid">
+                <div class="news-item">
+                    <img src="https://placehold.co/400x250/295adf/white?text=Entrenamiento" alt="Noticia 1">
+                    <p><b>Sesión de mañana:</b> Máxima intensidad bajo el sol.</p>
+                </div>
+                <div class="news-item">
+                    <img src="https://placehold.co/400x250/295adf/white?text=Fichaje" alt="Noticia 2">
+                    <p><b>Nuevo refuerzo:</b> Presentación oficial este viernes.</p>
+                </div>
+            </div>
+
+            <h3>Nuestros Capitanes</h3>
+            <div class="captains-grid">
+                <div class="captain">
+                    <img src="pelusas/rony.png" alt="Capitán 1">
+                    <p>Rony</p>
+                </div>
+                <div class="captain">
+                    <img src="pelusas/lacroix.png" alt="Capitán 2">
+                    <p>Lacroix</p>
+                </div>
+                <div class="captain">
+                    <img src="pelusas/alexis.png" alt="Capitán 3">
+                    <p>Alexis</p>
+                </div>
+            </div>
+
+            <a href="https://instagram.com/ca.hispalense" class="insta-link">📸 Síguenos en Instagram @ca.hispalense</a>
+        </section>
+    </main>
+
+    <aside> 
+        <div class="card">
+            <h3>Estadio</h3>
+            <p><b>Estadio Diego Armando Maradona</b></p>
+            <img src="pelusas/maradona.webp" alt="Foto Estadio" class="stadium-img">
+            
+            <h3>Staff Técnico</h3>
+            <div class="staff-item">
+                <img src="pelusas/mertens.png" class="staff-img">
+                <div><b>Dries Mertens</b> (Entrenador)</div>
+            </div>
+            <div class="staff-item">
+                <img src="pelusas/hamsik.png" class="staff-img">
+                <div><b>Marek Hamsik</b> (2º Entrenador)</div>
+            </div>
+
+            <h3>Plantilla 2026</h3>
+            <table class="squad-table">
+                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
+                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
+                <tr><td>Claudio Echeverri</td><td class="pos">Mediocentro</td></tr>
+                <tr><td>Rony</td><td class="pos">Delantero</td></tr>
+            </table>
+        </div>
+    </aside>
+
+</div>
+
+</body>
+</html>
