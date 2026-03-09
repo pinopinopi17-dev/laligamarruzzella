@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportium de Gijón - Perfil Oficial</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #ffd3d3;
+        }
+
+        /* Cabecera Azul y Blanco */
+        header {
+            background: linear-gradient(135deg, #940000 50%, #ffffff 50%);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 5px solid #460000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            color: #940000;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff;
+            background: rgba(255,255,255,0.8);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px; 
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 25% 50% 25%;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h3 { color: #940000; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+
+        /* Columna Izquierda */
+        .shield-img { width: 100%; border-radius: 50%; border: 4px solid #940000; }
+        .data-list { list-style: none; padding: 0; }
+        .data-list li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+        .data-list b { color: #555; }
+
+        /* Columna Central */
+        .news-grid { display: flex; gap: 15px; margin-bottom: 30px; }
+        .news-item { flex: 1; text-align: center; }
+        .news-item img { width: 100%; border-radius: 8px; height: 150px; object-fit: cover; }
+        
+        .captains-grid { display: flex; justify-content: space-around; text-align: center; }
+        .captain { flex: 1; }
+        .captain img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #940000; }
+
+        .insta-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #940000;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* Columna Derecha */
+        .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
+        .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .staff-img { width: 60px; height: 60px; border-radius: 50%; background: #ddd; }
+
+        .squad-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .squad-table td { padding: 8px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        .pos { color: #888; font-style: italic; text-align: right; }
+
+        @media (max-width: 900px) {
+            .main-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Sportium de Gijón</h1>
+</header>
+
+<div class="main-grid">
+    
+    <aside>
+        <div class="card">
+            <img src="sportium/sportium.png" alt="Escudo Sportium de Gijón" class="shield-img">
+            <h3>Datos Históricos</h3>
+            <ul class="data-list">
+                <li><b>Fundación:</b> 2025</li>
+                <li><b>Posición 2025:</b> 7º Puesto</li>
+                <li><b>Jugadores Históricos:</b> <ul><li>Jonathan David y Randal Kolo Muani: Máximos goleadores y asistidores combinados tras su llegada en 2026</li></ul></li>
+        </div>
+    </aside>
+
+    <main>
+        <section class="card">
+            <h3>Actualidad del Club</h3>
+            <div class="news-grid">
+                <div class="news-item">
+                    <img src="sportium/kolomuanij111.webp" alt="Noticia 1">
+                    <p><b>Habla el "killer": </b>Kolo Muani tiene claro que este es el año de Sportium y que no tienen nada que envidiar a los demás clubes.</p>
+                </div>
+                <div class="news-item">
+                    <img src="sportium/sirsecon.jfif" alt="Noticia 2">
+                    <p><b>Segundo Castillo en rdp:</b> El que fuera premiado como mejor entrenador del 2025 dará una rueda de prensa esta semana.</p>
+                </div>
+            </div>
+
+            <h3>Nuestros Capitanes</h3>
+            <div class="captains-grid">
+                <div class="captain">
+                    <img src="desc.png"Capitán 1">
+                    <p>.</p>
+                </div>
+                <div class="captain">
+                    <img src="desc.png" alt="Capitán 2">
+                    <p>.</p>
+                </div>
+                <div class="captain">
+                    <img src="desc.png" alt="Capitán 3">
+                    <p>.</p>
+                </div>
+            </div>
+
+            <a href="https://instagram.com/sportium_gijon" class="insta-link">📸 Síguenos en Instagram @sportium_gijon</a>
+        </section>
+    </main>
+
+    <aside> 
+        <div class="card">
+            <h3>Estadio</h3>
+            <p><b>La Rosaleda</b></p>
+            <img src="sportium/rosaleda.jpg" alt="Foto Estadio" class="stadium-img">
+            
+            <h3>Staff Técnico</h3>
+            <div class="staff-item">
+                <img src="sportium/segundo.png" class="staff-img">
+                <div><b>Segundo Castillo</b> (Entrenador)</div>
+            </div>
+
+            <h3>Plantilla 2026</h3>
+            <table class="squad-table">
+                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
+                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
+                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
+                <tr><td>Delantero 1</td><td class="pos">Delantero</td></tr>
+            </table>
+        </div>
+    </aside>
+
+</div>
+
+</body>
+</html>
