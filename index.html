@@ -434,23 +434,45 @@
         <h2>Inscripción</h2>
         <form id="registroEquipoForm">
             <div class="input-group">
-                <label>Equipo *</label>
+                <label>Equipo</label>
                 <input type="text" name="equipo" required placeholder="C.A. Hispalis">
             </div>
             <div class="input-group">
-                <label>Titulares *</label>
+                <label>Titulares</label>
                 <textarea name="titulares" rows="4" required placeholder="Lista de jugadores del equipo, indicar nombre y coste en GP"></textarea>
             </div>
             <div class="input-group">
                 <label>Sustitutos</label>
-                <textarea name="sustitutos" rows="2", placeholder="Sustitutos en caso de que falle un pick"></textarea>
+                <textarea name="sustitutos" rows="2" placeholder="Sustitutos en caso de que falle un pick"></textarea>
             </div>
             <div class="fila-botones">
-                <button type="reset" class="btn-form borrar">Eliminar</button>
-                <button type="submit" class="btn-form enviar">Enviar</button>
+                <button type="reset" class="btn-form borrar" >Eliminar</button>
+                <button type="submit" class="btn-form enviar" id="btn-form enviar">Enviar</button>
             </div>
         </form>
-    </section>
+        <div id="mensajeExito" style="display:none; text-align: center; color: #1a2a6c; font-weight: bold; padding: 20px; background: #e8f0fe; border-radius: 8px; margin-top: 10px;">¡Gracias! Tus datos se guardaron.</div>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwSXYzuRcOr2Gu1NoFuj4WdP6sTk369zzOP5uuejqUTgNB4QOkoDX9IbKKRR5cq7mw3GA/exec'
+    const form = document.getElementById('registroEquipoForm')
+    const btn = document.getElementById('btn-form enviar')
+    const exito = document.getElementById('mensajeExito')
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        btn.disabled = true
+        btn.innerText = "Enviando..."
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+            form.style.display = 'none' // Esconde el formulario
+             exito.style.display = 'block' // Muestra mensaje de éxito
+        })
+        .catch(error => {
+            console.error('Error!', error.message)
+            btn.disabled = false
+            btn.innerText = "Reintentar"
+        })
+    })
+</script>
+</section>
 
 </div>
 
