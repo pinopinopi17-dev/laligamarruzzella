@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornada 1</title>
+    <title>Actas con Equipos - Liga Marruzzella</title>
+    <style>
+        :root {
+            --azul: #1a2a6c;
+            --gris-claro: #f4f7f6;
+            --vs-bg: #333;
+            --naranja: #f39c12;
+            --border-local: #3498db;
+            --border-visitante: #9b59b6;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--gris-claro); margin: 0; padding: 20px; }
+        .container { max-width: 1100px; margin: auto; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 20px; }
+        
+        h1 { text-align: center; color: var(--azul); text-transform: uppercase; border-bottom: 2px solid #eee; padding-bottom: 20px; }
+
+        .match-card-container { margin-bottom: 40px; border: 1px solid #eee; border-radius: 12px; overflow: hidden; background: #fff; }
+        
+        .match-row { 
+            display: flex; align-items: center; justify-content: space-between; 
+            padding: 25px; background: #fff; border-bottom: 2px solid #f8f9fa;
+        }
+        
+        .team-box { flex: 1; display: flex; align-items: center; font-weight: bold; font-size: 1.2rem; }
+        .team-box.left { justify-content: flex-end; text-align: right; color: var(--border-local); }
+        .team-box.right { justify-content: flex-start; text-align: left; color: var(--border-visitante); }
+        
+        .shield { width: 60px; height: 60px; margin: 0 20px; object-fit: contain; }
+        
+        .vs-badge { 
+            background: var(--vs-bg); color: white; padding: 10px 25px; 
+            border-radius: 8px; font-weight: 900; font-size: 1.2rem;
+            box-shadow: 0 4px 0 #000;
+        }
+
+        /* DISEÑO DE FICHA DIVIDIDA */
+        .match-details-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; /* Una columna para local, otra para visitante */
+            gap: 2px;
+            background: #eee; /* Color del separador central */
+        }
+
+        .team-stats-column { background: #fff; padding: 20px; text-align: right;} 
+        .team-stats-column.visitor { background: #fafafa; text-align: left;}
+        .stat-item { margin-bottom: 15px; }
+        .stat-item label { display: block; font-size: 0.7rem; color: #aaa; text-transform: uppercase; font-weight: 800; margin-bottom: 2px; }
+        .stat-item span { font-size: 0.9rem; color: #333; line-height: 1.4; display: block; }
+
+        /* PREMIOS GLOBALES (MVP, 11 IDEAL, ETC) */
+        .global-awards { 
+            grid-column: span 2; 
+            background: var(--azul); 
+            color: white; 
+            padding: 15px; 
+            display: flex; 
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .award-box { text-align: center; padding: 5px 15px; }
+        .award-box small { display: block; font-size: 0.65rem; text-transform: uppercase; opacity: 0.7; margin-bottom: 3px; }
+        .award-box b { font-size: 1rem; color: var(--naranja); }
+
+        .match-header-info { text-align: center; padding: 10px; background: #f8f9fa; font-size: 0.8rem; color: #666; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Actas de Partido - Liga Marruzzella</h1>
+    <div id="jornada-container"></div>
+</div>
+
+<script>
+    // ESTRUCTURA DE DATOS CON EQUIPOS SEPARADOS
+const listadoPartidos = [
+    {
+        id: 1, 
+        local: "Los Césped F.C.", 
+        visitante: "U.D. Kinos",
+        escudoLocal: "cesped/cesped.png", 
+        escudoVisitante: "kinos/kinos.png",
+        fecha: "N/A",
+        datos: {
+            resultado: "N/A",
+            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+    {
+        id: 2, 
+        local: "Violeteros F.C.", 
+        visitante: "Sportium de Gijón",
+        escudoLocal: "violeteros/violeteros.png", 
+        escudoVisitante: "sportium/sportium.png",
+        fecha: "N/A",
+        datos: {
+            resultado: "N/A",
+            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+    {
+        id: 3, 
+        local: "Pelusas C.F.", 
+        visitante: "Unión Española",
+        escudoLocal: "pelusas/pelusas.png", 
+        escudoVisitante: "union/union.png",
+        fecha: "N/A",
+        datos: {
+            resultado: "N/A",
+            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+    {
+        id: 4, 
+        local: "Pololoco F.C.", 
+        visitante: "Máscaras F.C.",
+        escudoLocal: "pololoco/pololoco.png", 
+        escudoVisitante: "mascaras/mascaras.png",
+        fecha: "N/A",
+        datos: {
+            resultado: "N/A",
+            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+    {
+        id: 5, 
+        local: "Xerez Eleven", 
+        visitante: "C.A. Hispalis",
+        escudoLocal: "xerez/xerez.png", 
+        escudoVisitante: "hispalis/hispalis.png",
+        fecha: "N/A",
+        datos: {
+            resultado: "N/A",
+            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+    {
+        id: 6, 
+        local: "Humildes F.C.", 
+        visitante: "C.A. Maguila",
+        escudoLocal: "humildes/humildes.png", 
+        escudoVisitante: "maguila/maguila.png",
+        fecha: "N/A",
+        datos: {
+            resultado: "N/A",
+            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+    {
+        id: 7, 
+        local: "Perroflautas F.C.", 
+        visitante: "Flakitos F.C.",
+        escudoLocal: "perrof/perrof.png", 
+        escudoVisitante: "flakitos/flakitos.png",
+        fecha: "N/A",
+        datos: {
+            resultado: "N/A",
+            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    }
+];
+
+    function renderJornada() {
+        const container = document.getElementById('jornada-container');
+        
+        container.innerHTML = listadoPartidos.map(p => {
+            if (!p.datos) return `<div class="match-card-container"><div class="match-row">...Próximamente...</div></div>`;
+
+            const d = p.datos;
+
+            return `
+            <div class="match-card-container">
+                <div class="match-header-info">FECHA: ${p.fecha} | ACTA #${p.id}</div>
+<div class="match-row">
+    <div class="team-box left">
+        ${p.local} 
+        <img src="${p.escudoLocal || 'https://via.placeholder.com/60'}" class="shield">
+    </div>
+    
+    <div class="vs-badge">${d.resultado}</div>
+    
+    <div class="team-box right">
+        <img src="${p.escudoVisitante || 'https://via.placeholder.com/60'}" class="shield"> 
+        ${p.visitante}
+    </div>
+</div>
+                
+                <div class="match-details-grid">
+                    <div class="team-stats-column">
+                        <div class="stat-item"><label>⚽ Goles</label><span>${d.localStats.goles}</span></div>
+                        <div class="stat-item"><label>👟 Asistencias</label><span>${d.localStats.asist}</span></div>
+                        <div class="stat-item"><label>🟨 Amarillas</label><span>${d.localStats.amarillas}</span></div>
+                        <div class="stat-item"><label>🟥 Rojas</label><span>${d.localStats.rojas}</span></div>
+                        <div class="stat-item"><label>🥅 Penaltis</label><span>${d.localStats.penaltis}</span></div>
+                        <div class="stat-item"><label>🎯 Faltas</label><span>${d.localStats.faltas}</span></div>
+                        <div class="stat-item"><label>🧤 Paradas</label><span>${d.localStats.paradas}</span></div>
+                        <div class="stat-item"><label>🔒 Portería 0</label><span>${d.localStats.porterias0}</span></div>
+                        <div class="stat-item"><label>🚑 Lesiones/Bajas</label><span>${d.localStats.lesiones} / ${d.localStats.bajas}</span></div>
+                    </div>
+
+                    <div class="team-stats-column visitor">
+                        <div class="stat-item"><label>⚽ Goles</label><span>${d.visitStats.goles}</span></div>
+                        <div class="stat-item"><label>👟 Asistencias</label><span>${d.visitStats.asist}</span></div>
+                        <div class="stat-item"><label>🟨 Amarillas</label><span>${d.visitStats.amarillas}</span></div>
+                        <div class="stat-item"><label>🟥 Rojas</label><span>${d.visitStats.rojas}</span></div>
+                        <div class="stat-item"><label>🥅 Penaltis</label><span>${d.visitStats.penaltis}</span></div>
+                        <div class="stat-item"><label>🎯 Faltas</label><span>${d.visitStats.faltas}</span></div>
+                        <div class="stat-item"><label>🧤 Paradas</label><span>${d.visitStats.paradas}</span></div>
+                        <div class="stat-item"><label>🔒 Portería 0</label><span>${d.visitStats.porterias0}</span></div>
+                        <div class="stat-item"><label>🚑 Lesiones/Bajas</label><span>${d.visitStats.lesiones} / ${d.visitStats.bajas}</span></div>
+                    </div>
+
+                    <div class="global-awards">
+                        <div class="award-box"><small>🏆 MVP PARTIDO</small><b>${d.premios.mvp}</b></div>
+                        <div class="award-box"><small>⭐ 11 IDEAL</small><b>${d.premios.once}</b></div>
+                        <div class="award-box"><small>🎖️ MVP JORNADA</small><b>${d.premios.mvpJornada}</b></div>
+                        <div class="award-box"><small>🌟 JUGADOR MES</small><b>${d.premios.jugadorMes}</b></div>
+                    </div>
+                </div>
+            </div>
+            `;
+        }).join('');
+    }
+
+    renderJornada();
+</script>
+
+</body>
+</html>

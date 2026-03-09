@@ -14,14 +14,45 @@
             color: #333;
         }
 
-        header {
-            background-color: #1a2a6c;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+header {
+    background-color: #1a2a6c; /* Este es el color que se verá en el centro */
+    color: white;
+    padding: 4rem 2rem; /* Aumentamos el padding para que la foto luzca más */
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    position: relative; /* Necesario para posicionar la foto detrás */
+    overflow: hidden;   /* Para que la foto no se salga de los bordes curvos si los tuviera */
+}
 
+/* Capa para la imagen */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 1. La foto que quieras */
+    background-image: url('banner.jpg'); 
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8; /* Ajusta la intensidad de la foto */
+
+    /* 2. El difuminado central (Máscara) */
+    -webkit-mask-image: radial-gradient(circle, transparent 10%, black 80%);
+    mask-image: radial-gradient(circle, transparent 10%, black 80%);
+    
+    z-index: 1; /* Se queda detrás del texto */
+}
+
+/* Aseguramos que el contenido del header esté por encima de la foto */
+header h1, header p, header nav {
+    position: relative;
+    z-index: 2;
+    /* Un toque de sombra al texto para asegurar legibilidad */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
         header h1 { margin: 0; font-size: 2.5rem; }
         header p { font-style: italic; opacity: 0.9; }
 
@@ -194,7 +225,7 @@
                     <td>1</td>
                     <td class="col-team">
                         <div class="team-info">
-                            <img src="cesped/cesped.png" alt="Escudo" class="team-logo-small">
+                            <img src="cesped/cesped.jpeg" alt="Escudo" class="team-logo-small">
                             <a href="cesped.html" class="team-link">Los Césped F.C.</a>
                         </div>
                     </td>
@@ -548,10 +579,14 @@ const ligaData = [
     let currentJornadaIdx = 0;
 
 function renderJornada() {
-    const data = ligaData[currentJornadaIdx];
-    document.getElementById('jornada-title').innerText = `Jornada ${data.j}`;
-    const container = document.getElementById('matches-container');
-    container.innerHTML = '';
+const data = ligaData[currentJornadaIdx];
+        const titleElement = document.getElementById('jornada-title');
+        
+        // --- CAMBIO AQUÍ: Convertimos el título en un enlace dinámico ---
+        titleElement.innerHTML = `<a href="jornada${data.j}.html" style="text-decoration: none; color: inherit;">Jornada ${data.j}</a>`;
+        
+        const container = document.getElementById('matches-container');
+        container.innerHTML = '';;
 
     data.p.forEach(partido => {
         const logoLocal = logoMapper[partido[0]];

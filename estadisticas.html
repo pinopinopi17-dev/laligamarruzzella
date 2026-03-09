@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas Totales - Liga Marruzzella</title>
+    <style>
+        :root {
+            --azul: #1a2a6c;
+            --gris-bg: #f8f9fa;
+            --blanco: #ffffff;
+            --naranja: #d35400;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--gris-bg); margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 1400px; margin: auto; }
+
+        h1 { text-align: center; color: var(--azul); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* BUSCADOR */
+        .search-section { background: var(--blanco); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        input[type="text"] {
+            width: 100%; padding: 12px 20px; box-sizing: border-box; font-size: 1rem; border: 2px solid #eee; border-radius: 25px; outline: none; transition: 0.3s;
+        }
+        input[type="text"]:focus { border-color: var(--azul); }
+
+        /* FICHA INDIVIDUAL */
+        #player-card { display: none; background: var(--azul); color: white; padding: 25px; border-radius: 12px; margin-top: 20px; animation: slideDown 0.4s; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px; }
+        .stat-box { background: rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-box small { display: block; font-size: 0.6rem; text-transform: uppercase; opacity: 0.8; margin-bottom: 4px; line-height: 1.1; height: 22px; display: flex; align-items: center; justify-content: center; }
+        .stat-box b { font-size: 1.1rem; }
+
+        /* GRID DE TODAS LAS TABLAS */
+        .tables-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 20px; 
+        }
+        
+        .table-container { background: var(--blanco); padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .table-container h3 { margin-top: 0; color: var(--azul); border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { text-align: left; font-size: 0.7rem; color: #888; padding: 8px; }
+        td { padding: 8px; border-bottom: 1px solid #f9f9f9; font-size: 0.85rem; }
+        
+        .rank { font-weight: bold; color: var(--azul); width: 20px; }
+        .val { font-weight: bold; text-align: right; color: var(--naranja); }
+        
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Estadísticas Liga Marruzzella</h1>
+
+    <div class="search-section">
+        <input type="text" id="searchInput" placeholder="Buscar jugador por nombre..." onkeyup="searchPlayer()">
+        <div id="player-card">
+            <h2 id="p-nombre" style="margin:0">Nombre</h2>
+            <small id="p-equipo" style="font-size: 1rem; opacity: 0.9;">Equipo</small>
+            <div class="card-grid" id="cardStats"></div>
+        </div>
+    </div>
+
+    <div class="tables-grid" id="main-grid"></div>
+</div>
+
+<script>
+    // BASE DE DATOS (He añadido las nuevas claves a los ejemplos)
+    const jugadores = [
+        { 
+            nombre: "Juanito Ruiz", equipo: "C.A. Hispalis", 
+            goles: 12, asist: 5, amarillas: 3, rojas: 0, 
+            penalti: 2, falta: 1, sancionado: 0, lesiones: 1, 
+            baja: 2, paradas: 0, porterias0: 0, mvp: 4, once: 3,
+            mvpJornada: 2, jugadorMes: 1 
+        },
+        { 
+            nombre: "Carlos Tanque", equipo: "Xerez Eleven", 
+            goles: 15, asist: 1, amarillas: 5, rojas: 2, 
+            penalti: 4, falta: 0, sancionado: 3, lesiones: 0, 
+            baja: 0, paradas: 0, porterias0: 0, mvp: 2, once: 1,
+            mvpJornada: 1, jugadorMes: 0
+        },
+        { 
+            nombre: "G. Valero", equipo: "C.A. Hispalis", 
+            goles: 0, asist: 1, amarillas: 1, rojas: 0, 
+            penalti: 0, falta: 0, sancionado: 0, lesiones: 0, 
+            baja: 0, paradas: 48, porterias0: 6, mvp: 1, once: 5,
+            mvpJornada: 3, jugadorMes: 1
+        },
+        { 
+            nombre: "Lolo Pelusa", equipo: "Pelusas C.F.", 
+            goles: 5, asist: 9, amarillas: 2, rojas: 1, 
+            penalti: 1, falta: 2, sancionado: 1, lesiones: 2, 
+            baja: 5, paradas: 0, porterias0: 0, mvp: 3, once: 4,
+            mvpJornada: 0, jugadorMes: 2
+        }
+    ];
+
+    // CONFIGURACIÓN DE LAS 15 TABLAS
+    const configTablas = [
+        { etiqueta: "Goles ⚽", clave: "goles" },
+        { etiqueta: "Asistencias 👟", clave: "asist" },
+        { etiqueta: "T. Amarillas 🟨", clave: "amarillas" },
+        { etiqueta: "T. Rojas 🟥", clave: "rojas" },
+        { etiqueta: "Goles Penalti 🥅", clave: "penalti" },
+        { etiqueta: "Goles Falta 🎯", clave: "falta" },
+        { etiqueta: "Part. Sancionado 🚫", clave: "sancionado" },
+        { etiqueta: "Lesiones 🚑", clave: "lesiones" },
+        { etiqueta: "Part. de Baja 🛌", clave: "baja" },
+        { etiqueta: "Paradas 🧤", clave: "paradas" },
+        { etiqueta: "Porterías a 0 🔒", clave: "porterias0" },
+        { etiqueta: "Veces MVP 🏆", clave: "mvp" },
+        { etiqueta: "En 11 Ideal ⭐", clave: "once" },
+        { etiqueta: "MVP Jornada 🎖️", clave: "mvpJornada" },
+        { etiqueta: "Jugador del Mes 🌟", clave: "jugadorMes" }
+    ];
+
+    function renderTablas() {
+        const contenedor = document.getElementById('main-grid');
+        let htmlFinal = "";
+
+        configTablas.forEach(tabla => {
+            const ranking = [...jugadores]
+                .sort((a, b) => b[tabla.clave] - a[tabla.clave])
+                .slice(0, 5);
+
+            htmlFinal += `
+                <div class="table-container">
+                    <h3>${tabla.etiqueta}</h3>
+                    <table>
+                        <thead><tr><th class="rank">#</th><th>Jugador</th><th class="val">Total</th></tr></thead>
+                        <tbody>
+                            ${ranking.map((p, i) => `
+                                <tr>
+                                    <td class="rank">${i+1}</td>
+                                    <td>${p.nombre}<br><small style="color:#999">${p.equipo}</small></td>
+                                    <td class="val">${p[tabla.clave]}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        });
+        contenedor.innerHTML = htmlFinal;
+    }
+
+    function searchPlayer() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const card = document.getElementById('player-card');
+        if (input.length < 2) { card.style.display = 'none'; return; }
+
+        const p = jugadores.find(j => j.nombre.toLowerCase().includes(input));
+
+        if (p) {
+            card.style.display = 'block';
+            document.getElementById('p-nombre').innerText = p.nombre;
+            document.getElementById('p-equipo').innerText = p.equipo;
+            document.getElementById('cardStats').innerHTML = configTablas.map(t => `
+                <div class="stat-box">
+                    <small>${t.etiqueta}</small>
+                    <b>${p[t.clave]}</b>
+                </div>
+            `).join('');
+        } else {
+            card.style.display = 'none';
+        }
+    }
+
+    renderTablas();
+</script>
+
+</body>
+</html>
