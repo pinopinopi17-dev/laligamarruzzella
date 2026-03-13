@@ -84,6 +84,27 @@
         .squad-table td { padding: 8px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
         .pos { color: #888; font-style: italic; text-align: right; }
 
+
+                .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .squad-table { width: 100%; border-collapse: collapse; }
+        .squad-table td { padding: 8px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        .pos { color: #888; font-style: italic; text-align: right; }
+
+        /* Scrollbar moderno */
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
+
         @media (max-width: 900px) {
             .main-grid { grid-template-columns: 1fr; }
         }
@@ -113,28 +134,28 @@
             <h3>Actualidad del Club</h3>
             <div class="news-grid">
                 <div class="news-item">
-                    <img src="https://placehold.co/400x250/005500/grey?text=Entrenamiento" alt="Noticia 1">
-                    <p><b>Sesión de mañana:</b> Máxima intensidad bajo el sol.</p>
+                    <img src="cesped/eriksenj0.jpg" alt="Noticia 1">
+                    <p><b>Buena pretemporada:</b> Los césped cierran una buena pretemporada en semifinales de la copa Vallesequillo y auguran un buen comienzo de liga.</p>
                 </div>
                 <div class="news-item">
-                    <img src="https://placehold.co/400x250/005500/grey?text=Fichaje" alt="Noticia 2">
-                    <p><b>Nuevo refuerzo:</b> Presentación oficial este viernes.</p>
+                    <img src="cesped/nagelsmannj0.jpg" alt="Noticia 2">
+                    <p><b>El míster lo tiene claro:</b> "que no nos subestimen por ser nuestra primera participación, tenemos mucho que aportar a esta liga."</p>
                 </div>
             </div>
 
             <h3>Nuestros Capitanes</h3>
             <div class="captains-grid">
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 1">
-                    <p>.</p>
+                    <img src="cesped/eriksen.png" alt="Capitán 1">
+                    <p>Eriksen</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 2">
-                    <p>.</p>
+                    <img src="cesped/diegoc.png" alt="Capitán 2">
+                    <p>Diego Carlos</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 3">
-                    <p>.</p>
+                    <img src="cesped/doherty.png" alt="Capitán 3">
+                    <p>Doherty</p>
                 </div>
             </div>
 
@@ -155,11 +176,24 @@
             </div>
 
             <h3>Plantilla 2026</h3>
-            <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
-                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
-                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
-                <tr><td>Delantero 1</td><td class="pos">Delantero</td></tr>
+            <div class="squad-container">
+                <table class="squad-table">
+                    <tr><td>Chidera Ejuke</td><td class="pos">Delantero</td></tr>
+                    <tr><td>Christian Eriksen</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Daniel James</td><td class="pos">Delantero</td></tr>
+                    <tr><td>Mohammed Amoura</td><td class="pos">Delantero</td></tr>
+                    <tr><td>Diego Carlos</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Fred</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Luis Milla</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Isak Hien</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Matt Doherty</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Matías Mansilla</td><td class="pos">Portero</td></tr>
+                    <tr><td>Ahien Muñoz</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Ché Adams</td><td class="pos">Delantero</td></tr>
+                    <tr><td>Allan</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Issa Kaboré</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Ghislain Konan</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Renato Veiga</td><td class="pos">Defensa</td></tr>
             </table>
         </div>
     </aside>

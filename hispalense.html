@@ -80,10 +80,28 @@
         .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .staff-img { width: 60px; height: 60px; border-radius: 50%; background: #ddd; }
 
-        .squad-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        /* --- ESTILOS DE LA TABLA Y SCROLL --- */
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .squad-table { width: 100%; border-collapse: collapse; }
         .squad-table td { padding: 8px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
         .pos { color: #888; font-style: italic; text-align: right; }
 
+        /* Scrollbar moderno */
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
+
+        /* Responsivo */
         @media (max-width: 900px) {
             .main-grid { grid-template-columns: 1fr; }
         }
@@ -118,8 +136,8 @@
                     <p><b>Debut Complicado:</b> Almeyda analiza el clásico en el debut liguero.</p>
                 </div>
                 <div class="news-item">
-                    <img src="hispalis/marcaotraining.jpeg" alt="Noticia 2">
-                    <p><b>Marcão se ejercita:</b> El defensa brasileño prepara su físico para competir la titularidad.</p>
+                    <img src="hispalis/pogbacopa.webp" alt="Noticia 2">
+                    <p><b>¡Campeones! :</b> Los hispalenses comienzan la pretemporada con buen pies tras levantar la copa sayoma</p>
                 </div>
             </div>
 
@@ -130,12 +148,12 @@
                     <p>Altay</p>
                 </div>
                 <div class="captain">
-                    <img src="hispalis/marcao.png" alt="Capitán 2">
-                    <p>Marcão</p>
+                    <img src="hispalis/suso.png" alt="Capitán 2">
+                    <p>Suso</p>
                 </div>
                 <div class="captain">
-                    <img src="hispalis/zakaria.png" alt="Capitán 3">
-                    <p>Zakaria</p>
+                    <img src="hispalis/auba.png" alt="Capitán 3">
+                    <p>Aubameyang</p>
                 </div>
             </div>
 
@@ -164,12 +182,28 @@
             </div>
 
             <h3>Plantilla 2026</h3>
-            <table class="squad-table">
-                <tr><td>Altay Bayindir</td><td class="pos">Portero</td></tr>
-                <tr><td>Marcão Teixeira</td><td class="pos">Defensa</td></tr>
-                <tr><td>Denis Zakaria</td><td class="pos">Mediocentro</td></tr>
-                <tr><td>Vedat Muriqi</td><td class="pos">Delantero</td></tr>
-            </table>
+            <div class="squad-container">
+                <table class="squad-table">
+                    <tr><td>Pierre Emerick Aubameyang</td><td class="pos">Delantero</td></tr>
+                    <tr><td>Douglas Luiz</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Mykhailo Mudryk</td><td class="pos">Delantero</td></tr>
+                    <tr><td>Theo Bongonda</td><td class="pos">Delantero</td></tr>
+                    <tr><td>Kieran Trippier</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Paul Pogba</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Suso Fernández</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Alidu Seidu</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Romain Saïss</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Altay Bayindir</td><td class="pos">Portero</td></tr>
+                    <tr><td>Tyrell Malacia</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Jose Luis Morales</td><td class="pos">Delantero</td></tr>
+                    <tr><td>Darwin Quintero</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Valentín Barco</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Tanguy Nianzou</td><td class="pos">Defensa</td></tr>
+                    <tr><td>Fernando Reges</td><td class="pos">Centrocampista</td></tr>
+                    <tr><td>Mamadou Samassa</td><td class="pos">Portero</td></tr>
+                    <tr><td>Pape Fall</td><td class="pos">Delantero</td></tr>
+                </table>
+            </div>
         </div>
     </aside>
 
