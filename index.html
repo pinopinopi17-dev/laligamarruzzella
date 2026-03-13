@@ -72,9 +72,59 @@
         section h2 { text-align: center; color: #1a2a6c; margin-bottom: 20px; }
 
         /* SECCIONES SUPERIORES */
-        .news-section { flex: 1; min-width: 300px; }
+        /* 1. El contenedor principal de la sección de noticias */
+        .news-section { 
+            flex: 1; 
+            min-width: 300px; 
+            position: relative; 
+            overflow: hidden; /* Esto es vital: es la 'ventana' que oculta las otras noticias */
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        /* 2. El 'tren' que lleva las noticias */
+        .slider-wrapper {
+            display: flex; /* Obliga a las noticias a ponerse en fila */
+            flex-direction: row; /* Refuerza la dirección horizontal */
+            width: 100%; 
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+
+        /* 3. Cada noticia individual */
+        .news-item {
+            min-width: 100%; /* Cada noticia ocupa el 100% del ancho del contenedor */
+            width: 100%;
+            flex-shrink: 0; /* Evita que las noticias se 'aplasten' para caber */
+            box-sizing: border-box;
+            padding: 10px;
+        }
         .news-image { width: 100%; border-radius: 5px; margin-bottom: 10px; }
         .standings-section { flex: 1.5; min-width: 450px; }
+        .news-section:hover .slider-arrow { opacity: 1; }
+        .slider-dots {
+            text-align: center;
+            margin-top: 0.1px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active { background-color: #1a2a6c; }
 
         /* TABLA CLASIFICACIÓN */
         table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
@@ -146,15 +196,48 @@
 
 <div class="container">
     
-    <section class="news-section">
-        <h2>Últimas Noticias</h2>
-        <img src="noticias/antonioj1.jpg" alt="Noticia" class="news-image">
-        <h3>Humildes F.C. tendrá su revancha en el debut</h3>
-        <p>El vigente campeón de la liga marruzzella podrá redimirse de su estrepitosa derrota en el PlayIn tras cruzarse con C.A. Maguila en el debut liguero.</p>
-        <img src="noticias/almeydaj1.jpg" alt="Noticia" class="news-image">
-        <h3>Almeyda, "sin presión"</h3>
-        <p>Matías Almeyda, tranquilo en el debut liguero, pese al terrible final de liga de su equipo la temporada pasada:<br>"El equipo está completamente renovado y está preparado para mostrar su mejor nivel"</p>
-    </section>
+<section class="news-section">
+    <h2 style="text-align: center; color: #1a2a6c;">Últimas Noticias</h2>
+    
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="news-item">
+                <img src="noticias/antonioj1.jpg" alt="Noticia 1" class="news-image">
+                <h3>Humildes F.C. tendrá su revancha</h3>
+                <p>El vigente campeón podrá redimirse de su derrota en el PlayIn tras cruzarse con C.A. Maguila.</p>    
+            </div>
+            <div class="news-item">
+                <img src="noticias/almeydaj1.jpg" alt="Noticia 2" class="news-image">
+                <h3>Almeyda, "sin presión"</h3>
+                <p>Matías Almeyda: "El equipo está completamente renovado y preparado para su mejor nivel"</p>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0, 0)"></span>
+            <span class="dot" onclick="currentSlide(1, 0)"></span>
+        </div>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="news-item">
+                <img src="noticias/vallesequillo.avif" alt="Noticia 3" class="news-image">
+                <h3>C.A. Hispalis levanta la Copa Vallesequillo</h3>
+                <p>Tras muchas dudas en la pretemporada hispalense, Almeyda se reafirma tras encadenar tres victorias en el último trofeo de pretemporada</p>    
+            </div>
+            <div class="news-item">
+                <img src="noticias/mertensj0.webp" alt="Noticia 4" class="news-image">
+                <h3>"Contra todo y contra todos"</h3>
+                <p>Dries Mertens denuncia un trato desfavorable a los pelusas: "no hay motivo que justifique esta discriminación"</p>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0, 1)"></span>
+            <span class="dot" onclick="currentSlide(1, 1)"></span>
+        </div>
+        
+    </div>
+</section>
 
     <section class="standings-section">
         <h2>Clasificación</h2>
@@ -395,7 +478,7 @@
                     <td>0</td>
                     <td>0</td>
                 </tr>  
-                <tr>
+                <tr>    
                     <td>1</td>
                     <td class="col-team">
                         <div class="team-info">
@@ -447,12 +530,48 @@
                 <textarea name="Sustitutos" rows="2" placeholder="Sustitutos en caso de que falle un pick"></textarea>
             </div>
             <div class="fila-botones">
-                <button type="reset" class="btn-form borrar" >Eliminar</button>
-                <button type="submit" class="btn-form enviar" id="btn-form enviar">Enviar</button>
+                <p><b>Periodo de Inscripción Agotado.</b></p>
             </div>
         </form>
         <div id="mensajeExito" style="display:none; text-align: center; color: #1a2a6c; font-weight: bold; padding: 20px; background: #e8f0fe; border-radius: 8px; margin-top: 10px;">¡Gracias! Tus datos se guardaron.</div>
 <script>
+    // Array para guardar la posición de cada slider [PosiciónSlider1, PosiciónSlider2]
+        let slideIndices = [0, 0]; 
+
+        function showSlides(n, no) {
+            let wrappers = document.getElementsByClassName("slider-wrapper");
+            let dotsContainers = document.getElementsByClassName("slider-dots");
+            let totalSlides = wrappers[no].getElementsByClassName("news-item").length;
+
+            // Ajustar el índice
+            if (n >= totalSlides) { slideIndices[no] = 0; }
+            else if (n < 0) { slideIndices[no] = totalSlides - 1; }
+            else { slideIndices[no] = n; }
+
+            // Mover el slider correspondiente
+            wrappers[no].style.transform = `translateX(-${slideIndices[no] * 100}%)`;
+
+            // Actualizar puntos del slider correspondiente
+            let dots = dotsContainers[no].getElementsByClassName("dot");
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            dots[slideIndices[no]].classList.add("active");
+        }
+
+        function plusSlides(n, no) {
+            showSlides(slideIndices[no] + n, no);
+        }
+
+        function currentSlide(n, no) {
+            showSlides(n, no);
+        }
+
+        // Movimiento automático para ambos
+        setInterval(() => {
+            plusSlides(1, 0); // Mueve el primero
+            plusSlides(1, 1); // Mueve el segundo
+        }, 5000);
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwSXYzuRcOr2Gu1NoFuj4WdP6sTk369zzOP5uuejqUTgNB4QOkoDX9IbKKRR5cq7mw3GA/exec'
     const form = document.getElementById('registroEquipoForm')
     const btn = document.getElementById('btn-form enviar')
@@ -559,5 +678,4 @@ const data = ligaData[currentJornadaIdx];
 </script>
 
 </body>
-
 </html> 
