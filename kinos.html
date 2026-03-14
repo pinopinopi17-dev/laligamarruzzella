@@ -64,7 +64,20 @@
         .captains-grid { display: flex; justify-content: space-around; text-align: center; }
         .captain { flex: 1; }
         .captain img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #002daa; }
+        
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
 
+        .squad-table { width: 100%; border-collapse: collapse; }
+        .squad-table td { padding: 8px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
         .insta-link {
             display: block;
             text-align: center;
@@ -126,16 +139,16 @@
             <h3>Nuestros Capitanes</h3>
             <div class="captains-grid">
                 <div class="captain">
-                    <img src="desc.png"Capitán 1">
-                    <p>.</p>
+                    <img src="kinos/bombito.png" alt="Capitán 1">
+                    <p>Bombito</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 2">
-                    <p>.</p>
+                    <img src="kinos/iñaki.png" alt="Capitán 2">
+                    <p>Iñaki</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 3">
-                    <p>.</p>
+                    <img src="kinos/paulinho.png" alt="Capitán 3">
+                    <p>Paulinho</p>
                 </div>
             </div>
 
@@ -156,12 +169,25 @@
             </div>
 
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
-                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
-                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
-                <tr><td>Delantero 1</td><td class="pos">Delantero</td></tr>
-            </table>
+                <tr><td>Mamadou Samassa</td><td class="pos">Portero</td></tr>
+                <tr><td>Tariq Lamptey</td><td class="pos">Defensa</td></tr>
+                <tr><td>Luis Advíncula</td><td class="pos">Defensa</td></tr>
+                <tr><td>Moise Bombito</td><td class="pos">Defensa</td></tr>
+                <tr><td>Jawad El Yamiq</td><td class="pos">Defensa</td></tr>
+                <tr><td>Johan Mojica</td><td class="pos">Defensa</td></tr>
+                <tr><td>Milton Delgado</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Lucas Robertone</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Marvelous Nakamba</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Tajon Buchanan</td><td class="pos">Delantero</td></tr>
+                <tr><td>Iñaki Williams</td><td class="pos">Delantero</td></tr>
+                <tr><td>Paulinho</td><td class="pos">Delantero</td></tr>
+                <tr><td>Yussuf Poulsen</td><td class="pos">Delantero</td></tr>
+                <tr><td>Aldemir Ferreira</td><td class="pos">Delantero</td></tr>
+                <tr><td>John Murillo</td><td class="pos">Delantero</td></tr>
+                <tr><td>Rafa Silva</td><td class="pos">Delantero</td></tr>
+            </table></div>
         </div>
     </aside>
 

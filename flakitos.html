@@ -64,7 +64,19 @@
         .captains-grid { display: flex; justify-content: space-around; text-align: center; }
         .captain { flex: 1; }
         .captain img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #0044ff; }
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
 
+        .squad-table { width: 100%; border-collapse: collapse; }
+        .squad-table td { padding: 8px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
         .insta-link {
             display: block;
             text-align: center;
@@ -113,28 +125,28 @@
             <h3>Actualidad del Club</h3>
             <div class="news-grid">
                 <div class="news-item">
-                    <img src="https://placehold.co/400x250/gold/0044ff?text=Entrenamiento" alt="Noticia 1">
-                    <p><b>Sesión de mañana:</b> Máxima intensidad bajo el sol.</p>
+                    <img src="flakitos/cobrixj0.webp" alt="Noticia 1">
+                    <p><b>El míster en "Twitch":<br></b> "Flakitos F.C., quiero quequé ¿¿¿Qué Mandan???"</p>
                 </div>
                 <div class="news-item">
-                    <img src="https://placehold.co/400x250/gold/0044ff?text=Fichaje" alt="Noticia 2">
-                    <p><b>Nuevo refuerzo:</b> Presentación oficial este viernes.</p>
+                    <img src="flakitos/masuakuj0.webp" alt="Noticia 2">
+                    <p><b>Masuaku asume galones:</b> El congoleño será capitán del conjunto flakito tras cuajar una gran pretemporada.</p>
                 </div>
             </div>
 
             <h3>Nuestros Capitanes</h3>
             <div class="captains-grid">
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 1">
-                    <p>.</p>
+                    <img src="flakitos/torreira.png" alt="Capitán 1">
+                    <p>Torreira</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 2">
-                    <p>.</p>
+                    <img src="flakitos/ehizibue.png" alt="Capitán 2">
+                    <p>Ehizibue</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 3">
-                    <p>.</p>
+                    <img src="flakitos/masuaku.png" alt="Capitán 3">
+                    <p>Masuaku</p>
                 </div>
             </div>
 
@@ -155,12 +167,24 @@
             </div>
 
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
-                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
-                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
-                <tr><td>Delantero 1</td><td class="pos">Delantero</td></tr>
-            </table>
+                <tr><td>Matías Dituro</td><td class="pos">Portero</td></tr>
+                <tr><td>Moussa Niakhaté</td><td class="pos">Defensa</td></tr>
+                <tr><td>Kingsley Ehizibue</td><td class="pos">Defensa</td></tr>
+                <tr><td>Gerard Martín</td><td class="pos">Defensa</td></tr>
+                <tr><td>Arthur Masuaku</td><td class="pos">Defensa</td></tr>
+                <tr><td>Williams Alarcón</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Oleksandr Zubkov</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Matt O'Riley</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Lucas Torreira</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Álvaro Djaló</td><td class="pos">Delantero</td></tr>
+                <tr><td>Kerem Aktürkoğlu</td><td class="pos">Delantero</td></tr>
+                <tr><td>Boulaye Dia</td><td class="pos">Delantero</td></tr>
+                <tr><td>Nene Dorgeles</td><td class="pos">Delantero</td></tr>
+                <tr><td>Assane Diao</td><td class="pos">Delantero</td></tr>
+                <tr><td>Mikael Uhre</td><td class="pos">Delantero</td></tr>
+            </table></div>
         </div>
     </aside>
 
