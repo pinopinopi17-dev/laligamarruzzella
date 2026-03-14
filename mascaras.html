@@ -74,7 +74,19 @@
             text-decoration: none;
             font-size: 1.2rem;
         }
-
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
         /* Columna Derecha */
         .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
         .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
@@ -126,16 +138,16 @@
             <h3>Nuestros Capitanes</h3>
             <div class="captains-grid">
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 1">
-                    <p>.</p>
+                    <img src="mascaras/dybala.png" alt="Capitán 1">
+                    <p>Dybala</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 2">
-                    <p>.</p>
+                    <img src="mascaras/neymar.png" alt="Capitán 2">
+                    <p>Neymar</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 3">
-                    <p>.</p>
+                    <img src="mascaras/yildiz.png" alt="Capitán 3">
+                    <p>Yildiz</p>
                 </div>
             </div>
 
@@ -156,12 +168,26 @@
             </div>
 
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
-                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
-                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
-                <tr><td>Delantero 1</td><td class="pos">Delantero</td></tr>
+                <tr><td>Jack Butland</td><td class="pos">Portero</td></tr>
+                <tr><td>Tristan Blackmon</td><td class="pos">Defensa</td></tr>
+                <tr><td>Amari'i Bell</td><td class="pos">Defensa</td></tr>
+                <tr><td>Dejuan Jones</td><td class="pos">Defensa</td></tr>
+                <tr><td>Marvin Park</td><td class="pos">Defensa</td></tr>
+                <tr><td>Mamadou Sangaré</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Benjamin Rollheiser</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Paulo Dybala</td><td class="pos">Delantero</td></tr>
+                <tr><td>Neymar Jr.</td><td class="pos">Delantero</td></tr>
+                <tr><td>Kenan Yildiz</td><td class="pos">Delantero</td></tr>
+                <tr><td>Kamaldeen Sulemana</td><td class="pos">Delantero</td></tr>
+                <tr><td>Christian Bassogog</td><td class="pos">Delantero</td></tr>
+                <tr><td>Yira Sor</td><td class="pos">Delantero</td></tr>
+                <tr><td>Adama Traoré</td><td class="pos">Delantero</td></tr>
+                <tr><td>Gerson Rodrigues</td><td class="pos">Delantero</td></tr>
+                <tr><td>Noah Sadiki</td><td class="pos">Delantero</td></tr>
             </table>
+            </div>
         </div>
     </aside>
 

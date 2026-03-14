@@ -73,7 +73,19 @@
             text-decoration: none;
             font-size: 1.2rem;
         }
-
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
         /* Columna Derecha */
         .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
         .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
@@ -124,16 +136,16 @@
             <h3>Nuestros Capitanes</h3>
             <div class="captains-grid">
                 <div class="captain">
-                    <img src="desc.png"Capitán 1">
-                    <p>.</p>
+                    <img src="sportium/david.png" alt="Capitán 1">
+                    <p>David</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 2">
-                    <p>.</p>
+                    <img src="sportium/ciss.png" alt="Capitán 2">
+                    <p>Pathé Ciss</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 3">
-                    <p>.</p>
+                    <img src="sportium/greif.png" alt="Capitán 3">
+                    <p>Greif</p>
                 </div>
             </div>
 
@@ -154,12 +166,24 @@
             </div>
 
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
-                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
-                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
-                <tr><td>Delantero 1</td><td class="pos">Delantero</td></tr>
-            </table>
+                <tr><td>Dominik Greif</td><td class="pos">Portero</td></tr>
+                <tr><td>Tosin Adarabioyo</td><td class="pos">Defensa</td></tr>
+                <tr><td>Lilian Brasier</td><td class="pos">Defensa</td></tr>
+                <tr><td>Antoine Mendy</td><td class="pos">Defensa</td></tr>
+                <tr><td>Mario Mitaj</td><td class="pos">Defensa</td></tr>
+                <tr><td>Diego León</td><td class="pos">Defensa</td></tr>
+                <tr><td>Federico Gattoni</td><td class="pos">Defensa</td></tr>
+                <tr><td>Azzedine Ounahi</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Pathé Ciss</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Amine Adli</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Jonathan David</td><td class="pos">Delantero</td></tr>
+                <tr><td>Noah Okafor</td><td class="pos">Delantero</td></tr>
+                <tr><td>Nicolás Pepe</td><td class="pos">Delantero</td></tr>
+                <tr><td>Jeremy Boga</td><td class="pos">Delantero</td></tr>
+                <tr><td>Takuma Asano</td><td class="pos">Delantero</td></tr>
+            </table></div>
         </div>
     </aside>
 

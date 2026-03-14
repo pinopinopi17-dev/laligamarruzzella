@@ -74,6 +74,19 @@
             text-decoration: none;
             font-size: 1.2rem;
         }
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
 
         /* Columna Derecha */
         .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
@@ -127,16 +140,16 @@
             <h3>Nuestros Capitanes</h3>
             <div class="captains-grid">
                 <div class="captain">
-                    <img src="humildes/antonio.png"Capitán 1">
+                    <img src="humildes/antonio.png" alt="Capitán 1">
                     <p>Antonio</p>
                 </div>
                 <div class="captain">
-                    <img src="humildes/mbemba.png" alt="Capitán 2">
-                    <p>Mbemba</p>
+                    <img src="humildes/neto.png" alt="Capitán 2">
+                    <p>Neto</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 3">
-                    <p>.</p>
+                    <img src="humildes/simon.png" alt="Capitán 3">
+                    <p>Moses Simón</p>
                 </div>
             </div>
 
@@ -167,14 +180,27 @@
                 <img src="humildes/cacho.png" class="staff-img">
                 <div><b>Cacho</b> (Entrenador de Porteros)</div>
             </div>
-
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
-                <tr><td>Chancel Mbemba</td><td class="pos">Defensa</td></tr>
-                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
+                <tr><td>Neto</td><td class="pos">Portero</td></tr>
+                <tr><td>Wesley Fofana</td><td class="pos">Defensa</td></tr>
+                <tr><td>Lisandro Rivero</td><td class="pos">Defensa</td></tr>
+                <tr><td>Nathaniel Brown</td><td class="pos">Defensa</td></tr>
+                <tr><td>Trai Hume</td><td class="pos">Defensa</td></tr>
+                <tr><td>Aissa Mandi</td><td class="pos">Defensa</td></tr>
+                <tr><td>Jobe Bellingham</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Khéphren Thuram</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Ebou Adams</td><td class="pos">Centrocampista</td></tr>
                 <tr><td>Michail Antonio</td><td class="pos">Delantero</td></tr>
+                <tr><td>Moses Simon</td><td class="pos">Delantero</td></tr>
+                <tr><td>Youssoufa Moukoko</td><td class="pos">Delantero</td></tr>
+                <tr><td>Geny Catamo</td><td class="pos">Delantero</td></tr>
+                <tr><td>Samuel Chukwueze</td><td class="pos">Delantero</td></tr>
+                <tr><td>Julio Enciso</td><td class="pos">Delantero</td></tr>
+                <tr><td>Karamoko Dembélé</td><td class="pos">Delantero</td></tr>
             </table>
+            </div>
         </div>
     </aside>
 

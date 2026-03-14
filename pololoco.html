@@ -47,7 +47,19 @@
             margin-bottom: 20px;
             border: solid 2.5px #2d00aa;
         }
-
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
         h3 { color: #2d00aa; border-bottom: 2px solid #eee; padding-bottom: 10px; }
 
         /* Columna Izquierda */
@@ -127,16 +139,16 @@
             <h3>Nuestros Capitanes</h3>
             <div class="captains-grid">
                 <div class="captain">
-                    <img src="desc.png"Capitán 1">
-                    <p>.</p>
+                    <img src="pololoco/kamara.png" alt="Capitán 1">
+                    <p>Kamara</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 2">
-                    <p>.</p>
+                    <img src="pololoco/bailey.png" alt="Capitán 2">
+                    <p>Bailey</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 3">
-                    <p>.</p>
+                    <img src="pololoco/endrick.png" alt="Capitán 3">
+                    <p>Endrick</p>
                 </div>
             </div>
 
@@ -157,12 +169,25 @@
             </div>
 
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
-                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
-                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
-                <tr><td>Delantero 1</td><td class="pos">Delantero</td></tr>
-            </table>
+                <tr><td>Bingourou Kamara</td><td class="pos">Portero</td></tr>
+                <tr><td>Joe Gómez</td><td class="pos">Defensa</td></tr>
+                <tr><td>Nouhou Tolo</td><td class="pos">Defensa</td></tr>
+                <tr><td>Kevin Mbabu</td><td class="pos">Defensa</td></tr>
+                <tr><td>Jerry St. Juste</td><td class="pos">Defensa</td></tr>
+                <tr><td>Ismael Bennacer</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Emre Can</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Richard Ríos</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Suat Serdar</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Daizen Maeda</td><td class="pos">Delantero</td></tr>
+                <tr><td>Henry Onyekuru</td><td class="pos">Delantero</td></tr>
+                <tr><td>Endrick</td><td class="pos">Delantero</td></tr>
+                <tr><td>Leon Bailey</td><td class="pos">Delantero</td></tr>
+                <tr><td>Wehi</td><td class="pos">Delantero</td></tr>
+                <tr><td>Chris Ramos</td><td class="pos">Delantero</td></tr>
+                <tr><td>Joelson Fernández</td><td class="pos">Delantero</td></tr>
+            </table></div>
         </div>
     </aside>
 

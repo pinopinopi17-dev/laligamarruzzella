@@ -74,7 +74,20 @@
             text-decoration: none;
             font-size: 1.2rem;
         }
-
+        
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
         /* Columna Derecha */
         .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
         .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
@@ -160,12 +173,25 @@
             </div>
 
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
+                <tr><td>Fraser Forster</td><td class="pos">Portero</td></tr>
+                <tr><td>Ferland Mendy</td><td class="pos">Defensa</td></tr>
+                <tr><td>Maxence Lacroix</td><td class="pos">Defensa</td></tr>
+                <tr><td>Chris Richards</td><td class="pos">Defensa</td></tr>
+                <tr><td>Ignacio Peruzzi</td><td class="pos">Defensa</td></tr>
+                <tr><td>Axel Tuanzebe</td><td class="pos">Defensa</td></tr>
                 <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
-                <tr><td>Claudio Echeverri</td><td class="pos">Mediocentro</td></tr>
+                <tr><td>Sofyan Amrabat</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Matheus Pereira</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Ruslan Malinovsky</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Claudio Echeverri</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Isaac Romero</td><td class="pos">Delantero</td></tr>
+                <tr><td>Alexis Sánchez</td><td class="pos">Delantero</td></tr>
+                <tr><td>Yeferson Soteldo</td><td class="pos">Delantero</td></tr>
+                <tr><td>Gonzalo García</td><td class="pos">Delantero</td></tr>
                 <tr><td>Rony</td><td class="pos">Delantero</td></tr>
-            </table>
+            </table></div>
         </div>
     </aside>
 

@@ -74,7 +74,19 @@
             text-decoration: none;
             font-size: 1.2rem;
         }
-
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
         /* Columna Derecha */
         .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
         .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
@@ -126,16 +138,16 @@
             <h3>Nuestros Capitanes</h3>
             <div class="captains-grid">
                 <div class="captain">
-                    <img src="desc.png"Capitán 1">
-                    <p>.</p>
+                    <img src="violeteros/furuhashi.png" alt="Capitán 1">
+                    <p>Furuhashi</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 2">
-                    <p>.</p>
+                    <img src="violeteros/yves.png" alt="Capitán 2">
+                    <p>Bissouma</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 3">
-                    <p>.</p>
+                    <img src="violeteros/caceres.png" alt="Capitán 3">
+                    <p>Cáceres</p>
                 </div>
             </div>
 
@@ -156,12 +168,27 @@
             </div>
 
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
-                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
-                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
-                <tr><td>Delantero 1</td><td class="pos">Delantero</td></tr>
+                <tr><td>Diego Conde</td><td class="pos">Portero</td></tr>
+                <tr><td>Jo Hyeon-Woo</td><td class="pos">Portero</td></tr>
+                <tr><td>Thierry Correia</td><td class="pos">Defensa</td></tr>
+                <tr><td>Ayrton Lucas</td><td class="pos">Defensa</td></tr>
+                <tr><td>Van Den Berg</td><td class="pos">Defensa</td></tr>
+                <tr><td>Sebastián Cáceres</td><td class="pos">Defensa</td></tr>
+                <tr><td>Adrià Pedrosa</td><td class="pos">Defensa</td></tr>
+                <tr><td>Tuta Silva</td><td class="pos">Defensa</td></tr>
+                <tr><td>Takumi Minamino</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Lamine Cámara</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Yves Bissouma</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Junya Ito</td><td class="pos">Delantero</td></tr>
+                <tr><td>Krzysztof Piatek</td><td class="pos">Delantero</td></tr>
+                <tr><td>Kyogo Furuhashi</td><td class="pos">Delantero</td></tr>
+                <tr><td>Joris Chotard</td><td class="pos">Delantero</td></tr>
+                <tr><td>Jota Silva</td><td class="pos">Delantero</td></tr>
+                <tr><td>Lameck Banda</td><td class="pos">Delantero</td></tr>
             </table>
+            </div>
         </div>
     </aside>
 

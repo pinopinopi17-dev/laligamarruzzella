@@ -73,7 +73,19 @@
             text-decoration: none;
             font-size: 1.2rem;
         }
-
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
         /* Columna Derecha */
         .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
         .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
@@ -167,12 +179,28 @@
             </div>
 
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
+                <tr><td>Ivan Susak</td><td class="pos">Portero</td></tr>
                 <tr><td>Pape Sy</td><td class="pos">Portero</td></tr>
-                <tr><td>Natan</td><td class="pos">Defensa</td></tr>
-                <tr><td>Isi Palazón</td><td class="pos">Mediocentro</td></tr>
+                <tr><td>Carter-Vickers</td><td class="pos">Defensa</td></tr>
+                <tr><td>Natan Da Souza</td><td class="pos">Defensa</td></tr>
+                <tr><td>Tyronne Ebuehi</td><td class="pos">Defensa</td></tr>
+                <tr><td>Iván Balliu</td><td class="pos">Defensa</td></tr>
+                <tr><td>Luis Martins</td><td class="pos">Defensa</td></tr>
+                <tr><td>Anthony Oyono</td><td class="pos">Defensa</td></tr>
+                <tr><td>Ndashimiye</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Romano Schmid</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Portu</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Frank Onyeka</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Isi Palazón</td><td class="pos">Delantero</td></tr>
+                <tr><td>Ez Abde</td><td class="pos">Delantero</td></tr>
+                <tr><td>David Datro Fofana</td><td class="pos">Delantero</td></tr>
+                <tr><td>Antony</td><td class="pos">Delantero</td></tr>
                 <tr><td>Michael Olunga</td><td class="pos">Delantero</td></tr>
-            </table>
+                <tr><td>Joel Mvuka</td><td class="pos">Delantero</td></tr>
+                <tr><td>Pablo García</td><td class="pos">Delantero</td></tr>
+            </table></div>
         </div>
     </aside>
 
