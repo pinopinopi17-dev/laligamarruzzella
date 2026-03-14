@@ -69,12 +69,24 @@
             display: block;
             text-align: center;
             margin-top: 30px;
-            color: #e1306c;
+            color: #106300;
             font-weight: bold;
             text-decoration: none;
             font-size: 1.2rem;
         }
-
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
         /* Columna Derecha */
         .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
         .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
@@ -113,28 +125,28 @@
             <h3>Actualidad del Club</h3>
             <div class="news-grid">
                 <div class="news-item">
-                    <img src="https://placehold.co/400x250/gold/106300?text=Entrenamiento" alt="Noticia 1">
-                    <p><b>Sesión de mañana:</b> Máxima intensidad bajo el sol.</p>
+                    <img src="perrof/henryj0.jpg" alt="Noticia 1">
+                    <p><b>El jugador mas codiciado:</b> Rico Henry se presenta en Vallesequillo tras ser codiciado por 5 equipos durante el draft.</p>
                 </div>
                 <div class="news-item">
-                    <img src="https://placehold.co/400x250/gold/106300?text=Fichaje" alt="Noticia 2">
-                    <p><b>Nuevo refuerzo:</b> Presentación oficial este viernes.</p>
+                    <img src="perrof/beltranj0.jpg" alt="Noticia 2">
+                    <p><b>Empezar con buen pie:</b> El capitán perrofla aspira a empezar con buenos resultados en el inminente debut liguero frente a Flakitos F.C.</p>
                 </div>
             </div>
 
             <h3>Nuestros Capitanes</h3>
             <div class="captains-grid">
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 1">
-                    <p>.</p>
+                    <img src="perrof/beltran.png" alt="Capitán 1">
+                    <p>Beltrán</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 2">
-                    <p>.</p>
+                    <img src="perrof/adingra.png" alt="Capitán 2">
+                    <p>Adingra</p>
                 </div>
                 <div class="captain">
-                    <img src="desc.png" alt="Capitán 3">
-                    <p>.</p>
+                    <img src="perrof/henry.png" alt="Capitán 3">
+                    <p>Henry</p>
                 </div>
             </div>
 
@@ -155,12 +167,25 @@
             </div>
 
             <h3>Plantilla 2026</h3>
+            <div class="squad-container">
             <table class="squad-table">
-                <tr><td>Portero 1</td><td class="pos">Portero</td></tr>
-                <tr><td>Defensa 1</td><td class="pos">Defensa</td></tr>
-                <tr><td>Centrocampista 1</td><td class="pos">Mediocentro</td></tr>
-                <tr><td>Delantero 1</td><td class="pos">Delantero</td></tr>
-            </table>
+                <tr><td>Aarón Escandell</td><td class="pos">Portero</td></tr>
+                <tr><td>Nnamdi Collins</td><td class="pos">Defensa</td></tr>
+                <tr><td>Clinton Mata</td><td class="pos">Defensa</td></tr>
+                <tr><td>Aaron Wan-Bissaka</td><td class="pos">Defensa</td></tr>
+                <tr><td>Rico Henry</td><td class="pos">Defensa</td></tr>
+                <tr><td>Fran Beltrán</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Gastón Lodico</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Daniel Bragança</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Christian Ordóñez</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Salih Uçan</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Simon Adingra</td><td class="pos">Delantero</td></tr>
+                <tr><td>Moumi Ngamaleu</td><td class="pos">Delantero</td></tr>
+                <tr><td>Hwang Hee-chan</td><td class="pos">Delantero</td></tr>
+                <tr><td>Josef Martínez</td><td class="pos">Delantero</td></tr>
+                <tr><td>Wes Burns</td><td class="pos">Delantero</td></tr>
+                <tr><td>Rubén Vargas</td><td class="pos">Delantero</td></tr>
+            </table></div>
         </div>
     </aside>
 
