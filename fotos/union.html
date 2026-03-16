@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unión Española - Perfil Oficial</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #fff9c1;
+        }
+
+        /* Cabecera Azul y Blanco */
+        header {
+            background: linear-gradient(135deg, #ff0000 50%, #ffe600 50%);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 5px solid #ff0000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            color: #ff0000;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff;
+            background: rgba(255,255,255,0.8);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 25% 50% 25%;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border: solid 2.5px #ff0000;
+        }
+
+        h3 { color: #ff0000; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+
+        /* Columna Izquierda */
+        .shield-img { width: 100%; border-radius: 50%; border: 4px solid #ff0000; }
+        .data-list { list-style: none; padding: 0; }
+        .data-list li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+        .data-list b { color: #555; }
+
+        /* Columna Central */
+        .news-grid { display: flex; gap: 15px; margin-bottom: 30px; }
+        .news-item { flex: 1; text-align: center; }
+        .news-item img { width: 100%; border-radius: 8px; height: 150px; object-fit: cover; }
+        
+        .captains-grid { display: flex; justify-content: space-around; text-align: center; }
+        .captain { flex: 1; }
+        .captain img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #ff0000; }
+
+        .insta-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #ff0000;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .squad-container {
+            max-height: 200px; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding-right: 10px;
+            margin-top: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .squad-container::-webkit-scrollbar { width: 6px;}
+        .squad-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .squad-container::-webkit-scrollbar-thumb { background: #008cff; border-radius: 10px; }
+        /* Columna Derecha */
+        .stadium-img { width: 100%; border-radius: 8px; margin: 10px 0; }
+        .staff-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .staff-img { width: 60px; height: 60px; border-radius: 50%; background: #ddd; }
+
+        .squad-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .squad-table td { padding: 8px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        .pos { color: #888; font-style: italic; text-align: right; }
+
+        @media (max-width: 900px) {
+            .main-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Unión Española</h1>
+</header>
+
+<div class="main-grid">
+    
+    <aside>
+        <div class="card">
+            <img src="union/union.png" alt="Escudo Unión Española" class="shield-img">
+            <h3>Datos Históricos</h3>
+            <ul class="data-list">
+                <li><b>Fundación:</b> 2025</li>
+                <li><b>Posición 2025:</b> 9º Puesto</li>
+                <li><b>Jugadores Históricos:</b><ul><li>Allan Saint-Maximin y Sadio Mané: top 15 balón d'or 2025</li></ul></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main>
+        <section class="card">
+            <h3>Actualidad del Club</h3>
+            <div class="news-grid">
+                <div class="news-item">
+                    <img src="union/delbosuerdp.jfif" alt="Noticia 1">
+                    <p><b>Vicente del Bosque:</b> No vamos a sufrir este año.</p>
+                </div>
+                <div class="news-item">
+                    <img src="union/sangare.jpg" alt="Noticia 2">
+                    <p><b>Sangaré, renovado</b></p>
+                </div>
+            </div>
+
+            <h3>Nuestros Capitanes</h3>
+            <div class="captains-grid">
+                <div class="captain">
+                    <img src="union/todibo.png" alt="Capitán 1">
+                    <p>Todibo</p>
+                </div>
+                <div class="captain">
+                    <img src="union/maximin.png" alt="Capitán 2">
+                    <p>Saint-Maximin</p>
+                </div>
+                <div class="captain">
+                    <img src="union/sangare.png" alt="Capitán 3">
+                    <p>Sangaré</p>
+                </div>
+            </div>
+
+            <a href="https://instagram.com/union_spa" class="insta-link">📸 Síguenos en Instagram @union_spa</a>
+        </section>
+    </main>
+
+    <aside> 
+        <div class="card">
+            <h3>Estadio</h3>
+            <p><b>Polideportivo San Telmo</b></p>
+            <img src="maguila/santelmo.jpg" alt="Foto Estadio" class="stadium-img">
+            
+            <h3>Staff Técnico</h3>
+            <div class="staff-item">
+                <img src="union/vicente.png" class="staff-img">
+                <div><b>Vicente del Bosque</b> (Entrenador)</div>
+            </div>
+
+            <h3>Plantilla 2026</h3>
+            <div class="squad-container">
+            <table class="squad-table">
+                <tr><td>Juan Musso</td><td class="pos">Portero</td></tr>
+                <tr><td>Saúl Coco</td><td class="pos">Defensa</td></tr>
+                <tr><td>Jean-Clair Todibo</td><td class="pos">Defensa</td></tr>
+                <tr><td>Ricardo Pereira</td><td class="pos">Defensa</td></tr>
+                <tr><td>Sasha Marcich</td><td class="pos">Defensa</td></tr>
+                <tr><td>Chancel Mbemba</td><td class="pos">Defensa</td></tr>
+                <tr><td>Gabriel Sara</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Ibrahim Sangaré</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Nicolás De La Cruz</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Juan Nardoni</td><td class="pos">Centrocampista</td></tr>
+                <tr><td>Krépin Diatta</td><td class="pos">Delantero</td></tr>
+                <tr><td>Tammy Abraham</td><td class="pos">Delantero</td></tr>
+                <tr><td>Allan Saint-Maximin</td><td class="pos">Delantero</td></tr>
+                <tr><td>Emmanuel Latte Tah</td><td class="pos">Delantero</td></tr>
+                <tr><td>Kevin Zenon</td><td class="pos">Delantero</td></tr>
+                <tr><td>Yimmi Chará</td><td class="pos">Delantero</td></tr>
+            </table></div>
+        </div>
+    </aside>
+
+</div>
+
+</body>
+</html>
