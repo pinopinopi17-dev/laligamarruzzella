@@ -233,14 +233,14 @@
     <div class="slider-container">
         <div class="slider-wrapper">
             <div class="news-item">
+                <img src="noticias/charaj1.avif" alt="Noticia 1" class="news-image">
+                <h3>¡Aquí está la Unión Española!</h3>
+                <p>El equipo español rompe todas las quinielas y consigue la victoria en el 90+3, aunque acabarñia ganando 0-3 por la sanción a Pelusas C.F.</p>    
+            </div>
+            <div class="news-item">
                 <img src="noticias/Fofanaj1.jpg" alt="Noticia 3" class="news-image">
                 <h3>Maguila se va con las manos vacías</h3>
                 <p>Pese al esfuerzo del conjunto blanco en el debut liguero, C.A. Maguila se quedó sin puntuar frente al principal candidato al título.</p>    
-            </div>
-            <div class="news-item">
-                <img src="noticias/antonioj1.jpg" alt="Noticia 1" class="news-image">
-                <h3>Humildes F.C. tendrá su revancha</h3>
-                <p>El vigente campeón podrá redimirse de su derrota en el PlayIn tras cruzarse con C.A. Maguila.</p>    
             </div>
             <div class="news-item">
                 <img src="noticias/almeydaj1.jpg" alt="Noticia 2" class="news-image">
@@ -258,9 +258,9 @@
     <div class="slider-container">
         <div class="slider-wrapper">
             <div class="news-item">
-                <img src="noticias/todiboj1.jpg" alt="Noticia 6" class="news-image">
-                <h3>Empezar con buen pie</h3>
-                <p>El conjunto hispano, optimista ante su enfrentamiento contra Pelusas C.F.: "vamos a salir con todo y lo mínimo que esperamos es puntuar".</p>
+                <img src="noticias/isaacj1.jpg" alt="Noticia 6" class="news-image">
+                <h3>Perder es perder</h3>
+                <p>Isaac Romero se responsabiliza: "la sanción no cambia nada, nos han ganado y no podemos jugar a este nivel."</p>
             </div>
             <div class="news-item">
                 <img src="noticias/vallesequillo.avif" alt="Noticia 5" class="news-image">
@@ -721,6 +721,49 @@ const data = ligaData[currentJornadaIdx];
     }
 
     renderJornada();
+    
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const table = document.querySelector(".standings-section table");
+    const tbody = table.querySelector("tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+
+    rows.sort((a, b) => {
+        // Obtenemos los valores de las celdas (convertidos a números)
+        const getVal = (row, index) => parseInt(row.cells[index].textContent.trim()) || 0;
+
+        // Índices de columnas (basados en tu HTML):
+        // Pts: 2, DG: 9, GF: 7, PG: 4
+        const ptsA = getVal(a, 2);
+        const ptsB = getVal(b, 2);
+        const dgA = getVal(a, 9);
+        const dgB = getVal(b, 9);
+        const gfA = getVal(a, 7);
+        const gfB = getVal(b, 7);
+        const pgA = getVal(a, 4);
+        const pgB = getVal(b, 4);
+
+        // 1. Ordenar por Puntos
+        if (ptsB !== ptsA) return ptsB - ptsA;
+        
+        // 2. Si hay empate, ordenar por Goal Average (Diferencia de Goles)
+        if (dgB !== dgA) return dgB - dgA;
+        
+        // 3. Si persiste el empate, ordenar por Goles a Favor
+        if (gfB !== gfA) return gfB - gfA;
+        
+        // 4. Si persiste el empate, ordenar por Partidos Ganados
+        return pgB - pgA;
+    });
+
+    // Limpiar el tbody y añadir las filas ordenadas
+    rows.forEach((row, index) => {
+        // Actualizar automáticamente el número de posición
+        row.cells[0].textContent = index + 1;
+        tbody.appendChild(row);
+    });
+});
 </script>
 
 </body>
