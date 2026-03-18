@@ -216,6 +216,72 @@
         .btn-estadisticas:active {
             transform: translateY(0);
         }
+
+
+
+        .mvp-container {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .mvp-card {
+        background: #f4f4f9;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        text-align: center;
+        width: 300px;
+    }
+
+    .mvp-title {
+        color: #333;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+    }
+
+    .mvp-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .nave-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .nav-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .jornada-label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .mvp-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #007bff;
+        margin-bottom: 15px;
+    }
+
+    .mvp-name {
+        margin: 0;
+        color: #222;
+        font-size: 1.4rem;
+    }
     </style>
 </head>
 <body>
@@ -564,25 +630,22 @@
 
     
     <section class="seccion-registro">
-        <h2>Inscripción</h2>
-        <form id="registroEquipoForm">
-            <div class="input-group">
-                <label>Equipo</label>
-                <input type="text" name="Equipo" required placeholder="C.A. Hispalis">
-            </div>
-            <div class="input-group">
-                <label>Plantilla</label>
-                <textarea name="Titulares" rows="4" required placeholder="Lista de jugadores del equipo, indicar nombre y coste en GP"></textarea>
-            </div>
-            <div class="input-group">
-                <label>Sustitutos</label>
-                <textarea name="Sustitutos" rows="2" placeholder="Sustitutos en caso de que falle un pick"></textarea>
-            </div>
-            <div class="fila-botones">
-                <p><b>Periodo de Inscripción Agotado.</b></p>
-            </div>
-        </form>
-        <div id="mensajeExito" style="display:none; text-align: center; color: #1a2a6c; font-weight: bold; padding: 20px; background: #e8f0fe; border-radius: 8px; margin-top: 10px;">¡Gracias! Tus datos se guardaron.</div>
+    <section class="mvp-container">
+    <div class="mvp-card">
+        <h2 class="mvp-title">MVP de la Jornada</h2>
+        
+        <div class="mvp-navigation">
+            <button onclick="cambiarJornada(-1)" class="nave-btn">← Anterior</button>
+            <span id="jornada-numero" class="jornada-label">Jornada 1</span>
+            <button onclick="cambiarJornada(1)" class="nave-btn">Siguiente →</button>
+        </div>
+
+        <div class="mvp-info">
+            <img id="mvp-imagen" src="fotos/paulinho.png" alt="MVP de la liga" class="mvp-photo">
+            <h3 id="mvp-nombre" class="mvp-name">Paulinho</h3>
+        </div>
+    </div>
+</section>
     </section>
 <script>
     // Array para guardar la posición de cada slider [PosiciónSlider1, PosiciónSlider2]
@@ -768,6 +831,26 @@ document.addEventListener("DOMContentLoaded", function() {
         tbody.appendChild(row);
     });
 });
+const datosMvp = [
+        { jornada: 1, nombre: "Paulinho", img: "fotos/paulinho.png" }
+    ];
+
+    let indiceActual = 1; // Empezamos en la jornada 12 para el ejemplo
+
+    function cambiarJornada(direccion) {
+        indiceActual += direccion;
+
+        // Limites simples para el ejemplo
+        if (indiceActual < 0) indiceActual = 0;
+        if (indiceActual >= datosMvp.length) indiceActual = datosMvp.length - 1;
+
+        const mvp = datosMvp[indiceActual];
+        
+        // Actualizar el DOM
+        document.getElementById('jornada-numero').innerText = "Jornada " + mvp.jornada;
+        document.getElementById('mvp-nombre').innerText = mvp.nombre;
+        // document.getElementById('mvp-imagen').src = mvp.img; 
+    }
 </script>
 
 </body>
