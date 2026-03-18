@@ -81,6 +81,34 @@
     // ESTRUCTURA DE DATOS CON EQUIPOS SEPARADOS
 const listadoPartidos = [
         {
+        id: 1, 
+        local: "Los Césped F.C.", 
+        visitante: "U.D. Kinos",
+        escudoLocal: "cesped/cesped.png", 
+        escudoVisitante: "kinos/kinos.png",
+        fecha: "18/03/2026",
+        datos: {
+            resultado: "2-4",
+            localStats: { goles: "Daniel James(1), Luis Milla (1)", asist: "Chidera Ejuke (1)", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Matías Mansilla (2)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "Jhon Murillo (1), Ferreira (1), Paulinho (2)", asist: "Luis Advíncula (1), Rafa Silva (1), Milton Delgado(1), Paulinho (1)", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Mamadou Samassa (1)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "Paulinho", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+    {
+        id: 2, 
+        local: "Violeteros F.C.", 
+        visitante: "Sportium de Gijón",
+        escudoLocal: "violeteros/violeteros.png", 
+        escudoVisitante: "sportium/sportium.png",
+        fecha: "18/03/2026",
+        datos: {
+            resultado: "2-1",
+            localStats: { goles: "Lamine Cámara (1), Takumi Minamini (1)", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Diego Conde (5)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "Amine Adli (1)", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Dominik Greif (3)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "Lamine Cámara", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+        {
         id: 4, 
         local: "Pololoco F.C.", 
         visitante: "Máscaras F.C.",
@@ -148,34 +176,6 @@ const listadoPartidos = [
             localStats: { goles: "Autogol", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Neto (6)", porterias0: "Neto (1)", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
             visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Filip Jörgensen (2)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
             premios: { mvp: "Neto", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
-        }
-    },
-    {
-        id: 1, 
-        local: "Los Césped F.C.", 
-        visitante: "U.D. Kinos",
-        escudoLocal: "cesped/cesped.png", 
-        escudoVisitante: "kinos/kinos.png",
-        fecha: "N/A",
-        datos: {
-            resultado: "N/A",
-            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
-            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
-            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
-        }
-    },
-    {
-        id: 2, 
-        local: "Violeteros F.C.", 
-        visitante: "Sportium de Gijón",
-        escudoLocal: "violeteros/violeteros.png", 
-        escudoVisitante: "sportium/sportium.png",
-        fecha: "N/A",
-        datos: {
-            resultado: "N/A",
-            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
-            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
-            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
         }
     }
 ];
