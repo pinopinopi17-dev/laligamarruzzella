@@ -299,6 +299,34 @@
     <div class="slider-container">
         <div class="slider-wrapper">
             <div class="news-item">
+                <img src="j1/paulinho.webp" alt="Noticia 2" class="news-image">
+                <h2>Crónica de la jornada 1</h2>
+                <div style="display: flex; justify-content: center; margin: 20px 0;">
+                    <a href="cronicajornada1.html" style="text-decoration: none;">
+                        <button style="
+                                background-color: #1a2a6c;
+                                color: white;
+                                padding: 15px 30px;
+                                font-size: 1.2rem;
+                                font-weight: bold;
+                                border: none;
+                                border-radius: 8px;
+                                cursor: pointer;
+                                transition: transform 0.2s, background-color 0.2s;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                min-width: 200px;
+                            " 
+                            onmouseover="this.style.backgroundColor='#2a3a7c'; this.style.transform='scale(1.05)';" 
+                            onmouseout="this.style.backgroundColor='#1a2a6c'; this.style.transform='scale(1)';"
+                            >
+                            Léela Aquí
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="news-item">
                 <img src="noticias/aubaj1.webp" alt="Noticia 2" class="news-image">
                 <h3>Victoria, para desgracia de muchos</h3>
                 <p>El equipo hispalense logró la victoria en el debut, pese a las reiteradas criticas sobre el estilo de Almeyda y la expulsión de Malacia.</p>
@@ -318,6 +346,7 @@
             <span class="dot active" onclick="currentSlide(0, 0)"></span>
             <span class="dot" onclick="currentSlide(1, 0)"></span>
             <span class="dot" onclick="currentSlide(2, 0)"></span>
+            <span class="dot active" onclick="currentSlide(3, 0)"></span>
         </div>
     </div>
 

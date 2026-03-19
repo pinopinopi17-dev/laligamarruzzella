@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga Marruzzella - Crónica Jornada 1 - Temp. Nueva</title>
+    <style>
+        /* --- ESTILOS GENERALES Y RESET --- */
+        :root {
+            --primary-color: #1a1a1a;    /* Negro/Gris muy oscuro para texto principal */
+            --secondary-color: #2c3e50;  /* Azul oscuro para cabeceras de tarjetas */
+            --accent-color: #e74c3c;     /* Rojo para toques de atención (resultados, etc.) */
+            --bg-color: #f4f7f6;         /* Gris muy claro para el fondo de la página */
+            --card-bg: #ffffff;          /* Blanco puro para las tarjetas de partido */
+            --text-on-accent: #ffffff;   /* Blanco para texto sobre el color de acento */
+            --border-radius: 12px;
+            --box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 0.5em;
+            color: var(--secondary-color);
+        }
+
+        p { margin-bottom: 1.2em; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- CABECERA DE LA PÁGINA --- */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-on-accent);
+            padding: 50px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        header .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* --- SECCIÓN PRINCIPAL DE CRÓNICAS --- */
+        .chronicles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(48%, 1fr)); /* 2 columnas en pantallas medianas/grandes */
+            gap: 30px;
+            padding: 50px 0;
+        }
+
+        /* --- TARJETA DE PARTIDO (Match Card) --- */
+        .match-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden; /* Para que la imagen no se salga de las esquinas redondeadas */
+            transition: var(--transition);
+        }
+
+        .match-card:hover {
+            transform: translateY(-5px); /* Pequeño efecto al pasar el ratón */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        /* Cabecera de la tarjeta con equipos y resultado */
+        .match-header {
+            background-color: var(--secondary-color);
+            color: var(--text-on-accent);
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .match-teams {
+            font-size: 1.3rem;
+            font-weight: bold;
+            flex: 1;
+        }
+
+        .match-score {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background-color: var(--accent-color);
+            color: var(--text-on-accent);
+            padding: 8px 20px;
+            border-radius: 8px;
+            margin-left: 15px;
+            white-space: nowrap; /* Que el resultado no se rompa en dos líneas */
+        }
+
+        /* Cuerpo de la tarjeta con la imagen y el texto */
+        .match-body {
+            padding: 25px;
+        }
+
+        /* Contenedor de la imagen placeholder */
+        .match-image-placeholder {
+            width: 100%;
+            height: 200px; /* Altura fija para el placeholder */
+            background-color: #ddd; /* Gris claro */
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Por si la imagen real es más grande */
+        }
+
+.match-image-container {
+            width: 100%;
+            height: 250px;       /* 1. Definimos una altura fija para el hueco de la foto */
+            overflow: hidden;    /* 2. Si algo sobresale, se corta (crucial para bordes redondeados) */
+            border-radius: 8px; /* Opcional: bordes redondeados en la foto */
+            margin-bottom: 20px;
+            background-color: #eee; /* Fondo gris mientras carga */
+        }
+
+        .match-image {
+            width: 100%;         /* 3. La imagen se estira al ancho del contenedor */
+            height: 100%;        /* 4. La imagen se estira al alto del contenedor */
+            object-fit: cover;   /* 5. LA MAGIA: Recorta y ajusta la foto para que llene el hueco sin deformarse */
+            object-position: center; /* Centra el recorte */
+            display: block;
+        }
+
+        .match-description {
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        /* --- SECCIÓN RESUMEN FINAL --- */
+        .summary-section {
+            background-color: var(--primary-color);
+            color: rgba(255,255,255,0.85);
+            padding: 60px 0;
+            border-radius: var(--border-radius);
+            margin-bottom: 60px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .summary-section h2 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .summary-content {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #e0e6e4;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* --- MEDIA QUERIES PARA RESPONSIVE (MÓVILES) --- */
+        @media (max-width: 768px) {
+            .chronicles-grid {
+                grid-template-columns: 1fr; /* Una columna en móviles */
+                gap: 20px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .match-header {
+                flex-direction: column; /* Apilar equipos y resultado */
+                text-align: center;
+            }
+
+            .match-score {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Liga Marruzzella</h1>
+            <div class="subtitle">Crónica Jornada 1 - Una Nueva Temporada Prometedora</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="chronicles-grid">
+
+            <article class="match-card">
+                <div class="match-header">
+                    <div class="match-teams">Humildes F.C. vs C.A. Maguila</div>
+                    <div class="match-score">1 - 0</div>
+                </div>
+                <div class="match-body">
+                    <div class="match-image-container">
+                        <img src="j1/neto.webp" alt="Acción del partido 1" class="match-image">
+                    </div>
+                    <div class="match-description">
+                        <p>La nueva temporada comenzó con un prometedor Humildes F.C. - C.A. Maguila. El conjunto simio mostró una tremenda mejoría en su nivel de juego y compitió la primera parte con un nivel digno de campeón.</p>
+                        <p>No obstante, Humildes F.C. no ganó el título en unos Kellog's y supo aguantar el arreón inicial, hasta adelantarse con un autogol en la segunda parte, lo que sacó a Maguila del partido y permitió a los locales dormir el encuentro y cerrar el 1-0.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="match-card">
+                <div class="match-header">
+                    <div class="match-teams">Perroflautas F.C. vs Flakitos F.C.</div>
+                    <div class="match-score">1 - 1</div>
+                </div>
+                <div class="match-body">
+                    <div class="match-image-container">
+                        <img src="j1/vargas.jpg" alt="Acción del partido 1" class="match-image">
+                    </div>
+                    <div class="match-description">
+                        <p>Grandes expectativas por sus respectivos debuts. La balanza se inclinó rápidamente a favor de los visitantes con un gran gol de Torreira. Los locales apretaron en el segundo tiempo y atacaron la meta rival insistentemente.</p>
+                        <p>Cuando el partido parecía cerrarse con el 0-1, Rubén Vargas empató el partido sobre la bocina, para la alegría de los locales, alegría que rápidamente se convirtió en desilusión por el amargo resultado en el debut de ambos equipos.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="match-card">
+                <div class="match-header">
+                    <div class="match-teams">Pelusas C.F. vs Unión Española</div>
+                    <div class="match-score">0 - 3</div>
+                </div>
+                <div class="match-body">
+                    <div class="match-image-container">
+                        <img src="j1/yimmi.jpg" alt="Acción del partido 1" class="match-image">
+                    </div>
+                    <div class="match-description">
+                        <p>La Unión Española asaltó el Diego Armando Maradona con juego directo y muchas piernas. Pese al 0-3 en el resultado final, el partido se mantuvo con un 2-2 hasta el último minuto, donde una serie de rebotes acabaría en un taconazo para la historia de Yimmi Chará.</p>
+                        <p>Los pelusas dieron una imagen muy pobre, con un juego muy tímido. Por otro lado, la Unión duerme líder en las nubes tras el debut soñado.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="match-card">
+                <div class="match-header">
+                    <div class="match-teams">Xerez Eleven vs C.A. Hispalis</div>
+                    <div class="match-score">2 - 3</div>
+                </div>
+                <div class="match-body">
+                    <div class="match-image-container">
+                        <img src="j1/auba.jpg" alt="Acción del partido 1" class="match-image">
+                    </div>
+                    <div class="match-description">
+                        <p>Los Hispalenses aguantaron un 2-3 con uno menos en un ejercicio de hispalismo con mal juego y violencia a partes iguales. Pese a un partido técnicamente muy pobre por parte de los visitantes, los azulinos se mantuvieron fieles a su estilo frente a un Xerez Eleven que se vació en el campo.</p>
+                        <p>Los xerecistas consiguieron reponerse hasta en dos ocasiones, pero un equipo enrocado impidió su tercer empate. Pese a todo, Olunga volvió a brillar con gol y asistencia, dando esperanzas a los de tío Pepe.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="match-card">
+                <div class="match-header">
+                    <div class="match-teams">Pololoco F.C. vs Máscaras F.C.</div>
+                    <div class="match-score">2 - 1</div>
+                </div>
+                <div class="match-body">
+                    <div class="match-image-container">
+                        <img src="j1/kamara.jpg" alt="Acción del partido 1" class="match-image">
+                    </div>
+                    <div class="match-description">
+                        <p>Pablo Aimar se marchó con las manos vacías del municipal de Chapín. Los enmascarados atacaron sin parar para estamparse contra un brillante Bingourou Kamara y un muro formado por Joe Gómez y Jerry St. Juste.</p>
+                        <p>Se mantiene así una maldición milenaria sobre el conjunto morado desde el fallecimiento de Oumar Diouf, mientras que Pololoco sueña con una gran temporada tras ganar en un mal partido, en lo que llaman "victoria de campeón".</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="match-card">
+                <div class="match-header">
+                    <div class="match-teams">Los Césped F.C. vs U.D. Los Kinos</div>
+                    <div class="match-score">0 - 1</div> </div>
+                <div class="match-body">
+                    <div class="match-image-container">
+                        <img src="j1/paulinho.webp" alt="Acción del partido 1" class="match-image">
+                    </div>
+                    <div class="match-description">
+                        <p>Si de aguantar y de "victorias de campeones" va la cosa, debemos hablar del partido de los Kinos en el debut contra Los Césped F.C. Los locales trabaron una y otra vez los intentos de adelantarse demostrando un gran nivel y espíritu de lucha.</p>
+                        <p>Pese al esfuerzo local, los Kinos demostraron porqué son candidatos al título. "Masterclass" de Paulinho con 3 contribuciones de gol para volar un año más, tras la histórica racha que sacó del descenso a quienes alguna vez fueron "los linces".</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="match-card">
+                <div class="match-header">
+                    <div class="match-teams">Violeteros F.C. vs Sportium de Gijón</div>
+                    <div class="match-score">2 - 1</div>
+                </div>
+                <div class="match-body">
+                    <div class="match-image-container">
+                        <img src="j1/minamino.jpg" alt="Acción del partido 1" class="match-image">
+                    </div>
+                    <div class="match-description">
+                        <p>Sportium de Gijón cerró la jornada en un partido tosco, seco y apretado, que parecía definirse a favor de los locales tras dos rebotes que llevarían a dos goles. Pese a la ventaja, Sportium sacó coraje de donde pudo y marcó el 2-1 que apretaba el partido.</p>
+                        <p>Sin embargo, los locales supieron manejar los tiempos y jugar con las ansias de Sportium hasta dormir el partido con el 2-1 final.</p>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+
+        <section class="summary-section">
+            <div class="container">
+                <h2>Análisis Post-Jornada</h2>
+                <div class="summary-content">
+                    <p>
+                        La primera jornada de la temporada nos deja los resultados mas apurados en años, resolviéndose 5/7 por un solo gol, con un empate y una victoria por diferencia de 2.
+                    </p>
+                    <p>Humildes F.C., Pololoco F.C. y U.D. Los Kinos se presentan como los equipos más serios y con un nivel de juego más alto.
+Pero no deben olvidarse los C.A. Maguila o Máscaras F.C. que pese a sus derrotas dejaron buenas sensaciones. Los debutantes mostraron un buen nivel y muchas ganas, revitalizando la liga. Unión Española, Violeteros F.C. y C.A. Hispalis trabajan en el partido a partido de cara a completar una buena temporada.
+Pelusas C.F., Sportium de Gijón y Xerez Eleven cayeron derrotados y tendrán que reivindicarse en la siguiente jornada, en la que nos aguardan nuevas sorpresas.
+                    </p>
+                    </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Liga Marruzzella. Todos los derechos de la crónica reservados a Mig-El Kintana, cronista oficial.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
