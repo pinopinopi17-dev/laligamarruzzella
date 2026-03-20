@@ -81,6 +81,48 @@
     // ESTRUCTURA DE DATOS CON EQUIPOS SEPARADOS
 const listadoPartidos = [
         {
+        id: 5, 
+        local: "C.A. Maguila", 
+        visitante: "Pololoco F.C.",
+        escudoLocal: "maguila/maguila.png", 
+        escudoVisitante: "pololoco/pololoco.png",
+        fecha: "20/03/2026",
+        datos: {
+            resultado: "2-2",
+            localStats: { goles: "Enzo Le Fée (1), Patson Daka (1)", asist: "Joel Ndala (1), Meschak Elia (1)", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Filip Jorgënsen (3)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "Daizen Maeda (1), Endrick (1)", asist: "Kevin Mbabu (1), Henry Onyekuru (1)", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Bingourou Kamara (3)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "Enzo Le Fée", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+    {
+        id: 6, 
+        local: "Flakitos F.C.", 
+        visitante: "Xerez Eleven",
+        escudoLocal: "flakitos/flakitos.png", 
+        escudoVisitante: "xerez/xerez.png",
+        fecha: "20/03/2026",
+        datos: {
+            resultado: "1-4",
+            visitStats: { goles: "Romano Schmid (1), Michael Olunga (1), Antony (1), Ez Abde (1)", asist: "Isi  Palazón (1), Romano Schmid (1), Michael Olunga (1)", amarillas: "Cameron Carter-Vickers (1)", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Ivan Susak (3)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            localStats: { goles: "Boulaye Dia (1)", asist: "Arthur Masuaku (1)", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Matías Dituro (3)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "Michale Olunga", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+        {
+        id: 2, 
+        local: "Unión Española", 
+        visitante: "U.D. Los Kinos",
+        escudoLocal: "union/union.png", 
+        escudoVisitante: "kinos/kinos.png",
+        fecha: "20/03/2026",
+        datos: {
+            resultado: "1-0",
+            localStats: { goles: "Emmanuel Latte Tah (1)", asist: "Sasha Marcich (1)", amarillas: "Ibrahim Sangaré (2)", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Juan Musso (5)", porterias0: "Juan Musso", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "Mamadou Samassa (2)", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
+            premios: { mvp: "Juan Musso", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
+        }
+    },
+        {
         id: 3, 
         local: "Máscaras F.C.", 
         visitante: "Violeteros F.C.",
@@ -109,20 +151,6 @@ const listadoPartidos = [
         }
     },
     {
-        id: 2, 
-        local: "Unión Española", 
-        visitante: "U.D. Los Kinos",
-        escudoLocal: "union/union.png", 
-        escudoVisitante: "kinos/kinos.png",
-        fecha: "N/A",
-        datos: {
-            resultado: "N/A",
-            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
-            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
-            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
-        }
-    },
-    {
         id: 4, 
         local: "C.A. Hispalis", 
         visitante: "Pelusas C.F.",
@@ -132,34 +160,6 @@ const listadoPartidos = [
         datos: {
             resultado: "N/A",
             localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "Tyrell Malacia" },
-            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
-            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
-        }
-    },
-    {
-        id: 5, 
-        local: "C.A. Maguila", 
-        visitante: "Pololoco F.C.",
-        escudoLocal: "maguila/maguila.png", 
-        escudoVisitante: "pololoco/pololoco.png",
-        fecha: "N/A",
-        datos: {
-            resultado: "N/A",
-            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
-            visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
-            premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
-        }
-    },
-    {
-        id: 6, 
-        local: "Flakitos F.C.", 
-        visitante: "Xerez Eleven",
-        escudoLocal: "flakitos/flakitos.png", 
-        escudoVisitante: "xerez/xerez.png",
-        fecha: "N/A",
-        datos: {
-            resultado: "N/A",
-            localStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
             visitStats: { goles: "N/A", asist: "N/A", amarillas: "N/A", rojas: "N/A", penaltis: "N/A", faltas: "N/A", paradas: "N/A", porterias0: "N/A", lesiones: "N/A", bajas: "N/A", sancionados: "N/A" },
             premios: { mvp: "N/A", once: "N/A", mvpJornada: "N/A", jugadorMes: "En curso" }
         }
