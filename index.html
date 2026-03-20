@@ -217,6 +217,36 @@
             transform: translateY(0);
         }
 
+        .foto-container1 {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.foto-container1 img {
+    display: block;
+    min-width: 100%; /* Cada noticia ocupa el 100% del ancho del contenedor */
+    width: 100%;
+    border-radius: 8px;
+}
+
+.popup-box {
+    display: none; 
+    position: absolute;
+    top: 20px;     /* Distancia desde arriba */
+    left: 20px;    /* Distancia desde la izquierda */
+    width: 200px;
+    background-color: white;
+    color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Sombra para que flote */
+    z-index: 100;  /* Asegura que esté por encima de todo */
+    border: 1px solid #ddd;
+}
+.foto-container1:focus .popup-box {
+    display: block;
+}
 
 
         .mvp-container {
@@ -327,6 +357,11 @@
                 </div>
             </div>
             <div class="news-item">
+                <img src="noticias/xgpj2.jpg" alt="Noticia 3" class="news-image">
+                <h3>García Pimentón se hace "un Marruecos"</h3>
+                <p>El ahora segundo entrenador humilde reclama el título liguero "arrebatado" en la temporada 1995/96 al desaparecido "Lacasitos F.C." <br>"ya es hora de que se haga justicia".</p>
+            </div>
+            <div class="news-item">
                 <img src="noticias/aubaj1.webp" alt="Noticia 2" class="news-image">
                 <h3>Victoria, para desgracia de muchos</h3>
                 <p>El equipo hispalense logró la victoria en el debut, pese a las reiteradas criticas sobre el estilo de Almeyda y la expulsión de Malacia.</p>
@@ -336,22 +371,34 @@
                 <h3>¡Aquí está la Unión Española!</h3>
                 <p>El equipo español rompe todas las quinielas y consigue la victoria en el 90+3, aunque acabaría ganando 0-3 por la sanción a Pelusas C.F.</p>    
             </div>
-            <div class="news-item">
-                <img src="noticias/Fofanaj1.jpg" alt="Noticia 3" class="news-image">
-                <h3>Maguila se va con las manos vacías</h3>
-                <p>Pese al esfuerzo del conjunto blanco en el debut liguero, C.A. Maguila se quedó sin puntuar frente al principal candidato al título.</p>    
-            </div>
         </div>
         <div class="slider-dots">
             <span class="dot active" onclick="currentSlide(0, 0)"></span>
             <span class="dot" onclick="currentSlide(1, 0)"></span>
             <span class="dot" onclick="currentSlide(2, 0)"></span>
-            <span class="dot active" onclick="currentSlide(3, 0)"></span>
+            <span class="dot" onclick="currentSlide(3, 0)"></span>
         </div>
     </div>
 
     <div class="slider-container">
         <div class="slider-wrapper">
+            <div class="news-item">
+                <div class="foto-container1" tabindex="0">
+                    <img src="noticias/dybalaj2.jpg" alt="Tu imagen">
+                    <div class="popup-box">
+                        <strong>Declaraciones del capitán enmascarado:</strong>
+                        <p>"Teníamos enfrente a un buen rival, pero tuvieron un inicio complicado y supimos aprovecharlo desde el primer momento. Estoy muy contento de empezar la temporada con estos dos goles y espero que vengan muchos más. Lo mejor de todo es ver al grupo tan unido y laburando tan bien; confiamos mucho en el grupo que somos y sobre todo hay muchas ganas."</p>
+                    </div>
+                </div>
+                <h3>Habla Dybala tras la victoria:</h3>
+                <p>¡Haz click en la imagen para leer todas sus declaraciones a la prensa!</p>
+            </div>
+            <div class="news-item">
+                <img src="noticias/munetsij2.webp" alt="Noticia 4" class="news-image">
+                <h3>Perder no es una opción</h3>
+                <p>Los simios se lo juegan todo frente a su gente, contra un rival que ya le arrebató un título la temporada pasada.</p>
+                <p>Los maguilers intentarán mantener el buen nivel, mientras que Pololoco tendrá que demostrar más que en el debut</p>
+            </div>
             <div class="news-item">
                 <img src="noticias/vargasj1.jpeg" alt="Noticia 4" class="news-image">
                 <h3>Reparto de puntos amargo Vallesequillo</h3>
@@ -362,16 +409,12 @@
                 <h3>Perder es perder</h3>
                 <p>Isaac Romero se responsabiliza: "la sanción no cambia nada, nos han ganado y no podemos jugar a este nivel."</p>
             </div>
-            <div class="news-item">
-                <img src="noticias/vallesequillo.avif" alt="Noticia 5" class="news-image">
-                <h3>C.A. Hispalis levanta la Copa Vallesequillo</h3>
-                <p>Tras muchas dudas en la pretemporada hispalense, Almeyda se reafirma tras encadenar tres victorias en el último trofeo de pretemporada</p>    
-            </div>
         </div>
         <div class="slider-dots">
             <span class="dot active" onclick="currentSlide(0, 1)"></span>
             <span class="dot" onclick="currentSlide(1, 1)"></span>
             <span class="dot" onclick="currentSlide(2, 0)"></span>
+            <span class="dot" onclick="currentSlide(3, 0)"></span>
         </div>
         
     </div>
@@ -713,7 +756,7 @@
         setInterval(() => {
             plusSlides(1, 0); // Mueve el primero
             plusSlides(1, 1); // Mueve el segundo
-        }, 5000);
+        }, 7000);
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwSXYzuRcOr2Gu1NoFuj4WdP6sTk369zzOP5uuejqUTgNB4QOkoDX9IbKKRR5cq7mw3GA/exec'
     const form = document.getElementById('registroEquipoForm')
     const btn = document.getElementById('btn-form enviar')
