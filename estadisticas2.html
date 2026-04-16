@@ -63,6 +63,15 @@
             display: flex;
             align-items: center;
         }
+
+        .team-player-mini-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--azul);
+}
+.team-player-mini-card h4 { margin: 0 0 10px 0; color: var(--azul); }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -71,14 +80,23 @@
 <div class="container">
     <h1>Estadísticas Liga Marruzzella</h1>
 
-    <div class="search-section">
+<div class="search-section">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
         <input type="text" id="searchInput" placeholder="Buscar jugador por nombre..." onkeyup="searchPlayer()">
-        <div id="player-card">
-            <h2 id="p-nombre" style="margin:0">Nombre</h2>
-            <small id="p-equipo" style="font-size: 1rem; opacity: 0.9;">Equipo</small>
-            <div class="card-grid" id="cardStats"></div>
-        </div>
+        <input type="text" id="teamInput" placeholder="Buscar por equipo..." onkeyup="searchByTeam()">
     </div>
+
+    <div id="player-card">
+        <h2 id="p-nombre" style="margin:0">Nombre</h2>
+        <small id="p-equipo" style="font-size: 1rem; opacity: 0.9;">Equipo</small>
+        <div class="card-grid" id="cardStats"></div>
+    </div>
+
+    <div id="team-results" style="display: none; margin-top: 20px;">
+        <h3 id="team-title" style="color: var(--azul); border-bottom: 2px solid var(--azul); padding-bottom: 5px;"></h3>
+        <div id="team-players-grid" class="tables-grid"></div>
+    </div>
+</div>
 
     <div class="tables-grid" id="main-grid"></div>
 </div>
@@ -466,6 +484,52 @@ function searchPlayer() {
     } else {
         // Si no hay coincidencia, ocultamos la tarjeta
         card.style.display = 'none';
+    }
+}
+function searchByTeam() {
+    const input = document.getElementById('teamInput').value.toLowerCase();
+    const teamResults = document.getElementById('team-results');
+    const playerCard = document.getElementById('player-card'); // Ficha individual
+    const grid = document.getElementById('team-players-grid');
+    const title = document.getElementById('team-title');
+
+    if (input.length < 2) {
+        teamResults.style.display = 'none';
+        return;
+    }
+
+    // Filtrar jugadores por equipo
+    const filtrados = jugadores.filter(j => j.equipo.toLowerCase().includes(input));
+
+    if (filtrados.length > 0) {
+        playerCard.style.display = 'none'; // Ocultamos la búsqueda individual
+        teamResults.style.display = 'block';
+        title.innerText = `Jugadores de: ${filtrados[0].equipo}`;
+        
+        grid.innerHTML = filtrados.map(p => {
+            // Generar las estadísticas solo si el valor no es 0 o vacío
+            const statsHtml = configTablas
+                .filter(t => {
+                    const valor = p[t.clave];
+                    return valor !== undefined && valor !== null && valor !== '' && Number(valor) !== 0;
+                })
+                .map(t => `<div style="font-size:0.75rem"><b>${t.etiqueta}:</b> ${p[t.clave]}</div>`)
+                .join('');
+
+            return `
+                <div class="team-player-mini-card">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <img src="${p.foto}" style="width:40px; height:40px; border-radius:50%;">
+                        <h4 style="margin:0">${p.nombre}</h4>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                        ${statsHtml}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    } else {
+        teamResults.style.display = 'none';
     }
 }
 
