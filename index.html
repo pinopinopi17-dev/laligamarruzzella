@@ -312,6 +312,45 @@
         color: #1a2a6c;
         font-size: 1.4rem;
     }
+
+
+    /* ESTILOS PARA LAS LÍNEAS DE POSICIÓN */
+.pos-champions { border-left: 4px solid #3d195b; } /* Azul-Violeta Champions */
+.pos-conference { border-left: 4px solid #00b140; } /* Verde estilo UEFA */
+.pos-playoff-desc { border-left: 4px solid #ff9999; } /* Rojo claro */
+.pos-descenso { border-left: 4px solid #e91a1a; } /* Rojo potente */
+
+
+
+/* ESTILOS DE LA LEYENDA */
+.leyenda-clasificacion {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 10px;
+    background: #fdfdfd;
+    border-radius: 5px;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cuadrito {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.c-champions { background-color: #3d195b; }
+.c-conference { background-color: #00b140; }
+.c-playoff { background-color: #ff9999; }
+.c-descenso { background-color: #e91a1a; }
     </style>
 </head>
 <body>
@@ -660,6 +699,24 @@
                 </tr>
             </tbody>
         </table>
+        <div class="leyenda-clasificacion">
+        <div class="leyenda-item">
+            <span class="cuadrito c-champions"></span>
+            <span>Play-in directo</span>
+        </div>
+        <div class="leyenda-item">
+            <span class="cuadrito c-conference"></span>
+            <span>Play-in</span>
+        </div>
+        <div class="leyenda-item">
+            <span class="cuadrito c-playoff"></span>
+            <span>Playoff descenso</span>
+        </div>
+        <div class="leyenda-item">
+            <span class="cuadrito c-descenso"></span>
+            <span>Descenso directo</span>
+        </div>
+    </div>
         <div class="container-boton">
             <a href="estadisticas2.html" class="btn-estadisticas">Ver todas las estadísticas</a>
         </div>
@@ -852,11 +909,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const rows = Array.from(tbody.querySelectorAll("tr"));
 
     rows.sort((a, b) => {
-        // Obtenemos los valores de las celdas (convertidos a números)
         const getVal = (row, index) => parseInt(row.cells[index].textContent.trim()) || 0;
 
-        // Índices de columnas (basados en tu HTML):
-        // Pts: 2, DG: 9, GF: 7, PG: 4
         const ptsA = getVal(a, 2);
         const ptsB = getVal(b, 2);
         const dgA = getVal(a, 9);
@@ -866,23 +920,33 @@ document.addEventListener("DOMContentLoaded", function() {
         const pgA = getVal(a, 4);
         const pgB = getVal(b, 4);
 
-        // 1. Ordenar por Puntos
         if (ptsB !== ptsA) return ptsB - ptsA;
-        
-        // 2. Si hay empate, ordenar por Goal Average (Diferencia de Goles)
         if (dgB !== dgA) return dgB - dgA;
-        
-        // 3. Si persiste el empate, ordenar por Goles a Favor
         if (gfB !== gfA) return gfB - gfA;
-        
-        // 4. Si persiste el empate, ordenar por Partidos Ganados
         return pgB - pgA;
     });
 
-    // Limpiar el tbody y añadir las filas ordenadas
+    // Limpiar el tbody y añadir las filas ordenadas con sus colores
     rows.forEach((row, index) => {
-        // Actualizar automáticamente el número de posición
-        row.cells[0].textContent = index + 1;
+        const posicion = index + 1;
+        
+        // 1. Actualizar automáticamente el número de posición
+        row.cells[0].textContent = posicion;
+
+        // 2. Añadir lógica de colores (sin borrar nada de lo anterior)
+        // Primero limpiamos clases por si acaso se reordena en vivo
+        row.classList.remove('pos-champions', 'pos-conference', 'pos-playoff-desc', 'pos-descenso');
+
+        if (posicion <= 2) {
+            row.classList.add('pos-champions'); // Azul-Violeta
+        } else if (posicion >= 3 && posicion <= 6) {
+            row.classList.add('pos-conference'); // Verde
+        } else if (posicion >= 10 && posicion <= 13) {
+            row.classList.add('pos-playoff-desc'); // Rojo claro
+        } else if (index === rows.length - 1) { 
+            row.classList.add('pos-descenso'); // Rojo potente (último)
+        }
+        
         tbody.appendChild(row);
     });
 });
@@ -892,10 +956,11 @@ const datosMvp = [
     { jornada: 3, nombre: "Rony", img:"fotos/mvp3.jpg"},
     { jornada: 4, nombre: "Yira Sor", img: "fotos/mvp4.jpg"},
     { jornada: 4, nombre: "Matías Dituro", img: "fotos/mvp40.jpg"},
-    { jornada: 5, nombre: "Daizen Maeda", img: "fotos/mvp5.jpg"}
+    { jornada: 5, nombre: "Daizen Maeda", img: "fotos/mvp5.jpg"},
+    { jornada: 6, nombre: "Kyogo Furuhashi", img: "fotos/mvp6.jpg"}
 ];
 
-let indiceActual = 5; // Empezamos siempre en la primera posición del array
+let indiceActual = 6; // Empezamos siempre en la primera posición del array
 
 // Función reutilizable para actualizar la interfaz
 function actualizarDOM() {
