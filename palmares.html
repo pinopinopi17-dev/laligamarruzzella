@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palmarés Histórico - Liga Marruzzella</title>
+    <style>
+        :root {
+            --azul: #1a2a6c;
+            --oro: #f1c40f;
+            --plata: #bdc3c7;
+            --bronce: #cd7f32;
+            --gris-bg: #f4f7f6;
+            --blanco: #ffffff;
+            --rojo-copa: #c0392b;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--gris-bg); margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 1200px; margin: auto; }
+
+        h1 { text-align: center; color: var(--azul); text-transform: uppercase; margin-bottom: 40px; border-bottom: 3px solid var(--azul); display: inline-block; width: 100%; padding-bottom: 10px; }
+
+        /* NAVEGACIÓN */
+        .tabs { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 30px; }
+        .tab-btn { padding: 12px 20px; background: var(--blanco); border: 2px solid var(--azul); color: var(--azul); border-radius: 30px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .tab-btn.active { background: var(--azul); color: white; }
+
+        /* SECCIONES */
+        .content-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); display: none; animation: fadeIn 0.5s; }
+        .content-section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        h2 { color: var(--azul); text-align: center; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-top: 0; }
+
+        /* PODIO */
+        .podium { display: flex; justify-content: center; align-items: flex-end; gap: 15px; margin: 40px 0; min-height: 250px; }
+        .podium-item { text-align: center; width: 180px; }
+        .podium-item img { width: 120px; height: 120px; object-fit: contain; margin-bottom: 10px; }
+        .rank { font-weight: bold; padding: 15px 10px; border-radius: 10px 10px 0 0; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 -5px 10px rgba(0,0,0,0.05); }
+        .rank-1 { background: var(--oro); height: 160px; font-size: 1.2rem; }
+        .rank-2 { background: var(--plata); height: 120px; }
+        .rank-3 { background: var(--bronce); height: 90px; color: white; }
+
+        /* ESTADÍSTICAS INDIVIDUALES */
+        .individual-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .stats-box { background: #f9f9f9; padding: 20px; border-radius: 12px; border-top: 4px solid var(--azul); }
+        .stats-box h3 { margin-top: 0; font-size: 1.1rem; color: #555; text-transform: uppercase; }
+        
+        .player-row { display: flex; align-items: center; gap: 15px; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .player-row:last-child { border-bottom: none; }
+        .player-row img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover; }
+        .player-row .name { flex-grow: 1; font-weight: 500; }
+        .player-row .score { font-weight: bold; color: var(--azul); font-size: 1.1rem; }
+
+        /* DISEÑO DE COPA / ELIMINATORIAS */
+        .cup-bracket { background: #1a2a6c; color: white; padding: 25px; border-radius: 12px; margin-top: 20px; text-align: center; }
+        .match-final { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; border: 2px solid var(--oro); display: inline-block; min-width: 300px; }
+        .prize-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
+        .prize-card { background: var(--blanco); color: #333; padding: 15px; border-radius: 10px; text-align: center; border: 1px solid #ddd; }
+        .prize-card i { display: block; color: var(--oro); font-size: 1.5rem; margin-bottom: 5px; }
+
+        @media (max-width: 768px) {
+            .podium { flex-direction: column; align-items: center; gap: 0; }
+            .podium-item { margin-bottom: 20px; width: 100%; }
+            .rank { height: auto !important; border-radius: 10px; }
+        }
+        .img-container {
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .img-display {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 3px solid #eee;
+        }
+
+        .img-label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--azul);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+/* Estilos actualizados para Noticias/Titulares */
+/* Estilos para Noticias - Formato Azul y Centrado */
+.news-grid {
+    display: grid;
+    /* Columnas más grandes para que las fotos luzcan más */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.news-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease;
+    
+    /* CAMBIO: Fondo azul igual que los títulos en lugar de negro */
+    background: var(--azul); 
+    
+    /* CAMBIO: Centrado de la imagen si es más estrecha que el contenedor */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    border: 2px solid var(--azul);
+}
+
+.news-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(26, 42, 108, 0.3); /* Sombra con tono azulado */
+}
+
+.news-item img {
+    width: 100%;
+    height: auto;
+    /* Mantiene la proporción original de las fotos verticales */
+    display: block;
+    opacity: 0.95;
+    transition: opacity 0.3s;
+}
+
+.news-item:hover img {
+    opacity: 1;
+}
+
+.news-caption {
+    width: 100%; /* Asegura que el pie de foto ocupe todo el ancho */
+    background: var(--azul);
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+    /* Línea decorativa dorada para separar del contenido */
+    border-top: 2px solid var(--oro); 
+    box-sizing: border-box;
+}
+
+/* Ajuste para que las fotos no se vean gigantes en móviles */
+@media (max-width: 600px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Ajuste para móviles para que no se vean gigantescas */
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🏆 PALMARÉS LIGA MARRUZZELLA 🏆</h1>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showComp('liga2023')">Liga Máspadel 2023</button>
+        <button class="tab-btn" onclick="showComp('liga2024')">Liga Mega Kebab 2024</button>
+        <button class="tab-btn" onclick="showComp('liga2025')">Liga Marruzzella 2025</button>
+        <button class="tab-btn" onclick="showComp('copa2025')">Copa Sayoma</button>
+        <button class="tab-btn" onclick="showComp('super2025')">Supercopa Kanito</button>
+        <button class="tab-btn" onclick="showComp('playin2025')">Play-In 2025</button>
+        <button class="tab-btn" onclick="showComp('noticias')">Noticias Históricas</button>
+    </div>
+
+    <div id="liga2023" class="content-section active">
+        <h2>Liga Máspadel 2023 [Título no oficial - Competición Suspendida]</h2>
+        <div class="podium">
+            <div class="podium-item"><img src="historico/juve.png"><div class="rank rank-2">🥈 2º Clasificado<br>Zorros F.C.<br>[Ahora Máscaras F.C.]</div></div>
+            <div class="podium-item"><img src="historico/vini.png"><div class="rank rank-1">🥇 CAMPEÓN<br>Viniciusismo F.C.<br>[Ahora Humildes F.C.]</div></div>
+            <div class="podium-item"><img src="historico/paquete.jpg"><div class="rank rank-3">🥉 3º Clasificado<br>Paquete U.D.<br>[Desaparecido]</div></div>
+        </div>
+        <div class="individual-stats">
+            <div class="stats-box">
+                <h3>⚽ Goleadores</h3>
+                <div class="player-row"><img src="historico/gabriel.png"><span class="name">Gabriel Jesús (Viniciusismo F.C.) [Ahora Humildes F.C.]</span><span class="score">17 G</span></div>
+                <div class="player-row"><img src="historico/vlahovic.png"><span class="name">Dusan Vláhovic (Zorros F.C.)   [Ahora Máscaras F.C.]</span><span class="score">11 G</span></div>
+                <div class="player-row"><img src="historico/sorloth.png"><span class="name">Alexander Sorloth (Eindhoven F.C.) [Ahora C.A. Hispalis]</span><span class="score">7 G</span></div>
+            </div>
+            <div class="stats-box">
+                <h3>👟 Asistentes</h3>
+                <div class="player-row"><img src="historico/chiesa.png"><span class="name">Federico Chiesa (Zorros F.C.) [Ahora Máscaras F.C.]</span><span class="score">5 A</span></div>
+                <div class="player-row"><img src="historico/cuadrado.png"><span class="name">Juan Cuadrado (Zorros F.C.) [Ahora Máscaras F.C.]</span><span class="score">4 A</span></div>
+                <div class="player-row"><img src="historico/saka.png"><span class="name">Bukayo Saka (Viniciusismo F.C.) [Ahora Humildes F.C.]</span><span class="score">4 A</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="liga2024" class="content-section">
+        <h2>Liga Mega Kebab 2024</h2>
+        <div class="podium">
+            <div class="podium-item"><img src="pelusas/pelusas.png"><div class="rank rank-2">🥈 2º Clasificado<br>Pelusas C.F.</div></div>
+            <div class="podium-item"><img src="historico/humildes.png"><div class="rank rank-1">🥇 CAMPEÓN<br>Humildes F.C.</div></div>
+            <div class="podium-item"><img src="hispalis/hispalis.png"><div class="rank rank-3">🥉 3º Clasificado<br>C.A. Hispalense</div></div>
+        </div>
+        <div class="individual-stats">
+            <div class="stats-box">
+                <h3>⚽ Goleadores</h3>
+                <div class="player-row"><img src="historico/rony.png"><span class="name">Rony (Pelusas C.F.)</span><span class="score">19 G</span></div>
+                <div class="player-row"><img src="historico/diouf.png"><span class="name">Oumar Diouf (Máscaras F.C.)</span><span class="score">16 G</span></div>
+                <div class="player-row"><img src="historico/balotelli.png"><span class="name">Mario Balotelli (C.A. Hispalense - Humildes F.C.)</span><span class="score">16 G</span></div>
+        </div>
+            <div class="stats-box">
+                <h3>👟 Asistentes</h3>
+                <div class="player-row"><img src="historico/josias.png"><span class="name">Josias Lukembila (Máscaras F.C.)</span><span class="score">10 A</span></div>
+                <div class="player-row"><img src="historico/soteldo.png"><span class="name">Yeferson Soteldo (Pelusas C.F.)</span><span class="score">10 A</span></div>
+                <div class="player-row"><img src="historico/rony.png"><span class="name">Rony (Pelusas C.F.)</span><span class="score">10 A</span></div>
+            </div>
+    </div>
+    </div>
+
+    <div id="liga2025" class="content-section">
+        <h2>Liga Marruzzella 2025</h2>
+        <div class="podium">
+            <div class="podium-item"><img src="pelusas/pelusas.png"><div class="rank rank-2">🥈 2º Clasificado<br>Pelusas C.F.</div></div>
+            <div class="podium-item"><img src="humildes/humildes.png"><div class="rank rank-1">🥇 CAMPEÓN<br>Humildes F.C.</div></div>
+            <div class="podium-item"><img src="historico/maguila-Photoroom.png"><div class="rank rank-3">🥉 3º Clasificado<br>C.A. Maguila</div></div>
+        </div>
+        <div class="individual-stats">
+            <div class="stats-box">
+                <h3>⚽ Goleadores</h3>
+                <div class="player-row"><img src="fotos/antonio.png"><span class="name">Michail Antonio (Humildes F.C.)</span><span class="score">35 G</span></div>
+                <div class="player-row"><img src="fotos/olunga.png"><span class="name">Michael Olunga (Xerez Eleven)</span><span class="score">33 G</span></div>
+                <div class="player-row"><img src="fotos/furuhashi.png"><span class="name">Kyogo Furuhashi (Violeteros F.C.)</span><span class="score">33 G</span></div>
+            </div>
+            <div class="stats-box">
+                <h3>👟 Asistentes</h3>
+                <div class="player-row"><img src="fotos/furuhashi.png"><span class="name">Kyogo Furuhashi (Violeteros F.C.)</span><span class="score">13 A</span></div>
+                <div class="player-row"><img src="fotos/antony.png"><span class="name">Antony (Xerez Eleven)</span><span class="score">12 A</span></div>
+                <div class="player-row"><img src="historico/rongier.png"><span class="name">Valentin Rongier (Humildes F.C.)</span><span class="score">12 A</span></div>    
+            </div>
+        </div>
+    </div>
+
+    <div id="copa2025" class="content-section">
+        <h2>Copa Sayoma 2025</h2>
+        <div class="cup-bracket">
+            <h3>🏆 GRAN FINAL 🏆</h3>
+            <div class="match-final">
+                <div style="display:flex; justify-content:space-around; align-items:center;">
+                    <div><img src="historico/maguila-Photoroom.png" width="50"><br>C.A. Maguila</div>
+                    <div style="font-size:2rem; font-weight:bold;">0-2</div>
+                    <div><img src="pololoco/aaa.png" width="50"><br>Pololoco F.C.</div>
+                </div>
+            </div>
+        </div>
+        <div class="prize-grid">
+            <div class="prize-card"><i>⭐</i><strong>MVP Final</strong><br>Endrick (Pololoco F.C.)</div>
+            <div class="prize-card"><i>🧤</i><strong>Mejor Portero</strong><br>Bingourou Kamara (Pololoco F.C.)</div>
+            <div class="prize-card"><i>🎯</i><strong>Goleador Copa</strong><br>Marcus Rashford [11] (C.A. Maguila)</div>
+        </div>
+        <div class="img-container">
+            <span class="img-label">📊 Cuadro de Competición 📊</span>
+            <img src="historico/Texto.png" class="img-display" alt="Cuadro de la Copa">
+        </div>
+
+        <div class="img-container">
+            <span class="img-label">✨ Once Ideal de la Copa</span>
+            <img src="historico/oncecopa.png" class="img-display" alt="Once Ideal">
+        </div>
+    </div>
+
+    <div id="super2025" class="content-section">
+        <h2>Supercopa Kanito 2025</h2>
+        <div class="cup-bracket" style="background:#d35400;">
+            <div class="match-final">
+                <p>CAMPEÓN LIGA vs CAMPEÓN COPA</p>
+                <div style="display:flex; justify-content:center; gap:20px; font-weight:bold;">
+                    <span><img src="humildes/humildes.png" width="130"><br>Humildes F.C.</span> <span><div style="font-size:2rem; font-weight:bold;"><br>0-1</div></span> <span><img src="pololoco/aaa.png" width="90"><br>Pololoco F.C.</span>
+                </div>
+            </div>
+        </div>
+        <div class="stats-box" style="margin-top:20px;">
+            <h3 style="text-align:center;">HOMBRE DEL PARTIDO</h3>
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="fotos/endrick.png" 
+                style="width: 200px; height: 200px; border-radius: 50%; border: 5px solid #1a2a6c; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                <h3 style="margin-top: 15px; font-size: 1.5rem; color: #1a2a6c;">Endrick</h3>
+                </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="playin2025" class="content-section">
+        <h2>Play-In 2025</h2>
+        <div class="cup-bracket">
+            <h3>🏆 GRAN FINAL 🏆</h3>
+            <div class="match-final">
+                <div style="display:flex; justify-content:space-around; align-items:center;">
+                    <div><img src="humildes/humildes.png" width="80"><br>Humildes F.C.</div>
+                    <div style="font-size:2rem; font-weight:bold;">1-2</div>
+                    <div><img src="historico/maguila-Photoroom.png" width="74"><br>C.A. Maguila</div>
+                </div>
+            </div>
+            </div>
+        <div class="img-container">
+            <span class="img-label">📊 Cuadro de Competición 📊</span>
+            <img src="historico/Gráfico Cuadro de Torneo Fútbol Americano Profesional Limpio y Sencillo Negro Blanco Azul y Amarillo.png" class="img-display" alt="Cuadro de la Copa">
+        </div>
+        <p style="text-align:center;">Torneo clasificatorio para la fase final</p>
+        <div class="individual-stats">
+            <div class="stats-box">
+                <h3>Equipos Clasificados</h3>
+                <div class="player-row">✅ Directos: Humildes F.C. - Pelusas C.F.</div>
+                <div class="player-row"> Vía Fase Previa: C.A. Maguila - Violeteros F.C. - C.A. Hispalense - Violeteros F.C.</div>
+            </div>
+            <div class="stats-box">
+                <h3>MVPS del Play-In</h3>
+                <div class="player-row"><img src="historico/rashford.png"><span class="name">Marcus Rashford</span></div>
+                <div class="player-row"><img src="historico/marmoush.png"><span class="name">Omar Marmoush</span></div>
+            </div>
+        </div>
+    </div>
+
+<div id="noticias" class="content-section">
+    <h2>📰 Titulares Históricos</h2>
+    
+    <div class="news-grid">
+        
+        <div class="news-item">
+            <img src="historico/Captura de pantalla 2026-04-26 000218.png" alt="Noticia 1">
+            <div class="news-caption">Altibajos de Mario Balotelli</div>
+        </div>
+
+        <div class="news-item">
+            <img src="historico/Captura de pantalla 2026-04-26 000245.png" alt="Noticia 2">
+            <div class="news-caption">Dani Güiza no se controlaba</div>
+        </div>
+
+        <div class="news-item">
+            <img src="historico/Captura de pantalla 2026-04-26 000520.png" alt="Noticia 3">
+            <div class="news-caption">Pelusas + Centros = Caca</div>
+        </div>
+
+        <div class="news-item">
+            <img src="historico/Captura de pantalla 2026-04-26 000851.png" alt="Noticia 6">
+            <div class="news-caption">El primer simio de muchos</div>
+        </div>
+
+        <div class="news-item">
+            <img src="historico/Captura de pantalla 2026-04-26 000958.png" alt="Noticia 9">
+            <div class="news-caption">Cómo redacta el señor presi</div>
+        </div>
+
+        <div class="news-item">
+            <img src="historico/Captura de pantalla 2026-04-25 182033.png" alt="Noticia 10">
+            <div class="news-caption">El día más duro de la liga</div>
+        </div>
+
+        <div class="news-item">
+            <img src="historico/Captura de pantalla 2026-04-26 000909.png" alt="Noticia 7">
+            <div class="news-caption">Beto borrachín de champín</div>
+        </div>
+
+            <div class="news-item">
+            <img src="historico/Captura de pantalla 2026-04-26 000828.png" alt="Noticia 5">
+            <div class="news-caption">El fin de Lacasitos F.C.</div>
+        </div>
+            <div class="news-item">
+            <img src="historico/Captura de pantalla 2026-04-26 000933.png" alt="Noticia 8">
+            <div class="news-caption">Primera Antoniada de Humildes</div>
+        </div>
+
+    </div>
+    
+</div>
+</div>
+
+<script>
+    function showComp(compId) {
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        
+        document.getElementById(compId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
