@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa Sayoma 2026 - Cuadro Oficial</title>
+    <style>
+        :root {
+            --accent: #00d2ff;
+            --gold: #fdbb2d;
+            --semi: #9d50bb;
+            --white: #ffffff;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+            min-height: 100vh;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            letter-spacing: 5px;
+            text-shadow: 0 0 15px var(--accent);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .tournament-grid {
+            display: grid;
+            grid-template-columns: 180px 160px 160px 220px 160px 160px 180px;
+            gap: 10px;
+            align-items: center;
+            width: fit-content;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 600px;
+        }
+
+        .label {
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .matchup {
+            background: rgba(255, 255, 255, 0.95);
+            color: #111;
+            padding: 10px;
+            border-radius: 10px;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .team-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 30px;
+        }
+
+        .team-row img { width: 25px; height: 25px; object-fit: contain; }
+        .team-row span { font-size: 0.75rem; font-weight: 800; white-space: nowrap; }
+
+        .vs-sep { height: 1px; background: #ddd; margin: 4px 0; }
+
+        .octavos { border-left: 4px solid var(--accent); }
+        .octavos-r { border-right: 4px solid var(--accent); border-left: none; }
+        
+        .cuartos { border-bottom: 3px solid #5c0000; margin: 45px 0; }
+        .semis { border-bottom: 3px solid var(--semi); margin: auto 0; }
+        
+        .final-box {
+            border: 4px solid var(--gold);
+            transform: scale(1.1);
+            background: #fff;
+            text-align: center;
+            margin: 30px;
+        }
+
+        .trophy { font-size: 3.5rem; margin-bottom: 10px; display: block; }
+        
+        .placeholder-text {
+            color: #888;
+            font-size: 0.65rem;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏆 COPA SAYOMA 2026 🏆</h1>
+
+    <div class="tournament-grid">
+        
+        <div class="column">
+            <div class="label">Octavos</div>
+            <div class="matchup octavos" id="m0"></div>
+            <div class="matchup octavos" id="m1"></div>
+            <div class="matchup octavos" id="m2"></div>
+            <div class="matchup octavos" id="m3"></div>
+        </div>
+
+        <div class="column">
+            <div class="label">Cuartos</div>
+            <div class="matchup cuartos"><span class="placeholder-text">CUARTOS</span></div>
+            <div class="matchup cuartos"><span class="placeholder-text">CUARTOS</span></div>
+        </div>
+
+        <div class="column">
+            <div class="label">Semis</div>
+            <div class="matchup semis"><span class="placeholder-text">SEMIS</span></div>
+        </div>
+
+        <div class="column" style="justify-content: center;">
+            <div class="label" style="color: var(--gold);">Gran Final</div>
+            <div class="matchup final-box">
+                <span class="trophy">🏆</span>
+                <span style="font-weight: 900; color: #000;">FINAL</span>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="label">Semis</div>
+            <div class="matchup semis"><span class="placeholder-text">SEMIS</span></div>
+        </div>
+
+        <div class="column">
+            <div class="label">Cuartos</div>
+            <div class="matchup cuartos"><span class="placeholder-text">CUARTOS</span></div>
+            <div class="matchup cuartos"><span class="placeholder-text">CUARTOS</span></div>
+        </div>
+
+        <div class="column">
+            <div class="label">Octavos</div>
+            <div class="matchup octavos octavos-r" id="m4"></div>
+            <div class="matchup octavos octavos-r" id="m5"></div>
+            <div class="matchup octavos octavos-r" id="m6"></div>
+            <div class="matchup octavos octavos-r" id="m7"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // Equipos ordenados exactamente según la imagen de izquierda a derecha, arriba a abajo
+        const equipos = [
+            // Izquierda (m0 a m3)
+            { nombre: "Perroflautas F.C.", escudo: "perrof/perrof.png" },
+            { nombre: "Los Césped F.C.", escudo: "cesped/descarga.png" },
+            { nombre: "C.A. Hispalis", escudo: "hispalis/hispalis.png" },
+            { nombre: "Violeteros F.C.", escudo: "violeteros/violeteros.png" },
+            { nombre: "Máscaras F.C.", escudo: "mascaras/mascaras.png" },
+            { nombre: "Flakitos F.C.", escudo: "flakitos/flakitos.png" },
+            { nombre: "Patata F.C.", escudo: "copa/patata.png" },
+            { nombre: "Cryneta F.C.", escudo: "copa/cryneta.png" },
+            // Derecha (m4 a m7)
+            { nombre: "Sportium de Gijón", escudo: "sportium/sportium.png" },
+            { nombre: "Pololoco F.C.", escudo: "pololoco/aaa.png" },
+            { nombre: "C.A. Maguila", escudo: "maguila/maguila.png" },
+            { nombre: "Unión Española", escudo: "union/union.png" },
+            { nombre: "U.D. Los Kinos", escudo: "kinos/kinos.png" },
+            { nombre: "Humildes F.C.", escudo: "humildes/humildes.png" },
+            { nombre: "Xerez Eleven", escudo: "xerez/xerez.png" },
+            { nombre: "Pelusas C.F.", escudo: "pelusas/pelusas.png" }
+        ];
+
+        function cargarArbol() {
+            for (let i = 0; i < 8; i++) {
+                const contenedor = document.getElementById(`m${i}`);
+                const e1 = equipos[i * 2];
+                const e2 = equipos[i * 2 + 1];
+                
+                contenedor.innerHTML = `
+                    <div class="team-row">
+                        <img src="${e1.escudo}" onerror="this.src='https://via.placeholder.com/25'">
+                        <span>${e1.nombre}</span>
+                    </div>
+                    <div class="vs-sep"></div>
+                    <div class="team-row">
+                        <img src="${e2.escudo}" onerror="this.src='https://via.placeholder.com/25'">
+                        <span>${e2.nombre}</span>
+                    </div>
+                `;
+            }
+        }
+
+        window.onload = cargarArbol;
+    </script>
+</body>
+</html>
