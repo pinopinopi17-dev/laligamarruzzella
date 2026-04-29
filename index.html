@@ -351,6 +351,38 @@
 .c-conference { background-color: #00b140; }
 .c-playoff { background-color: #ff9999; }
 .c-descenso { background-color: #e91a1a; }
+
+.btn-copa {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 40px;
+        background: linear-gradient(45deg, #fdbb2d, #9d50bb, #00d2ff);
+        background-size: 200% auto;
+        color: white;
+        text-decoration: none;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        font-weight: 900;
+        border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(0, 210, 255, 0.3);
+        transition: 0.4s;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        letter-spacing: 1px;
+    }
+
+    .btn-copa:hover {
+        transform: translateY(-5px) scale(1.05);
+        background-position: right center;
+        box-shadow: 0 15px 30px rgba(157, 80, 187, 0.5);
+    }
+
+    .hashtag {
+        font-size: 0.8rem;
+        font-weight: normal;
+        margin-top: 5px;
+        opacity: 0.9;
+        font-style: italic;
+    }
     </style>
 </head>
 <body>
@@ -359,7 +391,12 @@
     <h1>Liga Marruzzella 2026</h1>
     <p>¡El espectáculo está a punto de comenzar! Queda muy poco para el pitido inicial.</p>
 </header>
-
+<div style="text-align: center; margin: 40px 0;">
+    <a href="copa.html" class="btn-copa">
+        🏆 VER CUADRO COPA SAYOMA
+        <span class="hashtag">#lacopamola</span>
+    </a>
+</div>
 <div class="container">
     
 <section class="news-section">
