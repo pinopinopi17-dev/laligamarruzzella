@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simeone: El Profeta del Haramball</title>
+    <style>
+        :root {
+            --desert-sand: #edc9af;
+            --deep-gold: #c5a059;
+            --black-terror: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--black-terror);
+            color: var(--desert-sand);
+            font-family: 'Georgia', serif;
+            margin: 0;
+            overflow-x: hidden;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://transparenttextures.com');
+        }
+
+        /* Efecto de tormenta de arena */
+        .sand-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background: url('https://giphy.com');
+            opacity: 0.1;
+            z-index: 10;
+        }
+
+        header {
+            padding: 50px;
+            border-bottom: 3px solid var(--deep-gold);
+        }
+
+        .simeone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            border: 2px solid var(--deep-gold);
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        img {
+            width: 100%;
+            filter: sepia(80%) contrast(120%);
+        }
+
+        .haramball-gif {
+            width: 80%;
+            max-width: 600px;
+            border: 5px solid #000;
+            box-shadow: 0 0 20px var(--deep-gold);
+            margin: 20px 0;
+        }
+
+        .stats-box {
+            background: #2a2a2a;
+            color: #0f0; /* Color terminal/efootball */
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            border-left: 10px solid #8b0000;
+        }
+
+        h1 { font-size: 3.5rem; text-shadow: 3px 3px #000; letter-spacing: 5px; }
+        .arabic-text { font-family: serif; font-size: 1.5rem; color: var(--deep-gold); }
+        
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--deep-gold);
+            padding: 10px;
+            border-radius: 50px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sand-overlay"></div>
+
+    <header>
+        <p class="arabic-text">القول قول الصوارم</p>
+        <h1>EL HARAMBALL HA TRIUNFADO</h1>
+        <p><i>"Si no sufres, no es fútbol. Si pasas del medio campo, es pecado. El Cholo ha dictado"</i></p>
+    </header>
+
+    <main>
+        <!-- GIF Principal de Haramball (puedes cambiar el link) -->
+        <img src="hispalis/haramball.png" alt="Haramball" class="haramball-gif">
+
+        <div class="stats-box">
+            <h2>RESUMEN DEL EXTERMINIO</h2>
+            <p><strong>Resultado:</strong> Cholo 2 - 1 Regates, Estética, bondad</p>
+            <p><strong>Posesión:</strong> 1% | <strong>Remates:</strong> 2 | <strong>Faltas:</strong> 42</p>
+            <hr>
+            <p>El desierto ha reclamado a sus víctimas. Mientras ellos daban pases, el Cholo plantó un autobús de 10 camellos frente a la portería. Un gol de rebote en el minuto 53 tras un córner nos guió al empate.</p>
+            <p>Tras el empate Al-Cholal marcó el camino. Sentimos la sangre y la seguimos. No perdonamos. Marcamos el 1-2. Buscar más goles es Haram y lo prohib Alá. Aubameyang al corner y adiós.</p>
+        </div>
+
+        <div class="simeone-grid">
+            <!-- Fotos del Cholo (Remplazar con URLs reales) -->
+            <div class="card">
+                <img src="haram/pizarra_tactica (8).png" alt="Cholo Rezo">
+                <p>EL PROFETA DEL 5-5-0</p>
+            </div>
+            <div class="card">
+                <img src="historico/haram.jpeg" alt="Cholo Huevos">
+                <p>LA TÁCTICA DEL DESIERTO</p>
+            </div>
+            <div class="card">
+                <img src="haram/haram.jpg" alt="Cholo Grito">
+                <p>¡EL BALÓN ES UN PECADO!</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sección de Música -->
+    <div class="audio-player">
+        <span>🔊 Sonando: Al-Qowlu Qowlu</span>
+        <!-- Aquí deberás poner el link a tu archivo mp3 o video de YT -->
+        <audio controls autoplay loop>
+            <source src="haram/Al Qowlu Qowlu Sawarim｜｜nasheed for muslim｜｜Abu Ali Nasheed｜｜IST.mp3" type="audio/mpeg">
+            Tu navegador no soporta el audio.
+        </audio>
+    </div>
+
+    <script>
+        // Efecto simple para que las cartas se muevan con el ratón
+        document.addEventListener('mousemove', (e) => {
+            const amount = 5;
+            const x = (e.clientX / window.innerWidth - 0.5) * amount;
+            const y = (e.clientY / window.innerHeight - 0.5) * amount;
+            document.querySelectorAll('.card').forEach(card => {
+                card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
