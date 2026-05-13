@@ -133,19 +133,76 @@
             text-align: center;
             font-weight: bold;
         }
+
+
+        /* BUSCADOR */
+        .search-section { background: var(--blanco); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        input[type="text"] {
+            width: 100%; padding: 12px 20px; box-sizing: border-box; font-size: 1rem; border: 2px solid #eee; border-radius: 25px; outline: none; transition: 0.3s;
+        }
+        input[type="text"]:focus { border-color: var(--azul); }
+
+        /* FICHA INDIVIDUAL */
+        #player-card { display: none; background: var(--azul); color: white; padding: 25px; border-radius: 12px; margin-top: 20px; animation: slideDown 0.4s; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px; }
+        .stat-box { background: rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+        .stat-box small { display: block; font-size: 0.6rem; text-transform: uppercase; opacity: 0.8; margin-bottom: 4px; line-height: 1.1; height: 22px; display: flex; align-items: center; justify-content: center; }
+        .stat-box b { font-size: 1.1rem; }
+
+        /* GRID DE TODAS LAS TABLAS */
+        .tables-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 20px; 
+        }
+        
+        .table-container { background: var(--blanco); padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .table-container h3 { margin-top: 0; color: var(--azul); border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { text-align: left; font-size: 0.7rem; color: #888; padding: 8px; }
+        td { padding: 8px; border-bottom: 1px solid #f9f9f9; font-size: 0.85rem; }
+        
+        .rank { font-weight: bold; color: var(--azul); width: 20px; }
+        .val { font-weight: bold; text-align: right; color: var(--naranja); }
+        /* Estilo para las miniaturas en la tabla */
+        .img-top {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            vertical-align: middle;
+            margin-right: 8px;
+            border: 1px solid #ddd;
+        }
+
+        /* Ajuste para que el nombre y la foto estén alineados */
+        .player-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .team-player-mini-card {
+    background: rgba(0,0,0,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--azul);
+}
+    .team-player-mini-card h4 { margin: 0 0 10px 0; color: var(--azul); }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .scroll-container {
     width: 100%;
-    overflow-x: auto; /* Permite deslizar a los lados en móvil */
-    display: block;
-    padding: 20px 0;
-    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    overflow-x: auto;
+    padding-bottom: 20px;
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone */
 }
     </style>
 </head>
 
 
     <h1>🏆 COPA SAYOMA 2026 🏆</h1>
-
+<div class="scroll-container">
     <div class="tournament-grid">
         <!-- Octavos Izq -->
         <div class="column">
@@ -200,7 +257,7 @@
             <div class="matchup octavos octavos-r" id="m7"></div>
         </div>
     </div>
-
+</div>
     <script>
     const equipos = [
         // ... (tu lista de equipos se mantiene igual)
@@ -257,16 +314,16 @@
 
         // 2. Cargar Cuartos (Humildes arriba, Máscaras donde toca, marcador reseteado)
         document.getElementById('c0').innerHTML = 
-        crearFilaCuartos(null) + crearFilaCuartos(equipos[3], "-") + `<div class="vs-sep"></div>`;
+        crearFilaCuartos(null) +  `<div class="vs-sep"></div>` +crearFilaCuartos(equipos[3], "-");
         // Bloque c1: Máscaras pasa con marcador 0
         document.getElementById('c1').innerHTML = 
-            crearFilaCuartos(equipos[4], "-") + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
+        crearFilaCuartos(equipos[4], "-") + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
 
         document.getElementById('c2').innerHTML = 
-            `<div class="vs-sep"></div>` + crearFilaCuartos(null)+crearFilaCuartos(equipos[10], "-");
+        crearFilaCuartos(null) + `<div class="vs-sep"></div>` +crearFilaCuartos(equipos[10], "-");
         // Bloque c3: Humildes ARRIBA con marcador 0
         document.getElementById('c3').innerHTML = 
-            crearFilaCuartos(equipos[13], "-") + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
+        crearFilaCuartos(equipos[13], "-") + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
 
         // Rellenar el resto de Cuartos vacíos
         ;
@@ -276,70 +333,7 @@
 </script>
 </body>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas Totales - Liga Marruzzella</title>
-    <style>
-
-
-
-        /* BUSCADOR */
-        .search-section { background: var(--blanco); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        input[type="text"] {
-            width: 100%; padding: 12px 20px; box-sizing: border-box; font-size: 1rem; border: 2px solid #eee; border-radius: 25px; outline: none; transition: 0.3s;
-        }
-        input[type="text"]:focus { border-color: var(--azul); }
-
-        /* FICHA INDIVIDUAL */
-        #player-card { display: none; background: var(--azul); color: white; padding: 25px; border-radius: 12px; margin-top: 20px; animation: slideDown 0.4s; }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px; }
-        .stat-box { background: rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
-        .stat-box small { display: block; font-size: 0.6rem; text-transform: uppercase; opacity: 0.8; margin-bottom: 4px; line-height: 1.1; height: 22px; display: flex; align-items: center; justify-content: center; }
-        .stat-box b { font-size: 1.1rem; }
-
-        /* GRID DE TODAS LAS TABLAS */
-        .tables-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 20px; 
-        }
-        
-        .table-container { background: var(--blanco); padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .table-container h3 { margin-top: 0; color: var(--azul); border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; }
-        
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { text-align: left; font-size: 0.7rem; color: #888; padding: 8px; }
-        td { padding: 8px; border-bottom: 1px solid #f9f9f9; font-size: 0.85rem; }
-        
-        .rank { font-weight: bold; color: var(--azul); width: 20px; }
-        .val { font-weight: bold; text-align: right; color: var(--naranja); }
-        /* Estilo para las miniaturas en la tabla */
-        .img-top {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            object-fit: cover;
-            vertical-align: middle;
-            margin-right: 8px;
-            border: 1px solid #ddd;
-        }
-
-        /* Ajuste para que el nombre y la foto estén alineados */
-        .player-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .team-player-mini-card {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-left: 4px solid var(--azul);
-}
-.team-player-mini-card h4 { margin: 0 0 10px 0; color: var(--azul); }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
 </head>
 <body>
 
