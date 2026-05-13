@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+< lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Copa Sayoma 2026 - Cuadro Oficial</title>
-    <!DOCTYPE html>
-<lang="es">
-<head>
-    <meta charset="UTF-8">
     <style>
         :root {
             --accent: #00d2ff;
             --gold: #fdbb2d;
             --semi: #9d50bb;
             --white: #ffffff;
+            --azul: #00d2ff;
+            --blanco: #ffffff;
+            --naranja: #fdbb2d;
         }
 
         body {
@@ -22,13 +21,10 @@
             color: white;
             font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: auto;
-            padding: 20px;
-            overflow-x: auto; 
-    overscroll-behavior-x: contain; /* Evita que el fondo se mueva */
         }
 
         h1 {
@@ -39,12 +35,25 @@
             text-align: center;
         }
 
+        /* CONTENEDOR MÁGICO PARA MÓVIL */
+        .tournament-container {
+            width: 100%;
+            overflow-x: auto; /* Permite scroll lateral */
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 30px;
+            display: flex;
+            justify-content: flex-start; /* Permite que el contenido ancho empiece a la izquierda */
+        }
+
         .tournament-grid {
             display: grid;
+            /* Usamos píxeles fijos para que NADA se encoja */
             grid-template-columns: 190px 170px 170px 220px 170px 170px 190px;
             gap: 10px;
             align-items: center;
-            width: fit-content;
+            width: max-content; /* Obliga al grid a mantener su tamaño real */
+            margin: 0 auto; /* Centra el cuadro si sobra espacio */
+            padding: 10px;
         }
 
         .column {
@@ -74,13 +83,13 @@
             flex-direction: column;
             justify-content: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            box-sizing: border-box; /* Crucial para que no se salga el contenido */
+            box-sizing: border-box;
         }
 
         .team-row {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Empuja el score a la derecha */
+            justify-content: space-between;
             height: 30px;
             width: 100%;
         }
@@ -90,11 +99,18 @@
             align-items: center;
             gap: 8px;
             overflow: hidden;
+            flex-grow: 1;
         }
 
         .team-row img { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
-        .team-row span { font-size: 0.72rem; font-weight: 800; white-space: nowrap; overflow: visible;   /* Cambia esto si quieres que se vea todo */
-    text-overflow: clip; }
+        
+        .team-row span { 
+            font-size: 0.72rem; 
+            font-weight: 800; 
+            white-space: nowrap; /* Evita que el nombre baje de línea */
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }
 
         .score {
             background: #eee;
@@ -109,16 +125,16 @@
             font-weight: 900;
             margin-left: 5px;
             border: 1px solid #ddd;
+            flex-shrink: 0;
         }
 
         .vs-sep { height: 1px; background: #ddd; margin: 4px 0; }
 
+        /* Estilos de bordes y fases */
         .octavos { border-left: 4px solid var(--accent); }
         .octavos-r { border-right: 4px solid var(--accent); border-left: none; }
-        
         .cuartos { border-bottom: 3px solid #5c0000; margin: 45px 0; }
         .semis { border-bottom: 3px solid var(--semi); margin: auto 0; }
-        
         .final-box {
             border: 4px solid var(--gold);
             transform: scale(1.1);
@@ -128,43 +144,35 @@
         }
 
         .trophy { font-size: 3.5rem; margin-bottom: 10px; display: block; }
-        
-        .placeholder-text {
-            color: #888;
-            font-size: 0.65rem;
-            text-align: center;
-            font-weight: bold;
-        }
+        .placeholder-text { color: #888; font-size: 0.65rem; text-align: center; font-weight: bold; }
 
+/* BUSCADOR */
 
-        /* BUSCADOR */
         .search-section { background: var(--blanco); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
         input[type="text"] {
             width: 100%; padding: 12px 20px; box-sizing: border-box; font-size: 1rem; border: 2px solid #eee; border-radius: 25px; outline: none; transition: 0.3s;
         }
         input[type="text"]:focus { border-color: var(--azul); }
-
         /* FICHA INDIVIDUAL */
-        #player-card { display: none; background: var(--azul); color: white; padding: 25px; border-radius: 12px; margin-top: 20px; animation: slideDown 0.4s; }
+        #player-card { display: none; background: var(--azul); color: rgba(0,0,0,0.05); padding: 25px; border-radius: 12px; margin-top: 20px; animation: slideDown 0.4s; }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px; }
         .stat-box { background: rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
         .stat-box small { display: block; font-size: 0.6rem; text-transform: uppercase; opacity: 0.8; margin-bottom: 4px; line-height: 1.1; height: 22px; display: flex; align-items: center; justify-content: center; }
         .stat-box b { font-size: 1.1rem; }
 
         /* GRID DE TODAS LAS TABLAS */
-        .tables-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 20px; 
+        .tables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
         }
-        
-        .table-container { background: var(--blanco); padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .table-container h3 { margin-top: 0; color: var(--azul); border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; }
-        
+        .table-container { background: var(--black); padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .table-container h3 { margin-top: 0; color: rgba(0,0,0,0.05)); border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; }
+
+
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th { text-align: left; font-size: 0.7rem; color: #888; padding: 8px; }
         td { padding: 8px; border-bottom: 1px solid #f9f9f9; font-size: 0.85rem; }
-        
         .rank { font-weight: bold; color: var(--azul); width: 20px; }
         .val { font-weight: bold; text-align: right; color: var(--naranja); }
         /* Estilo para las miniaturas en la tabla */
@@ -177,7 +185,6 @@
             margin-right: 8px;
             border: 1px solid #ddd;
         }
-
         /* Ajuste para que el nombre y la foto estén alineados */
         .player-info {
             display: flex;
@@ -190,179 +197,153 @@
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-left: 4px solid var(--azul);
+
 }
+
     .team-player-mini-card h4 { margin: 0 0 10px 0; color: var(--azul); }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .scroll-container {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone */
-}
     </style>
+
 </head>
 
 
-    <h1>🏆 COPA SAYOMA 2026 🏆</h1>
-<div class="scroll-container">
-    <div class="tournament-grid">
-        <!-- Octavos Izq -->
-        <div class="column">
-            <div class="label">Octavos</div>
-            <div class="matchup octavos" id="m0"></div>
-            <div class="matchup octavos" id="m1"></div>
-            <div class="matchup octavos" id="m2"></div>
-            <div class="matchup octavos" id="m3"></div>
-        </div>
-
-        <!-- Cuartos Izq -->
-        <div class="column">
-            <div class="label">Cuartos</div>
-            <div class="matchup cuartos" id="c0"></div>
-            <div class="matchup cuartos" id="c1"></div>
-        </div>
-
-        <!-- Semis Izq -->
-        <div class="column">
-            <div class="label">Semis</div>
-            <div class="matchup semis"><span class="placeholder-text">SEMIS</span></div>
-        </div>
-
-        <!-- Final -->
-        <div class="column" style="justify-content: center;">
-            <div class="label" style="color: var(--gold);">Gran Final</div>
-            <div class="matchup final-box">
-                <span class="trophy">🏆</span>
-                <span style="font-weight: 900; color: #000;">FINAL</span>
-            </div>
-        </div>
-
-        <!-- Semis Der -->
-        <div class="column">
-            <div class="label">Semis</div>
-            <div class="matchup semis"><span class="placeholder-text">SEMIS</span></div>
-        </div>
-
-        <!-- Cuartos Der -->
-        <div class="column">
-            <div class="label">Cuartos</div>
-            <div class="matchup cuartos" id="c2"></div>
-            <div class="matchup cuartos" id="c3"></div>
-        </div>
-
-        <!-- Octavos Der -->
-        <div class="column">
-            <div class="label">Octavos</div>
-            <div class="matchup octavos octavos-r" id="m4"></div>
-            <div class="matchup octavos octavos-r" id="m5"></div>
-            <div class="matchup octavos octavos-r" id="m6"></div>
-            <div class="matchup octavos octavos-r" id="m7"></div>
-        </div>
-    </div>
-</div>
-    <script>
-    const equipos = [
-        // ... (tu lista de equipos se mantiene igual)
-        { nombre: "Perroflautas F.C.", escudo: "perrof/perrof.png", score: "-" },
-        { nombre: "Los Césped F.C.", escudo: "cesped/descarga.png", score: "-" },
-        { nombre: "C.A. Hispalis", escudo: "hispalis/hispalis.png", score: "1" },
-        { nombre: "Violeteros F.C.", escudo: "violeteros/violeteros.png", score: "4" },
-        { nombre: "Máscaras F.C.", escudo: "mascaras/mascaras.png", score: "6" }, // Resultado Octavos
-        { nombre: "Flakitos F.C.", escudo: "flakitos/flakitos.png", score: "1" },
-        { nombre: "Patata F.C.", escudo: "copa/patata.png", score: "-" },
-        { nombre: "Lacasitos F.C.", escudo: "copa/lacasito.png", score: "-" },
-        { nombre: "Sportium de Gijón", escudo: "sportium/sportium.png", score: "-" },
-        { nombre: "Pololoco F.C.", escudo: "pololoco/aaa.png", score: "-" },
-        { nombre: "C.A. Maguila", escudo: "historico/maguila-Photoroom.png", score: "4" },
-        { nombre: "Unión Española", escudo: "union/union.png", score: "1" },
-        { nombre: "U.D. Los Kinos", escudo: "kinos/kinos.png", score: "0" },
-        { nombre: "Humildes F.C.", escudo: "humildes/humildes.png", score: "3" }, // Resultado Octavos
-        { nombre: "Xerez Eleven", escudo: "xerez/xerez.png", score: "-" },
-        { nombre: "Pelusas C.F.", escudo: "pelusas/pelusas.png", score: "-" }
-    ];
-
-    // Función normal para Octavos (usa el score del array)
-    function crearFilaHTML(equipo) {
-        if (!equipo) return `<div class="team-row"><span class="placeholder-text">POR DEFINIR</span></div>`;
-        return `
-            <div class="team-row">
-                <div class="team-info">
-                    <img src="${equipo.escudo}" onerror="this.src='https://via.placeholder.com/25'">
-                    <span>${equipo.nombre}</span>
-                </div>
-                <div class="score">${equipo.score || '0'}</div>
-            </div>`;
-    }
-
-    // NUEVA FUNCIÓN: Para Cuartos (pone el marcador a 0 para el nuevo partido)
-    function crearFilaCuartos(equipo, scorePersonalizado = "0") {
-        if (!equipo) return `<div class="team-row"><span class="placeholder-text">POR DEFINIR</span></div>`;
-        return `
-            <div class="team-row">
-                <div class="team-info">
-                    <img src="${equipo.escudo}" onerror="this.src='https://via.placeholder.com/25'">
-                    <span>${equipo.nombre}</span>
-                </div>
-                <div class="score">${scorePersonalizado}</div>
-            </div>`;
-    }
-
-    function cargarArbol() {
-        // 1. Cargar Octavos (mantiene sus resultados)
-        for (let i = 0; i < 8; i++) {
-            const contenedor = document.getElementById(`m${i}`);
-            contenedor.innerHTML = crearFilaHTML(equipos[i*2]) + `<div class="vs-sep"></div>` + crearFilaHTML(equipos[i*2+1]);
-        }
-
-        // 2. Cargar Cuartos (Humildes arriba, Máscaras donde toca, marcador reseteado)
-        document.getElementById('c0').innerHTML = 
-        crearFilaCuartos(null) +  `<div class="vs-sep"></div>` +crearFilaCuartos(equipos[3], "-");
-        // Bloque c1: Máscaras pasa con marcador 0
-        document.getElementById('c1').innerHTML = 
-        crearFilaCuartos(equipos[4], "-") + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
-
-        document.getElementById('c2').innerHTML = 
-        crearFilaCuartos(null) + `<div class="vs-sep"></div>` +crearFilaCuartos(equipos[10], "-");
-        // Bloque c3: Humildes ARRIBA con marcador 0
-        document.getElementById('c3').innerHTML = 
-        crearFilaCuartos(equipos[13], "-") + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
-
-        // Rellenar el resto de Cuartos vacíos
-        ;
-    }
-
-    window.onload = cargarArbol;
-</script>
-</body>
-<head>
-    <title>Estadísticas Totales - Liga Marruzzella</title>
-</head>
 <body>
 
-<div class="container">
-    <h1>Estadísticas Copa Sayoma</h1>
+    <h1>🏆 COPA SAYOMA 2026 🏆</h1>
 
-<div class="search-section">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-        <input type="text" id="searchInput" placeholder="Buscar jugador por nombre..." onkeyup="searchPlayer()">
-        <input type="text" id="teamInput" placeholder="Buscar por equipo..." onkeyup="searchByTeam()">
+    <!-- El cuadro envuelto para scroll lateral -->
+    <div class="tournament-container">
+        <div class="tournament-grid">
+            <!-- Octavos Izq -->
+            <div class="column">
+                <div class="label">Octavos</div>
+                <div class="matchup octavos" id="m0"></div>
+                <div class="matchup octavos" id="m1"></div>
+                <div class="matchup octavos" id="m2"></div>
+                <div class="matchup octavos" id="m3"></div>
+            </div>
+
+            <!-- Cuartos Izq -->
+            <div class="column">
+                <div class="label">Cuartos</div>
+                <div class="matchup cuartos" id="c0"></div>
+                <div class="matchup cuartos" id="c1"></div>
+            </div>
+
+            <!-- Semis Izq -->
+            <div class="column">
+                <div class="label">Semis</div>
+                <div class="matchup semis"><span class="placeholder-text">SEMIS</span></div>
+            </div>
+
+            <!-- Final -->
+            <div class="column" style="justify-content: center;">
+                <div class="label" style="color: var(--gold);">Gran Final</div>
+                <div class="matchup final-box">
+                    <span class="trophy">🏆</span>
+                    <span style="font-weight: 900; color: #000;">FINAL</span>
+                </div>
+            </div>
+
+            <!-- Semis Der -->
+            <div class="column">
+                <div class="label">Semis</div>
+                <div class="matchup semis"><span class="placeholder-text">SEMIS</span></div>
+            </div>
+
+            <!-- Cuartos Der -->
+            <div class="column">
+                <div class="label">Cuartos</div>
+                <div class="matchup cuartos" id="c2"></div>
+                <div class="matchup cuartos" id="c3"></div>
+            </div>
+
+            <!-- Octavos Der -->
+            <div class="column">
+                <div class="label">Octavos</div>
+                <div class="matchup octavos octavos-r" id="m4"></div>
+                <div class="matchup octavos octavos-r" id="m5"></div>
+                <div class="matchup octavos octavos-r" id="m6"></div>
+                <div class="matchup octavos octavos-r" id="m7"></div>
+            </div>
+        </div>
     </div>
 
-    <div id="player-card">
-        <h2 id="p-nombre" style="margin:0">Nombre</h2>
-        <small id="p-equipo" style="font-size: 1rem; opacity: 0.9;">Equipo</small>
-        <div class="card-grid" id="cardStats"></div>
+    <!-- Sección de Búsqueda -->
+    <div class="search-section">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <input type="text" id="searchInput" placeholder="Buscar jugador..." onkeyup="searchPlayer()">
+            <input type="text" id="teamInput" placeholder="Buscar equipo..." onkeyup="searchByTeam()">
+        </div>
     </div>
 
-    <div id="team-results" style="display: none; margin-top: 20px;">
-        <h3 id="team-title" style="color: var(--azul); border-bottom: 2px solid var(--azul); padding-bottom: 5px;"></h3>
-        <div id="team-players-grid" class="tables-grid"></div>
+    <div class="tables-grid" id="main-grid">
+        <!-- Aquí se cargarían las estadísticas -->
     </div>
-</div>
 
-    <div class="tables-grid" id="main-grid"></div>
-</div>
+    <script>
+        const equipos = [
+            { nombre: "Perroflautas F.C.", escudo: "perrof/perrof.png", score: "-" },
+            { nombre: "Los Césped F.C.", escudo: "cesped/descarga.png", score: "-" },
+            { nombre: "C.A. Hispalis", escudo: "hispalis/hispalis.png", score: "1" },
+            { nombre: "Violeteros F.C.", escudo: "violeteros/violeteros.png", score: "4" },
+            { nombre: "Máscaras F.C.", escudo: "mascaras/mascaras.png", score: "6" },
+            { nombre: "Flakitos F.C.", escudo: "flakitos/flakitos.png", score: "1" },
+            { nombre: "Patata F.C.", escudo: "copa/patata.png", score: "-" },
+            { nombre: "Lacasitos F.C.", escudo: "copa/lacasito.png", score: "-" },
+            { nombre: "Sportium de Gijón", escudo: "sportium/sportium.png", score: "-" },
+            { nombre: "Pololoco F.C.", escudo: "pololoco/aaa.png", score: "-" },
+            { nombre: "C.A. Maguila", escudo: "historico/maguila-Photoroom.png", score: "4" },
+            { nombre: "Unión Española", escudo: "union/union.png", score: "1" },
+            { nombre: "U.D. Los Kinos", escudo: "kinos/kinos.png", score: "0" },
+            { nombre: "Humildes F.C.", escudo: "humildes/humildes.png", score: "3" },
+            { nombre: "Xerez Eleven", escudo: "xerez/xerez.png", score: "-" },
+            { nombre: "Pelusas C.F.", escudo: "pelusas/pelusas.png", score: "-" }
+        ];
 
+        function crearFilaHTML(equipo) {
+            if (!equipo) return `<div class="team-row"><span class="placeholder-text">POR DEFINIR</span></div>`;
+            return `
+                <div class="team-row">
+                    <div class="team-info">
+                        <img src="${equipo.escudo}" onerror="this.src='https://via.placeholder.com/25'">
+                        <span>${equipo.nombre}</span>
+                    </div>
+                    <div class="score">${equipo.score || '0'}</div>
+                </div>`;
+        }
+
+        function crearFilaCuartos(equipo, scorePersonalizado = "-") {
+            if (!equipo) return `<div class="team-row"><span class="placeholder-text">POR DEFINIR</span></div>`;
+            return `
+                <div class="team-row">
+                    <div class="team-info">
+                        <img src="${equipo.escudo}" onerror="this.src='https://via.placeholder.com/25'">
+                        <span>${equipo.nombre}</span>
+                    </div>
+                    <div class="score">${scorePersonalizado}</div>
+                </div>`;
+        }
+
+        function cargarArbol() {
+            // Octavos
+            for (let i = 0; i < 8; i++) {
+                const contenedor = document.getElementById(`m${i}`);
+                if(contenedor) {
+                    contenedor.innerHTML = crearFilaHTML(equipos[i*2]) + `<div class="vs-sep"></div>` + crearFilaHTML(equipos[i*2+1]);
+                }
+            }
+
+            // Cuartos (Basado en tu lógica anterior)
+            document.getElementById('c0').innerHTML = crearFilaCuartos(null) + `<div class="vs-sep"></div>` + crearFilaCuartos(equipos[3]);
+            document.getElementById('c1').innerHTML = crearFilaCuartos(equipos[4]) + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
+            document.getElementById('c2').innerHTML = crearFilaCuartos(null) + `<div class="vs-sep"></div>` + crearFilaCuartos(equipos[10]);
+            document.getElementById('c3').innerHTML = crearFilaCuartos(equipos[13]) + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
+        }
+
+        window.onload = cargarArbol;
+    </script>
+</body>
 <script>
     // BASE DE DATOS (He añadido las nuevas claves a los ejemplos)
 const jugadores = [
