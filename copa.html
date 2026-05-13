@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Copa Sayoma 2026 - Cuadro Oficial</title>
-   <!DOCTYPE html>
-< lang="es">
+    <!DOCTYPE html>
+<lang="es">
 <head>
     <meta charset="UTF-8">
     <style>
@@ -27,6 +27,7 @@
             align-items: center;
             overflow-x: auto;
             padding: 20px;
+            overflow-x: hidden; /* Evita que el fondo se mueva */
         }
 
         h1 {
@@ -132,9 +133,16 @@
             text-align: center;
             font-weight: bold;
         }
+        .scroll-container {
+    width: 100%;
+    overflow-x: auto; /* Permite deslizar a los lados en móvil */
+    display: block;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+}
     </style>
 </head>
-<>
+
 
     <h1>🏆 COPA SAYOMA 2026 🏆</h1>
 
@@ -206,8 +214,8 @@
         { nombre: "Lacasitos F.C.", escudo: "copa/lacasito.png", score: "-" },
         { nombre: "Sportium de Gijón", escudo: "sportium/sportium.png", score: "-" },
         { nombre: "Pololoco F.C.", escudo: "pololoco/aaa.png", score: "-" },
-        { nombre: "C.A. Maguila", escudo: "historico/maguila-Photoroom.png", score: "-" },
-        { nombre: "Unión Española", escudo: "union/union.png", score: "-" },
+        { nombre: "C.A. Maguila", escudo: "historico/maguila-Photoroom.png", score: "4" },
+        { nombre: "Unión Española", escudo: "union/union.png", score: "1" },
         { nombre: "U.D. Los Kinos", escudo: "kinos/kinos.png", score: "0" },
         { nombre: "Humildes F.C.", escudo: "humildes/humildes.png", score: "3" }, // Resultado Octavos
         { nombre: "Xerez Eleven", escudo: "xerez/xerez.png", score: "-" },
@@ -253,15 +261,15 @@
         // Bloque c1: Máscaras pasa con marcador 0
         document.getElementById('c1').innerHTML = 
             crearFilaCuartos(equipos[4], "-") + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
-        
+
+        document.getElementById('c2').innerHTML = 
+            `<div class="vs-sep"></div>` + crearFilaCuartos(null)+crearFilaCuartos(equipos[10], "-");
         // Bloque c3: Humildes ARRIBA con marcador 0
         document.getElementById('c3').innerHTML = 
             crearFilaCuartos(equipos[13], "-") + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
 
         // Rellenar el resto de Cuartos vacíos
-        ['c2'].forEach(id => {
-            document.getElementById(id).innerHTML = crearFilaCuartos(null) + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
-        });
+        ;
     }
 
     window.onload = cargarArbol;
@@ -399,17 +407,17 @@ const jugadores = [
 { nombre: "Joelson Fernández", foto:"fotos/joelsonfernandez.png", equipo: "Pololoco F.C", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, meta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 
 // C.A. MAGUILA
-{ nombre: "David Datro Fofana", foto:"fotos/datrofofana.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-{ nombre: "Filip Jorgënsen", foto:"fotos/jorgensen.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-{ nombre: "Sekou Koita", foto:"fotos/koita.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+{ nombre: "David Datro Fofana", foto:"fotos/datrofofana.png", equipo: "C.A. Maguila", goles: 0+1, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+{ nombre: "Filip Jorgënsen", foto:"fotos/jorgensen.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0+1, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+{ nombre: "Sekou Koita", foto:"fotos/koita.png", equipo: "C.A. Maguila", goles: 0+1, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "James Justin", foto:"fotos/jamesjustin.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-{ nombre: "Meschack Elia", foto:"fotos/meshakelia.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+{ nombre: "Meschack Elia", foto:"fotos/meshakelia.png", equipo: "C.A. Maguila", goles: 0+1, asist: 0+1, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0+1, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Azor Matusiwa", foto:"fotos/azor.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Pablo Torre", foto:"fotos/ptorre.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Juan Jesus", foto:"fotos/juanjesus.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-{ nombre: "Patson Daka", foto:"fotos/daka.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0, penfallado: 0 },
+{ nombre: "Patson Daka", foto:"fotos/daka.png", equipo: "C.A. Maguila", goles: 0+1, asist: 0+1, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0, penfallado: 0 },
 { nombre: "Enzo Le Fée", foto:"fotos/enzolefe.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-{ nombre: "Lucas Moura", foto:"fotos/moura.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+{ nombre: "Lucas Moura", foto:"fotos/moura.png", equipo: "C.A. Maguila", goles: 0, asist: 0+1, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Leif Davis", foto:"fotos/leifdavis.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Hannibal Mejbri", foto:"fotos/mejbri.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Joel Ndala", foto:"fotos/ndala.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
@@ -552,7 +560,7 @@ const jugadores = [
     { nombre: "Tammy Abraham", foto:"fotos/abraham.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Saúl Coco", foto:"fotos/saulcoco.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Jean-Clair Todibo", foto:"fotos/todibo.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-    { nombre: "Juan Musso", foto:"fotos/musso.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+    { nombre: "Juan Musso", foto:"fotos/musso.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0+2, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Ricardo Pereira", foto:"fotos/ricardopereira.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Gabriel Sara", foto:"fotos/gabrielsara.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Ibrahim Sangaré", foto:"fotos/sangare.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
@@ -562,7 +570,7 @@ const jugadores = [
     { nombre: "Chancel Mbemba", foto:"fotos/mbemba.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Yimmi Chará", foto:"fotos/yimmichara.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Nicolás De La Cruz", foto:"fotos/delacruz.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-    { nombre: "Juan Nardoni", foto:"fotos/nardoni.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+    { nombre: "Juan Nardoni", foto:"fotos/nardoni.png", equipo: "Unión Española", goles: 0+1, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Emmanuel Latte Tah", foto:"fotos/emmanuellate.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 
     // PERRO FLAUTAS FC
@@ -622,7 +630,7 @@ const jugadores = [
         { nombre: "Hernán de la Fuente", foto:"fotos/hernan.png", equipo: "Humildes F.C.", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Marlon Fossey", foto:"fotos/fossey.png", equipo: "Pololoco F.C.", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Fichaje 2", foto:"desc.png", equipo: "Pololoco F.C.", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-{ nombre: "Scott Twine", foto:"fotos/scott.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+{ nombre: "Scott Twine", foto:"fotos/scott.png", equipo: "C.A. Maguila", goles: 0, asist: 0+1, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Chadrac Akolo", foto:"fotos/akolo.png", equipo: "C.A. Maguila", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Bouna Sarr", foto:"fotos/bouna.png", equipo: "U.D. Los Kinos", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
 { nombre: "Zaidu Sanusi", foto:"fotos/sanusi.png", equipo: "U.D. Los Kinos", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
@@ -636,9 +644,9 @@ const jugadores = [
     { nombre: "Pejiño", foto:"fotos/pejiño.png", equipo: "C.A. Hispalis", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Wilson Manafá", foto:"fotos/manafa.png", equipo: "Flakitos F.C", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Boli Bolingoli", foto:"fotos/bolingoli.png", equipo: "Flakitos F.C", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-    { nombre: "Wilson Manafá", foto:"fotos/manafa.png", equipo: "Flakitos F.C", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-    { nombre: "Boli Bolingoli", foto:"fotos/bolingoli.png", equipo: "Flakitos F.C", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-    { nombre: "Pedro Obiang", foto:"fotos/obiang.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+    { nombre: "Picha Autra", foto:"fotos/picha.png", equipo: "Xerez Eleven", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+    { nombre: "Carlos Akapo", foto:"fotos/akapo.png", equipo: "Xerez Eleven", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+    { nombre: "Pedro Obiang", foto:"fotos/obiang.png", equipo: "Unión Española", goles: 0, asist: 0+1, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Jay Dasilva", foto:"fotos/jayda.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Bendeguz Bolla", foto:"fotos/bolla.png", equipo: "Perroflautas F.C.", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Brandon Bye", foto:"fotos/brandon.png", equipo: "Perroflautas F.C.", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
