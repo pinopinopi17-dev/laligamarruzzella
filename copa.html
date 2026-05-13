@@ -93,7 +93,8 @@
         }
 
         .team-row img { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
-        .team-row span { font-size: 0.72rem; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .team-row span { font-size: 0.72rem; font-weight: 800; white-space: nowrap; overflow: visible;   /* Cambia esto si quieres que se vea todo */
+    text-overflow: clip; }
 
         .score {
             background: #eee;
