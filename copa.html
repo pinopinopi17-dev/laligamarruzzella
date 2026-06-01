@@ -297,8 +297,8 @@
             { nombre: "Unión Española", escudo: "union/union.png", score: "1" },
             { nombre: "U.D. Los Kinos", escudo: "kinos/kinos.png", score: "0" },
             { nombre: "Humildes F.C.", escudo: "humildes/humildes.png", score: "3" },
-            { nombre: "Xerez Eleven", escudo: "xerez/xerez.png", score: "-" },
-            { nombre: "Pelusas C.F.", escudo: "pelusas/pelusas.png", score: "-" }
+            { nombre: "Xerez Eleven", escudo: "xerez/xerez.png", score: "3" },
+            { nombre: "Pelusas C.F.", escudo: "pelusas/pelusas.png", score: "0" }
         ];
 
         function crearFilaHTML(equipo) {
@@ -338,7 +338,7 @@
             document.getElementById('c0').innerHTML = crearFilaCuartos(null) + `<div class="vs-sep"></div>` + crearFilaCuartos(equipos[3]);
             document.getElementById('c1').innerHTML = crearFilaCuartos(equipos[4]) + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
             document.getElementById('c2').innerHTML = crearFilaCuartos(null) + `<div class="vs-sep"></div>` + crearFilaCuartos(equipos[10]);
-            document.getElementById('c3').innerHTML = crearFilaCuartos(equipos[13]) + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
+            document.getElementById('c3').innerHTML = crearFilaCuartos(equipos[13]) + `<div class="vs-sep"></div>` + crearFilaCuartos(equipos[14]);
         }
 
         window.onload = cargarArbol;
