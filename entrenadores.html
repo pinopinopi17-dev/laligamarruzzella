@@ -160,23 +160,26 @@
 
 <script>
     const entrenadores = [
-        { nombre: "Matías Almeyda", foto: "hispalis/almeyda.png", pj: 4, v: 1, e: 0, d: 3, once: 0, titulos: 0, pp:0.75, equipo: "-", ex: "C.A. Hispalis", estado: "libre" },
-        { nombre: "Paco Jémez", foto: "xerez/jemez.png", pj: 7, v: 1, e: 2, d: 4, once: 0, titulos: 0, pp:0.71, equipo: "-", ex: "Xerez Eleven", estado: "libre" },
-        { nombre: "Nagelsmann", foto: "cesped/nagelsmann.png", pj: 7, v: 1, e: 1, d: 5, once: 1, titulos: 0,pp:0.52, equipo: "Los Césped F.C.", ex: "-", estado: "activo" },
-        { nombre: "La Cobra", foto: "flakitos/cobrix.png", pj: 8, v: 0, e: 2, d: 6, once: 1, titulos: 0, pp:0.25, equipo: "Flakitos F.C.", ex: "-", estado: "activo" },
-        { nombre: "Mikel Arteta", foto: "humildes/arteta.png", pj: 8, v: 8, e: 0, d: 0, once: 0, titulos: 0, pp:3, equipo: "Humildes F.C.", ex: "-", estado: "activo" },
-        { nombre: "Minguito", foto: "kinos/minguito.png", pj: 7, v: 3, e: 1, d: 3, once: 0, titulos: 0, pp:1.43, equipo: "U.D. Los Kinos", ex: "-", estado: "activo" },
-        { nombre: "Enrique Pastor", foto: "maguila/enrique.png", pj: 8, v: 5, e: 2, d: 1, once: 0, titulos: 0, pp:2.13, equipo: "C.A. Maguila", ex: "-", estado: "activo" },
-        { nombre: "Pablo Aimar", foto: "mascaras/aimar.webp", pj: 7, v: 5, e: 0, d: 2, once: 0, titulos: 0, pp:2.14, equipo: "Máscaras F.C.", ex: "-", estado: "activo" },
-        { nombre: "Dries Mertens", foto: "pelusas/mertens.png", pj: 7, v: 3, e: 0, d: 4, once: 1, titulos: 0, pp:1.29, equipo: "Pelusas C.F.", ex: "-", estado: "activo" },
-        { nombre: "Triple R", foto: "perrof/triplet.jpg", pj: 7, v: 0, e: 2, d: 5, once: 1, titulos: 0, pp:0.25, equipo: "Perro Flautas F.C.", ex: "-", estado: "activo" },
-        { nombre: "Alonso", foto: "pololoco/alonso.png", pj: 8, v: 4, e: 3, d: 1, once: 0, titulos: 0, pp:1.88, equipo: "Pololoco F.C.", ex: "-", estado: "activo" },
-        { nombre: "Segundo Castillo", foto: "sportium/segundo.png", pj: 6, v: 1, e: 2, d: 3, once: 0, pp:0.83, titulos: "3er Mejor Entrenador 2025", equipo: "-", ex: "Sportium de Gijón", estado: "libre" },
-        { nombre: "Del Bosque", foto: "union/vicente.png", pj: 8, v: 6, e: 1, d: 1, once: 2, titulos: 0, pp:2.38, equipo: "Unión Española", ex: "-", estado: "activo" },
-        { nombre: "Gravesen", foto: "violeteros/gravesen.png", pj: 8, v: 4, e: 0, d: 4, once: 0, titulos: 0, pp:1.5, equipo: "Violeteros F.C.", ex: "-", estado: "activo" },
-        { nombre: "Simeone", foto: "hispalis/simeone.png", pj: 4, v: 3, e: 0, d: 1, once: 1, titulos: 0, pp:2.25, equipo: "C.A. Hispalis", ex: "-", estado: "activo" },
-        { nombre: "Rafa Nadal", foto: "xerez/rafa.png", pj: 1, v: 0, e: 0, d: 1, once: 0, titulos: 0, pp:0, equipo: "Xerez Eleven", ex: "-", estado: "activo" },
-        { nombre: "Manuel Mesa", foto: "sportium/manolo.png", pj: 1, v: 0, e: 0, d: 1, once: 0, titulos: 0, pp:0, equipo: "Sportium de Gijón", ex: "-", estado: "activo" }
+        { nombre: "Matías Almeyda", foto: "hispalis/almeyda.png", pj: 4, v: 2, e: 0, d: 2, once: 0, titulos: 0, pp:1.5, equipo: "-", ex: "C.A. Hispalis", estado: "libre",mes:0 },
+        { nombre: "Paco Jémez", foto: "xerez/jemez.png", pj: 7, v: 1, e: 2, d: 4, once: 0, titulos: 0, pp:0.71, equipo: "-", ex: "Xerez Eleven", estado: "libre",mes:0 },
+        { nombre: "Nagelsmann", foto: "cesped/nagelsmann.png", pj: 10, v: 2, e: 2, d: 6, once: 1, titulos: 0,pp:0.8, equipo: "-", ex: "Los Césped F.C.", estado: "libre",mes:0 },
+        { nombre: "La Cobra", foto: "flakitos/cobrix.png", pj: 11, v: 2, e: 4, d: 5, once: 1, titulos: 0, pp:0.9, equipo: "Flakitos F.C.", ex: "-", estado: "activo",mes:0 },
+        { nombre: "Mikel Arteta", foto: "humildes/arteta.png", pj: 9, v: 9, e: 0, d: 0, once: 0, mes:1, titulos: 0, pp:3, equipo: "Humildes F.C.", ex: "-", estado: "activo" },
+        { nombre: "Minguito", foto: "kinos/minguito.png", pj: 10, v: 4, e: 2, d: 4, once: 0, titulos: 0, pp:1.4, equipo: "U.D. Los Kinos", ex: "-", estado: "activo",mes:0 },
+        { nombre: "Enrique Pastor", foto: "maguila/enrique.png", pj: 10, v: 6, e: 3, d: 1, once: 0, titulos: 0, pp:2.1, equipo: "C.A. Maguila", ex: "-", estado: "activo" ,mes:0},
+        { nombre: "Pablo Aimar", foto: "mascaras/aimar.webp", pj: 11, v: 9, e: 0, d: 2, once: 1, titulos: 0, pp:2.46, equipo: "Máscaras F.C.", ex: "-", estado: "activo" ,mes:0},
+        { nombre: "Dries Mertens", foto: "pelusas/mertens.png", pj: 7, v: 3, e: 0, d: 4, once: 1, titulos: 0, pp:1.29, equipo: "-", ex: "Pelusas C.F.", estado: "libre" ,mes:0},
+        { nombre: "Triple R", foto: "perrof/triplet.jpg", pj: 10, v: 1, e: 3, d: 6, once: 1, titulos: 0, pp:0.6, equipo: "Perro Flautas F.C.", ex: "-", estado: "activo" ,mes:0},
+        { nombre: "Alonso", foto: "pololoco/alonso.png", pj: 9, v: 4, e: 3, d: 2, once: 0, titulos: 0, pp:1.67, equipo: "-", ex: "Pololoco F.C.", estado: "libre" ,mes:0},
+        { nombre: "Segundo Castillo", foto: "sportium/segundo.png", pj: 6, v: 1, e: 2, d: 3, once: 0, pp:0.83, titulos: "3er Mejor Entrenador 2025", equipo: "-", ex: "Sportium de Gijón", estado: "libre" ,mes:0},
+        { nombre: "Del Bosque", foto: "union/vicente.png", pj: 10, v: 6, e: 1, d: 3, once: 2, titulos: 0, pp:1.9, equipo: "Unión Española", ex: "-", estado: "activo" ,mes:1},
+        { nombre: "Gravesen", foto: "violeteros/gravesen.png", pj: 10, v: 5, e: 1, d: 4, once: 0, titulos: 0, pp:1.6, equipo: "Violeteros F.C.", ex: "-", estado: "activo" ,mes:0},
+        { nombre: "Simeone", foto: "hispalis/simeone.png", pj: 7, v: 4, e: 0, d: 3, once: 2, titulos: 0, pp:1.71, equipo: "C.A. Hispalis", ex: "-", estado: "activo" ,mes:0},
+        { nombre: "Rafa Nadal", foto: "xerez/rafa.png", pj: 3, v: 1, e: 0, d: 2, once: 0, titulos: 0, pp:1, equipo: "-", ex: "Xerez Eleven", estado: "libre" ,mes:0},
+        { nombre: "Manuel Mesa", foto: "sportium/manolo.png", pj: 5, v: 2, e: 1, d: 2, once: 1, titulos: 0, pp:1.4, equipo: "Sportium de Gijón", ex: "-", estado: "activo" ,mes:0},
+        { nombre: "Jordi Wild", foto: "cesped/jordiwild.png", pj: 1, v: 1, e: 0, d: 0, once: 0, titulos: 0, pp:3, equipo: "Los Césped F.C.", ex: "-", estado: "activo" ,mes:0},
+        { nombre: "Montapuerco", foto: "pololoco/montapuerco.png", pj: 1, v: 0, e: 0, d: 1, once: 0, titulos: 0, pp:0, equipo: "Pololoco F.C.", ex: "-", estado: "activo" ,mes:0},
+        { nombre: "Daniel Güiza", foto: "xerez/guiza.png", pj: 1, v: 1, e: 0, d: 0, once: 0, titulos: 0, pp:3, equipo: "Xerez Eleven", ex: "-", estado: "activo" ,mes:0},
     ];
 
     function renderEntrenadores(lista) {
@@ -198,6 +201,7 @@
                         <tr><td>XI de la Semana</td><td>${c.once} veces</td></tr>
                         <tr><td>Títulos / Distinciones</td><td>${c.titulos === 0 ? '0' : c.titulos}🏆</td></tr>
                         <tr><td>Equipo Actual</td><td>${c.equipo}</td></tr>
+                        <tr><td>Entrenador del mes</td><td>${c.mes}</td></tr>
                     </table>
                     <div class="team-history">
                         <strong>Trayectoria:</strong> ${c.ex}
