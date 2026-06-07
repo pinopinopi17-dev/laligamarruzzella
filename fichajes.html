@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Fichajes - Liga Marruzzella v2</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #0284c7;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-color: #1e293b;
+            --success-color: #16a34a;
+            --danger-color: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-background);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+            font-size: 0.95em;
+        }
+
+        /* Sistema de Pestañas */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 25px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tab-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            margin-bottom: -2px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Formularios */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+        }
+
+        /* Contenedor de jugadores dinámicos */
+        .jugadores-container {
+            background-color: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .jugador-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .jugador-row input[type="text"] {
+            flex: 2;
+        }
+
+        .jugador-row input[type="number"] {
+            flex: 1;
+        }
+
+        .btn-remove {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-add {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Mensajes de estado */
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            display: none;
+        }
+
+        .message.success {
+            display: block;
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        .message.error {
+            display: block;
+            background-color: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+
+
+
+
+        .tabla-seccion {
+            margin-top: 40px;
+            border-top: 2px dashed #e2e8f0;
+            padding-top: 30px;
+        }
+
+        .tabla-seccion h2 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto; /* Permite scroll horizontal en móviles para que no se rompa */
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .tabla-inscripciones {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .tabla-inscripciones th {
+            background-color: #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+            padding: 12px 16px;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .tabla-inscripciones td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            color: var(--text-color);
+            vertical-align: middle;
+        }
+
+        /* Estilo optimizado para cuando insertes las fotos de los equipos */
+        .team-photo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 8px;
+            background-color: #f8fafc;
+            padding: 2px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #94a3b8;
+            padding: 30px !important;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Fichajes de Invierno<br>La Liga Marruzzella 2026</h1>
+    <div class="subtitle">Panel de Mercado Múltiple - eFootball 2026</div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'compras')">1. Compras (Múltiples)</button>
+        <button class="tab-btn" onclick="openTab(event, 'ventas')">2. Ventas (Múltiples)</button>
+    </div>
+
+    <div id="compras" class="tab-content active">
+        <form id="form-compras" onsubmit="enviarDatosMúltiples(event, 'form-compras', 'Compra', 'jugadores-compras-box')">
+            <div class="form-group">
+                <label for="compra-equipo">Nombre del Equipo:</label>
+                <input type="text" id="compra-equipo" name="equipo" placeholder="Ej: Xerez Eleven" required>
+            </div>
+            
+            <label>Fichajes realizados (Registra varios a la vez):</label>
+            <div class="jugadores-container">
+                <div id="jugadores-compras-box">
+                    <div class="jugador-row">
+                        <input type="text" class="input-jugador" placeholder="Nombre del jugador" required>
+                        <input type="number" class="input-coste" placeholder="Coste (GP)" required>
+                        <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
+                    </div>
+                </div>
+                <button type="button" class="btn-add" onclick="addRow('jugadores-compras-box')">+ Añadir otro jugador</button>
+            </div>
+
+            <button type="submit">Registrar Bloque de Compras</button>
+        </form>
+        <div id="msg-form-compras" class="message"></div>
+    </div>
+
+    <div id="ventas" class="tab-content">
+        <form id="form-ventas" onsubmit="enviarDatosMúltiples(event, 'form-ventas', 'Venta', 'jugadores-ventas-box')">
+            <div class="form-group">
+                <label for="venta-equipo">Nombre del Equipo:</label>
+                <input type="text" id="venta-equipo" name="equipo" placeholder="Ej: C.A. Hispalis" required>
+            </div>
+            
+            <label>Ventas realizadas (Registra varias a la vez):</label>
+            <div class="jugadores-container">
+                <div id="jugadores-ventas-box">
+                    <div class="jugador-row">
+                        <input type="text" class="input-jugador" placeholder="Nombre del jugador" required>
+                        <input type="number" class="input-coste" placeholder="Ingreso por venta" required>
+                        <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
+                    </div>
+                </div>
+                <button type="button" class="btn-add" onclick="addRow('jugadores-ventas-box')">+ Añadir otra venta</button>
+            </div>
+
+            <button type="submit">Registrar Bloque de Ventas</button>
+        </form>
+        <div id="msg-form-ventas" class="message"></div>
+    </div>
+    <div class="tabla-seccion">
+        <h2>📝 Inscripciones Oficiales del Mercado</h2>
+        <div class="table-responsive">
+            <table class="tabla-inscripciones">
+                <thead>
+                    <tr>
+                        <th>Nombre del jugador</th>
+                        <th>Equipo origen</th>
+                        <th>Equipo </th>
+                        <th>Coste</th>
+                        <th>Fecha de la inscripción</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-cuerpo-inscripciones">
+                    <tr>
+                        <td colspan="5" class="no-data">No hay inscripciones oficiales registradas en esta sesión</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // REEMPLAZA ESTA URL con el enlace de ejecución de tu Google Apps Script
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwyuwLk7mhUt7_ptuq8vcEuNJlMYBZ7E8W8eMk5ugKGFCJjJlJ82s5HbyRaHiTLrpVKAg/exec";
+
+    // Función para cambiar de pestañas
+    function openTab(evt, tabName) {
+        const tabcontents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabcontents.length; i++) {
+            tabcontents[i].classList.remove("active");
+        }
+        const tabbtns = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabbtns.length; i++) {
+            tabbtns[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    // Añadir dinámicamente campos de texto
+    function addRow(containerId) {
+        const container = document.getElementById(containerId);
+        const newRow = document.createElement('div');
+        newRow.className = 'jugador-row';
+        newRow.innerHTML = `
+            <input type="text" class="input-jugador" placeholder="Nombre del jugador" required>
+            <input type="number" class="input-coste" placeholder="Coste / Ingreso" required>
+            <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
+        `;
+        container.appendChild(newRow);
+    }
+
+    // Quitar campos de texto asegurando que quede al menos uno
+    function removeRow(button) {
+        const row = button.parentElement;
+        const container = row.parentElement;
+        if (container.children.length > 1) {
+            row.remove();
+        } else {
+            alert("Debes registrar al menos un registro.");
+        }
+    }
+
+    // Junta los nombres y costes y envía todo en una única llamada
+    function enviarDatosMúltiples(event, formId, tipoOperacion, containerId) {
+        event.preventDefault();
+        
+        const form = document.getElementById(formId);
+        const submitButton = form.querySelector('button[type="submit"]');
+        const messageDiv = document.getElementById('msg-' + formId);
+        
+        submitButton.disabled = true;
+        submitButton.innerText = "Enviando...";
+        messageDiv.className = "message";
+        messageDiv.style.display = "none";
+
+        const equipo = form.querySelector('input[name="equipo"]').value;
+        const rows = document.getElementById(containerId).getElementsByClassName('jugador-row');
+        
+        let listaJugadoresYCostes = [];
+        let costeTotal = 0;
+
+        for (let i = 0; i < rows.length; i++) {
+            const nombre = rows[i].querySelector('.input-jugador').value.trim();
+            const coste = rows[i].querySelector('.input-coste').value.trim();
+            
+            if (nombre && coste) {
+                // Aquí se emparejan: Ej. "M. Salah (35.000.000)"
+                listaJugadoresYCostes.push(`${nombre} (${parseInt(coste).toLocaleString('es-ES')})`);
+                costeTotal += parseInt(coste);
+            }
+        }
+
+        // Se unifican todos en un único texto separado por comas para una sola celda
+        const cadenaFinalCeldas = listaJugadoresYCostes.join(", ");
+
+        const urlParams = new URLSearchParams();
+        urlParams.append("tipo", tipoOperacion);
+        urlParams.append("equipo", equipo);
+        urlParams.append("jugadores_costes", cadenaFinalCeldas);
+        urlParams.append("coste_total", costeTotal);
+
+        fetch(WEB_APP_URL + "?" + urlParams.toString(), {
+            method: "POST"
+        })
+        .then(response => {
+            messageDiv.innerText = `¡Transacción guardada con éxito!\nFichajes en celda: "${cadenaFinalCeldas}"`;
+            messageDiv.classList.add("success");
+            
+            // Limpiar formulario y dejar solo una fila base vacía
+            form.reset();
+            const container = document.getElementById(containerId);
+            container.innerHTML = `
+                <div class="jugador-row">
+                    <input type="text" class="input-jugador" placeholder="Nombre del jugador" required>
+                    <input type="number" class="input-coste" placeholder="Coste / Ingreso" required>
+                    <button type="button" class="btn-remove" onclick="removeRow(this)">X</button>
+                </div>
+            `;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            messageDiv.innerText = "Error de conexión con Google Sheets.";
+            messageDiv.classList.add("error");
+        })
+        .finally(() => {
+            submitButton.disabled = false;
+            submitButton.innerText = tipoOperacion === "Compra" ? "Registrar Bloque de Compras" : "Registrar Bloque de Ventas";
+        });
+    }
+</script>
+
+</body>
+</html>
