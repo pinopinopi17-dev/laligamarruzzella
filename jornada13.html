@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jornada 9</title>
+    <title>Jornada 13</title>
     <title>Actas con Equipos - Liga Marruzzella</title>
     <style>
         :root {
@@ -78,104 +78,103 @@
 </div>
 
 <script>
-    // ESTRUCTURA DE DATOS CON EQUIPOS SEPARADOS
 const listadoPartidos = [
     {
-        "id": 1, 
-        "local": "Los Césped F.C.", 
-        "visitante": "Humildes F.C.",
+        "id": 1,
+        "local": "Los Césped F.C.",
+        "visitante": "Violeteros F.C.",
         "escudoLocal": "cesped/cesped.png", 
-        "escudoVisitante": "humildes/humildes.png",
-        "fecha": "05/05/2026",
+        "escudoVisitante": "violeteros/violeteros.png",
+        "fecha": "vs",
         "datos": {
-            "resultado": "2-3",
-            "localStats": { "goles": "Chidera Ejuke (1), Ché Adams (1)", "asist": "Ché Adams (1)", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Matías Mansilla (3)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "visitStats": { "goles": "Jobe Bellingham (1), Samuel Chukwueze (2)", "asist": "Julio Enciso (2)", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "premios": { "mvp": "Samuel Chukwueze", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
-        }
-    },
-    {
-        "id": 2, 
-        "local": "Perroflautas F.C.", 
-        "visitante": "Xerez Eleven",
-        "escudoLocal": "perrof/perrof.png", 
-        "escudoVisitante": "xerez/xerez.png",
-        "fecha": "07/05/2026",
-        "datos": {
-            "resultado": "3-5",
-            "localStats": { "goles": "Simon Adingra (2), Hwang Hee Chan (1)", "asist": "Rubén Vargas (1)", "amarillas": "Rúben Vargas (1), Joseff Martínez (1)", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Aaron Escandell (7)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "visitStats": { "goles": "Isi Palazón (2), Michael Olunga (2), Ez Abde (1)", "asist": "Michael Olunga (1), Antony (1), Romano Schimd (1), Picha Autra (1)", "amarillas": "Carter Vickers (1)", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Ivan Susak (2)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "Thiago Martins" },
-            "premios": { "mvp": "Isi Palazón", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
-        }
-    },
-    {
-        "id": 3, 
-        "local": "Flakitos F.C.", 
-        "visitante": "Pololoco F.C.",
-        "escudoLocal": "flakitos/flakitos.png", 
-        "escudoVisitante": "pololoco/pololoco.png",
-        "fecha": "1/05/2026",
-        "datos": {
-            "resultado": "1-0",
-            "localStats": { "goles": "Nené Dorgeles (1)", "asist": "Kerem Akturkoglu (1)", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Matías Dituro (1)", "porterias0": "Matías Dituro", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "visitStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Bingourou Kamara (2)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "premios": { "mvp": "Nené Dorgeles", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
-        }
-    },
-    {
-        "id": 4, 
-        "local": "C.A. Maguila", 
-        "visitante": "Pelusas C.F.",
-        "escudoLocal": "maguila/maguila.png", 
-        "escudoVisitante": "pelusas/pelusas.png",
-        "fecha": "27/04/2026",
-        "datos": {
-            "resultado": "3-0",
+            "resultado": "vs",
             "localStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
             "visitStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
             "premios": { "mvp": "N/A", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
         }
     },
     {
-        "id": 5, 
-        "local": "C.A. Hispalis", 
-        "visitante": "Violeteros F.C.",
-        "escudoLocal": "hispalis/hispalis.png", 
-        "escudoVisitante": "violeteros/violeteros.png",
-        "fecha": "05/05/2026",
-        "datos": {
-            "resultado": "1-4",
-            "localStats": { "goles": "Théo Bongonda (1)", "asist": "Mikhailo Mudryk (1)", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Altay Bayindir (4)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "visitStats": { "goles": "Jota Silva (2), Kyogo Furuhashi (1), Yves Bissouma (1)", "asist": "Kyogo Furuhashi (2), Junya Ito (1)", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Diego Conde (4)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "premios": { "mvp": "Jota Silva", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
-        }
-    },
-    {
-        "id": 6, 
-        "local": "Máscaras F.C.", 
+        "id": 2,
+        "local": "Pelusas C.F.",
         "visitante": "U.D. Kinos",
-        "escudoLocal": "mascaras/mascaras.png", 
+        "escudoLocal": "pelusas/pelusas.png", 
         "escudoVisitante": "kinos/kinos.png",
-        "fecha": "01/05/2026",
+        "fecha": "-",
         "datos": {
-            "resultado": "4-2",
-            "localStats": { "goles": "Yira Sor (2), Paulo Dybala (2)", "asist": "Yira Sor (1), Adama Traoré (1)", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Jack Butland (3)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "visitStats": { "goles": "Rafa Silva (1), Iñaki Williams (1)", "asist": "Marvelous Nakamba (1), Tariq Lamptey (1)", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Mamadou Samassa (6)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "premios": { "mvp": "Yira Sor", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
+            "resultado": "0-3",
+            "localStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "visitStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "premios": { "mvp": "N/A", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
         }
     },
     {
-        "id": 7, 
-        "local": "Unión Española", 
+        "id": 3,
+        "local": "Pololoco F.C.",
         "visitante": "Sportium de Gijón",
-        "escudoLocal": "union/union.png", 
+        "escudoLocal": "pololoco/pololoco.png", 
         "escudoVisitante": "sportium/sportium.png",
-        "fecha": "21/05/2026",
+        "fecha": "vs",
         "datos": {
-            "resultado": "2-3",
-            "localStats": { "goles": "Saint-Maximin (1), Juan Musso (P)", "asist": "Keprin Diatta (1)", "amarillas": "N/A", "rojas": "N/A", "penaltis": "Juan Musso (G)", "faltas": "N/A", "paradas": "Juan Musso (1)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "visitStats": { "goles": "Jonathan David (3)", "asist": "Amine Adli (1), Azzedine Ounahi (1), Jeremi Boga (1)", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "Dominik Greif (3)", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
-            "premios": { "mvp": "Jonathan David", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
+            "resultado": "vs",
+            "localStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "visitStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "premios": { "mvp": "N/A", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
+        }
+    },
+    {
+        "id": 4,
+        "local": "Xerez Eleven",
+        "visitante": "Unión Española",
+        "escudoLocal": "xerez/xerez.png", 
+        "escudoVisitante": "union/union.png",
+        "fecha": "vs",
+        "datos": {
+            "resultado": "vs",
+            "localStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "visitStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "premios": { "mvp": "N/A", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
+        }
+    },
+    {
+        "id": 5,
+        "local": "Humildes F.C.",
+        "visitante": "Máscaras F.C.",
+        "escudoLocal": "humildes/humildes.png", 
+        "escudoVisitante": "mascaras/mascaras.png",
+        "fecha": "vs",
+        "datos": {
+            "resultado": "vs",
+            "localStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "visitStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "premios": { "mvp": "N/A", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
+        }
+    },
+    {
+        "id": 6,
+        "local": "Perroflautas F.C.",
+        "visitante": "C.A. Hispalis",
+        "escudoLocal": "perrof/perrof.png", 
+        "escudoVisitante": "hispalis/hispalis.png",
+        "fecha": "vs",
+        "datos": {
+            "resultado": "vs",
+            "localStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "visitStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "premios": { "mvp": "N/A", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
+        }
+    },
+    {
+        "id": 7,
+        "local": "Flakitos F.C.",
+        "visitante": "C.A. Maguila",
+        "escudoLocal": "flakitos/flakitos.png", 
+        "escudoVisitante": "maguila/maguila.png",
+        "fecha": "vs",
+        "datos": {
+            "resultado": "vs",
+            "localStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "visitStats": { "goles": "N/A", "asist": "N/A", "amarillas": "N/A", "rojas": "N/A", "penaltis": "N/A", "faltas": "N/A", "paradas": "N/A", "porterias0": "N/A", "lesiones": "N/A", "bajas": "N/A", "sancionados": "N/A" },
+            "premios": { "mvp": "N/A", "once": "En Curso", "mvpJornada": "En Curso", "jugadorMes": "En Curso" }
         }
     }
 ];
