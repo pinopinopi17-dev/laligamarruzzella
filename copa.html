@@ -289,8 +289,8 @@
             { nombre: "Violeteros F.C.", escudo: "violeteros/violeteros.png", score: "4" },
             { nombre: "Máscaras F.C.", escudo: "mascaras/mascaras.png", score: "6" },
             { nombre: "Flakitos F.C.", escudo: "flakitos/flakitos.png", score: "1" },
-            { nombre: "Patata F.C.", escudo: "copa/patata.png", score: "-" },
-            { nombre: "Lacasitos F.C.", escudo: "copa/lacasito.png", score: "-" },
+            { nombre: "Patata F.C.", escudo: "copa/patata.png", score: "3" },
+            { nombre: "Lacasitos F.C.", escudo: "copa/lacasito.png", score: "0" },
             { nombre: "Sportium de Gijón", escudo: "sportium/sportium.png", score: "-" },
             { nombre: "Pololoco F.C.", escudo: "pololoco/aaa.png", score: "-" },
             { nombre: "C.A. Maguila", escudo: "historico/maguila-Photoroom.png", score: "4" },
@@ -336,7 +336,7 @@
 
             // Cuartos (Basado en tu lógica anterior)
             document.getElementById('c0').innerHTML = crearFilaCuartos(equipos[0]) + `<div class="vs-sep"></div>` + crearFilaCuartos(equipos[3]);
-            document.getElementById('c1').innerHTML = crearFilaCuartos(equipos[4]) + `<div class="vs-sep"></div>` + crearFilaCuartos(null);
+            document.getElementById('c1').innerHTML = crearFilaCuartos(equipos[5]) + `<div class="vs-sep"></div>` + crearFilaCuartos(equipos[6]);
             document.getElementById('c2').innerHTML = crearFilaCuartos(null) + `<div class="vs-sep"></div>` + crearFilaCuartos(equipos[10]);
             document.getElementById('c3').innerHTML = crearFilaCuartos(equipos[13]) + `<div class="vs-sep"></div>` + crearFilaCuartos(equipos[14]);
         }
@@ -627,7 +627,12 @@ const jugadores = [
     { nombre: "Jay Dasilva", foto:"fotos/jayda.png", equipo: "Unión Española", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Bendeguz Bolla", foto:"fotos/bolla.png", equipo: "Perroflautas F.C.", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
     { nombre: "Brandon Bye", foto:"fotos/brandon.png", equipo: "Perroflautas F.C.", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
-    { nombre: "Jiang Guangtai", foto:"fotos/guangtai.png", equipo: "Máscaras F.C.", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 }]
+    { nombre: "Jiang Guangtai", foto:"fotos/guangtai.png", equipo: "Máscaras F.C.", goles: 0, asist: 0, amarillas: 0, rojas: 0, penalti: 0, falta: 0, sancionado: 0, lesiones: 0, baja: 0, paradas: 0, porterias0: 0, mvp: 0, once: 0, mvpJornada: 0, jugadorMes: 0, ratio: 0 },
+    { nombre: "Aleix Febas", foto: "desc.png", equipo: "Patata F.C.", asist: 2},
+    { nombre: "Jorge Obregón", foto: "desc.png", equipo: "Patata F.C.", goles: 1, mvp:1},
+    { nombre: "Julen Agirrezabala", foto: "desc.png", equipo: "Patata F.C.", porterias0: 1, paradas: 5},
+    { nombre: "Tumisang Orebonye", foto: "desc.png", equipo: "Patata F.C.", goles:1},
+]
     // CONFIGURACIÓN DE LAS 15 TABLAS
     const configTablas = [
         { etiqueta: "Goles ⚽", clave: "goles" },
